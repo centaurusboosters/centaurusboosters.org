@@ -1,6 +1,10 @@
 # Reviewer Personas — Centaurus Warriors Booster Club Website
 
-These personas drove the initial prioritization in `BACKLOG.md`. During the `/goal` loop they are the **verification lens**: after each change, the relevant persona's "definition of done" is the bar the rendered result must clear (Step 3 of the loop). The backlog order is fixed during the loop — personas evaluate, they don't re-prioritize mid-run.
+These personas serve two roles:
+
+1. **Original use — backlog prioritization (`BACKLOG.md`).** They drove the initial prioritization of website-improvement work. In that website-improvement loop, the relevant persona's "definition of done" is the bar each rendered change must clear; the backlog order is fixed during a run (personas evaluate, they don't re-prioritize mid-run).
+
+2. **Pipeline use — the advisory quality gate in the agentic publishing pipeline.** When the `/githubtrigger` skill implements an administrator's change request (see `booster-club-agentic-publishing-plan.md` §10, "Persona review gate"), the persona(s) matching the request's `type:` label provide the qualitative review of the rendered result before the PR opens. This gate is **advisory** — its assessment is written into the PR/issue comment for the human reviewer; it does not auto-block the PR. The only exception is a clearly-unmet definition of done, which should route the request to `Needs Clarification` rather than ship ("ask, don't invent"). The **Product Owner** persona applies only to role 1 (backlog prioritization), not to the runtime pipeline.
 
 ---
 
