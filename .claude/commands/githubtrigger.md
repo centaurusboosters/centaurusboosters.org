@@ -113,6 +113,10 @@ Read `public/index.html` fully before making any edits. Understand the structure
 If the request is missing required facts (date, URL, exact text, image asset):
 - Make **no changes** to any file.
 - Comment with up to three focused questions.
+- Add label `needs:human-input` to the issue (best-effort):
+  ```bash
+  gh issue edit $ISSUE_NUMBER --repo kurtharriger/2026-boosters --add-label "needs:human-input"
+  ```
 - Update Project Status → `Needs Clarification` (best-effort).
 - `git checkout main` to release the lock.
 - Exit 0.
