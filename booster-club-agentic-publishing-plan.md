@@ -41,6 +41,67 @@ The POC should optimize for a working end-to-end loop, low cost, safety, and obs
 
 ---
 
+## 0. Prerequisites & Setup Gates
+
+Some work in this plan **cannot be performed by the agent.** It requires a human acting in a third-party console (account creation, OAuth login, secret entry, webhook registration, deploying an Apps Script). The agent must never attempt these via browser automation or its own credentials. For each such item the agent's job is to produce the artifacts it *can* (config files, code, exact setup instructions) and then **stop at the gate** until a human confirms the prerequisite is satisfied.
+
+### Setup register
+
+| # | Prerequisite | Owner | Gates | Agent's responsibility | Verification before "done" |
+|---|---|---|---|---|---|
+| P1 | Netlify account exists and the GitHub repo is linked | Human | M0 | Write `netlify.toml`; write exact click-by-click steps in `docs/operations.md`; **stop** | A real Deploy Preview URL appears on a test PR |
+| P2 | Netlify site ID / API token (only if programmatic access is needed) | Human | M0/M4 | Reference by env-var name only; never browse to obtain | Env var present at runtime |
+| P3 | Publish-directory decision resolved (see Decision D below) | Human | M0 | Recommend an option; do not guess | Decision recorded in this plan |
+| P4 | Two-layer allowlist set (see Permission model below) | Human (resolved) | M2/M3 | Hardcode the form-email allowlist in `Code.gs` and `TRUSTED_ISSUE_CREATORS` in the worker | A non-allowlisted form email creates no issue; a non-allowlisted GitHub creator triggers no run |
+| P5 | GitHub fine-grained token for Apps Script | Human | M2 | Author `Code.gs` to read it from Script Properties; document creation steps | Token stored in Script Properties, not in code |
+| P6 | Google Form created + Apps Script deployed with installable submit trigger | Human | M2 | Author the form field list and `Code.gs` + README; cannot deploy or trigger | A test submission creates one issue |
+| P7 | GitHub webhook registered + `WEBHOOK_SECRET` set | Human | M3 | Generate runner that reads `WEBHOOK_SECRET`; provide exact webhook config values to enter | A delivery reaches `/webhooks/github` and validates |
+| P8 | HTTPS tunnel to the minipc | Human | M3 | Document required public URL; do not provision | Webhook reaches the local receiver |
+| P9 | All secrets/tokens/webhook secret values | Human | various | Reference by env-var name only; never request the value in chat, never write to disk or git | N/A — secrets stay out of the repo |
+
+### Permission model (resolved)
+
+Two independent allowlists, enforced at two different layers:
+
+1. **Form-submitter allowlist — enforced in Apps Script, keyed by Google account email.**
+   Configure the Google Form to collect the respondent's email (sign-in required). On submit, `Code.gs` checks the submitter email against a hardcoded allowlist and creates a GitHub issue only for allowed submitters; otherwise it records the rejection in the response sheet and creates nothing.
+   - Initial allowlist: `["kurtharriger@gmail.com"]`. Additional admin emails can be added to this array later.
+
+2. **GitHub issue-creator allowlist — enforced in the webhook worker, keyed by GitHub login (`TRUSTED_ISSUE_CREATORS`).**
+   - Initial value: `["kurtharriger"]`.
+   - Apps Script authenticates to the GitHub API with the maintainer's fine-grained token (P5), so issues it creates are **authored by `kurtharriger`** on GitHub — there is no separate Apps Script GitHub identity unless a dedicated bot account or GitHub App is introduced later. This means a single creator entry (`kurtharriger`) covers both form-created issues and issues the maintainer files manually.
+   - If a dedicated automation account or GitHub App is adopted later (Section 6, production path), add its login/App identity to `TRUSTED_ISSUE_CREATORS` at that time.
+
+   *Open verification item (do during P6 setup):* confirm in practice that the GitHub REST issue created via the Apps Script token reports `user.login == "kurtharriger"` in the `issues` webhook payload. If a future identity choice changes the author, update `TRUSTED_ISSUE_CREATORS` accordingly.
+
+These two layers are complementary: the form-email check decides *who may request*, the GitHub-creator check decides *what the worker will act on*. Both must pass.
+
+### Email handling (resolved)
+
+Requester emails on this project are **public information** (they already appear on the published site) and do **not** need to be masked. The earlier "do not expose requester email in a public issue" guidance is **superseded**: requester name and email may appear in issue bodies and metadata. (Still never place GitHub tokens, the webhook secret, or other credentials in issues, logs, or git — that prohibition stands.)
+
+### Blocked-on-prerequisite protocol
+
+When a task requires a setup gate that is not yet satisfied, the agent must:
+
+1. Produce every artifact it *can* without the prerequisite (config, code, scripts, instructions).
+2. Write exact, click-by-click human setup steps into the relevant README or `docs/operations.md`.
+3. Mark the task `[BLOCKED: <prerequisite id and one-line reason>]` in Section 15.
+4. **Stop and report** — do not mark the milestone done, do not attempt the action via browser automation or its own credentials, do not fabricate verification.
+
+This is distinct from the content-stop rule (Section 20). The content-stop rule covers ambiguous *requests*; this protocol covers infrastructure the agent structurally cannot perform.
+
+### Decision D — repository layout vs. public publishing
+
+The automation code (`automation/`), workflows, and skill must **not** be served as part of the public static site, and must not leak secrets. Choose one before Milestone 0:
+
+- **Option A (recommended): publish subdirectory.** Move the site into `public/` (or `dist/`) and set Netlify `publish` to that directory, so root-level `automation/`, `.github/`, and docs are never published.
+- **Option B: separate private repo** for the webhook runner and Apps Script, leaving only the static site + skill in the public repo.
+
+Record the chosen option here once decided: **Decision D: Option A — single public repo, site published from a `public/` subdirectory.** The existing `index.html` and `assets/` move into `public/`; Netlify `publish = "public"`. Root-level `automation/`, `.github/`, `docs/`, and the plan are never served.
+
+---
+
 ## 2. Key Decisions
 
 1. **Use Google Forms as the administrator-facing interface.**
@@ -140,7 +201,7 @@ Create a Google Form with these fields:
 | Field | Required | Notes |
 |---|---:|---|
 | Requester name | Yes | Used in issue metadata |
-| Requester email | Yes | Do not expose publicly in the issue body if the repo is public |
+| Requester email | Yes | Captured from the signed-in Google account; checked against the form-submitter allowlist (Section 0). May appear in the issue — see Email handling (Section 0) |
 | Change type | Yes | Text, event, link, sponsor, image, correction, other |
 | Page or section | Yes | Example: Golf Tournament hero section |
 | Requested change | Yes | Plain-language description |
@@ -157,7 +218,7 @@ Create a Google Form with these fields:
 - Ask for exact spelling of names, dates, prices, and URLs.
 - State that requests will be implemented by AI and reviewed before publication.
 - Do not collect student records, medical information, payment-card data, or other sensitive information.
-- Keep requester email in the linked response sheet or issue metadata store, not in a public issue.
+- Requester name and email are public on this project and may appear in the issue (see Email handling, Section 0). Never put credentials (tokens, webhook secret) anywhere.
 
 ---
 
@@ -281,7 +342,7 @@ New | Queued | Implementing | Needs Clarification | Awaiting Review | Revision R
 - Prevent force pushes to `main`.
 - Require the site-validation check.
 - Disable automatic merging initially.
-- Store no school credentials or requester email addresses in the repository.
+- Store no credentials (tokens, webhook secret, school logins) in the repository. Requester email is public on this project and is permitted in issues (Section 0).
 - Enable Netlify access to the repository.
 - Keep GitHub Pages only as a temporary preview if needed; Netlify becomes the PR-preview and eventual production host.
 
@@ -511,7 +572,7 @@ Connect Netlify to the GitHub repository.
 
 - Production branch: `main`
 - Deploy Previews: enabled for pull requests
-- Static publish directory: repository root or the actual site directory
+- Static publish directory: per **Decision D** (Section 0) — do not publish repository root if `automation/` lives in the same repo
 - Build command: empty unless validation/build tooling is added
 - Production deployment: triggered only by merges to `main`
 
@@ -622,7 +683,11 @@ timeout
 
 ## 15. Implementation Milestones
 
+**Status legend (coordinator updates these each run):** `[ ]` not started · `[~]` in progress · `[x]` done & verified · `[BLOCKED: Pn — reason]` waiting on a setup gate from Section 0. A milestone may only be `[x]` when its acceptance criteria are *verified*, not merely attempted.
+
 ### Milestone 0 — Repository and preview baseline
+
+**Status:** `[ ]`
 
 Deliver:
 
@@ -640,6 +705,8 @@ Acceptance criteria:
 - `main` cannot be pushed directly by the agent identity.
 
 ### Milestone 1 — Manual agent command
+
+**Status:** `[ ]`
 
 Deliver:
 
@@ -660,6 +727,8 @@ Also verify that an ambiguous issue becomes `Needs Clarification`.
 
 ### Milestone 2 — Google Form intake
 
+**Status:** `[ ]`
+
 Deliver:
 
 - Google Form.
@@ -670,11 +739,13 @@ Deliver:
 
 Acceptance criteria:
 
-- A form submission creates exactly one correctly formatted issue.
-- Requester email is not exposed in the public repository.
+- A form submission from an allowlisted email creates exactly one correctly formatted issue.
+- A submission from a non-allowlisted email creates no issue and is recorded as rejected in the response sheet.
 - A failed API call is visible in the response sheet or script logs.
 
 ### Milestone 3 — Local webhook automation
+
+**Status:** `[ ]`
 
 Deliver:
 
@@ -695,6 +766,8 @@ Acceptance criteria:
 
 ### Milestone 4 — Review loop
 
+**Status:** `[ ]`
+
 Deliver:
 
 - Agent comments with PR information.
@@ -710,6 +783,8 @@ Acceptance criteria:
 - Merge changes status to `Complete`.
 
 ### Milestone 5 — Cloud migration
+
+**Status:** `[ ]`
 
 Do this only after the local POC is stable.
 
@@ -801,6 +876,8 @@ Move to AgentCore after:
 ---
 
 ## 18. Suggested Repository Layout
+
+> **Note:** This layout assumes Decision D (Section 0) resolves to **Option A** with a publish subdirectory, OR that Netlify's publish dir is set so `automation/`, `.github/`, and `docs/` are never served. If Decision D resolves to **Option B**, the `automation/` tree moves to a separate private repo. Resolve Decision D before creating these files.
 
 ```text
 .
@@ -978,33 +1055,33 @@ Do not use Opus-class for every implementation step by default. Reserve it for s
 ### Recommended `/goal` prompt
 
 ```text
-Read `booster-club-agentic-publishing-plan.md`.
+Read `booster-club-agentic-publishing-plan.md` in full, including Section 0 (Prerequisites & Setup Gates).
 
 Act as the main coordinator for an incremental implementation loop.
 
-Your job is not to implement the entire plan in one run. Your job is to complete exactly one coherent task slice from the next incomplete milestone, update the plan, and stop.
+Your job is not to implement the entire plan in one run. Your job is to advance exactly one coherent task slice from the next incomplete milestone, update the plan's status markers, and stop.
 
 For this iteration:
 
-1. Inspect the repository and the plan.
-2. Identify the first incomplete milestone or task slice.
-3. State the selected task slice and acceptance criteria.
-4. Spawn exactly one implementor subagent to perform the code/config changes for that slice.
-5. Give the implementor a narrow assignment, explicit constraints, and the relevant acceptance criteria.
-6. Require the implementor to report files changed, commands run, test results, risks, and unresolved questions.
-7. After implementation, spawn read-only reviewer subagents only if useful:
+1. Inspect the repository and read the Section 15 status markers to determine real state. Trust the markers, then sanity-check them against the repo.
+2. Identify the first slice that is not `[x]` and not `[BLOCKED]`. State the selected slice and its acceptance criteria.
+3. BEFORE doing work, check Section 0: does this slice depend on an unsatisfied setup gate (Netlify account, Google Form, Apps Script deploy, webhook registration, tunnel, automation identity, any secret)?
+   - If yes: produce only the artifacts you can (config, code, exact click-by-click setup steps written to the relevant README or docs/operations.md), set the milestone to `[BLOCKED: Pn — reason]`, and STOP. Do not attempt the gated action via browser automation or your own credentials. Do not fabricate verification.
+4. If the slice is small/static (e.g. writing netlify.toml, a validation script, a workflow, docs), do it directly as the coordinator — do NOT spawn a subagent. Reserve subagents for context-heavy slices (the webhook runner, queue/idempotency, GitHub API integration).
+5. When a slice IS context-heavy, spawn exactly one implementor subagent with a narrow assignment, explicit constraints, and the relevant acceptance criteria. Require it to report: files changed, commands run, test results, risks, unresolved questions.
+6. After implementation, spawn read-only reviewer subagents only if the slice warrants it:
    - security reviewer for auth, webhook, token, permission, or deployment changes;
    - validation reviewer for tests, CI, parsing, and site checks;
    - docs reviewer for setup, operations, or handoff docs;
-   - GitHub/API researcher only when API behavior is uncertain.
-8. Reviewer subagents must not edit files. They must return concise severity-ranked findings and suggested fixes.
-9. If reviewer findings require changes, send one focused revision request to the implementor subagent or make a minimal coordinator edit.
-10. Run final relevant checks.
-11. Update `booster-club-agentic-publishing-plan.md` with completed work, decisions, test evidence, and the next task.
-12. Commit only if the task slice is complete and checks pass.
-13. Stop and report what changed, what was tested, and what should happen next.
+   - GitHub/API researcher only when API behavior is genuinely uncertain.
+   Reviewers must not edit files; they return concise severity-ranked findings and suggested fixes.
+7. If reviewer findings require changes, send one focused revision request to the implementor or make a minimal coordinator edit.
+8. Run the relevant acceptance checks. A slice is only "done" when its acceptance criteria are VERIFIED, not merely attempted. If verification needs a prerequisite you cannot satisfy, mark it `[BLOCKED]`, not done.
+9. Update Section 15 status markers and record decisions and test evidence in the plan.
+10. Do NOT commit on the first few slices — stage changes and stop for human review. Once the human signals trust in your slicing, you may commit completed, verified slices. Never commit secrets.
+11. Stop and report: what changed, what was verified, what is blocked (and on which prerequisite), and the recommended next slice.
 
-Do not run multiple implementor subagents in parallel. Do not allow overlapping edits. Do not implement later milestones early. Do not auto-merge or deploy production changes.
+Hard rules: Do not run multiple implementor subagents in parallel. Do not allow overlapping edits. Do not implement later milestones early. Do not perform Section 0 setup gates yourself. Do not auto-merge or deploy production changes. Reference secrets by env-var name only.
 ```
 
 
@@ -1032,9 +1109,12 @@ Implement this plan milestone by milestone. When using Claude Code, follow the c
 - Write tests for authorization, signature validation, idempotency, and state transitions.
 - Never auto-merge.
 - Never treat issue text as trusted shell input.
-- Never expose requester email in a public GitHub issue.
+- Requester email is public on this project and may appear in issues (Section 0); never expose credentials (tokens, webhook secret) anywhere.
 - Document every manual setup step.
 - Stop and report rather than guessing when a requirement affects school identity, money, dates, sponsor commitments, or legal language.
+- Honor the **blocked-on-prerequisite protocol (Section 0):** when a task requires a third-party-console setup gate (account creation, OAuth, secret entry, webhook registration, Apps Script deploy), produce what you can, write exact setup steps, mark the task `[BLOCKED]`, and stop. Never perform these via browser automation or your own credentials.
+- Reference all secrets and tokens by env-var name only. Never request a secret value in chat, and never write one to disk or git.
+- A milestone is "done" only when its acceptance criteria are *verified*, not merely attempted. If verification depends on an unsatisfied prerequisite, the milestone is `[BLOCKED]`, not done.
 
 ### First implementation task
 
