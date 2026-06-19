@@ -25,7 +25,6 @@ _(none)_
 
 ### P1 — Trust & Accuracy (ship blockers)
 
-- [ ] **Add vision statement section** — text from centaurusboosters.org: *"The Centaurus Booster Club is devoted to enriching the experience of students engaged in Centaurus Programs. Our vision is to cultivate a positive and supportive environment, promoting teamwork, sportsmanship, and personal growth."* — add between hero and stat band, or as its own "About" block
 
 ### P2 — Completeness (high value, text-only)
 
@@ -68,6 +67,7 @@ _(none)_
 - [x] **Add `<title>` + meta description + lang + image alt** (2026-06-18, pre-loop) — page previously had no title (was invisible to search/social). Added a descriptive title, meta description, `<html lang="en">`, and alt text on the footer logo.
 - [x] **Fix Facebook footer link** (2026-06-18) — updated footer `<a>` to `https://www.facebook.com/centaurusboosters/` with `target="_blank" rel="noopener"`.
 - [x] **Add CJ Riggins email to sponsorship contact** (2026-06-18) — added `cj@centaurusboosters.org` to the sponsor section contact line and both sponsorship emails as mailto links in the footer CONTACT block.
+- [x] **Add vision statement section** (2026-06-18) — added "About Us" block between hero and stat band using verbatim text from centaurusboosters.org.
 
 ---
 
