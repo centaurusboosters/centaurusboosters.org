@@ -1,10 +1,10 @@
 # Reviewer Personas — Centaurus Warriors Booster Club Website
 
-These personas serve two roles:
+These personas are the **advisory quality gate** in the agentic publishing pipeline. When the `/githubtrigger` skill implements an administrator's change request (see `booster-club-agentic-publishing-plan.md` §10, "Persona review gate"), the persona(s) matching the request's `type:` label provide the qualitative review of the rendered result before the PR opens — the "does this actually serve the reader" layer that deterministic checks can't cover.
 
-1. **Original use — backlog prioritization (`BACKLOG.md`).** They drove the initial prioritization of website-improvement work. In that website-improvement loop, the relevant persona's "definition of done" is the bar each rendered change must clear; the backlog order is fixed during a run (personas evaluate, they don't re-prioritize mid-run).
+The gate is **advisory**: its assessment is written into the PR/issue comment for the human reviewer; it does not auto-block the PR. The only exception is a clearly-unmet definition of done, which should route the request to `Needs Clarification` rather than ship ("ask, don't invent").
 
-2. **Pipeline use — the advisory quality gate in the agentic publishing pipeline.** When the `/githubtrigger` skill implements an administrator's change request (see `booster-club-agentic-publishing-plan.md` §10, "Persona review gate"), the persona(s) matching the request's `type:` label provide the qualitative review of the rendered result before the PR opens. This gate is **advisory** — its assessment is written into the PR/issue comment for the human reviewer; it does not auto-block the PR. The only exception is a clearly-unmet definition of done, which should route the request to `Needs Clarification` rather than ship ("ask, don't invent"). The **Product Owner** persona applies only to role 1 (backlog prioritization), not to the runtime pipeline.
+The **Product Owner** persona (#7) is about backlog prioritization and has no role in the runtime pipeline; it is retained only as a record of the principles that shaped the original website build. (The former `BACKLOG.md` website-improvement loop is complete; the GitHub Project board is the backlog going forward.)
 
 ---
 
