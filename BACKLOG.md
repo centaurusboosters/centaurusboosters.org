@@ -38,7 +38,6 @@ _(none)_
 
 > Placeholders are now plain `<div class="img-ph …" id="…">` boxes (no more `image-slot` custom element). To add an image, replace the placeholder div with an `<img>` of the same `id` and sizing, or set a `background-image` on it. Keep the ids. Never add a broken `<img>` with no real `src`.
 
-- [ ] **Real sponsor logos** (`#sponsor-1`…`#sponsor-6`) — replace 6 placeholder boxes with actual logos from centaurusboosters.org sponsors: Westbound Realty (BestNationalCO.com), Auguste Escoffier School of Culinary Arts, Kong Ice, Alpine Valley Oral Surgery, Rudrocks, Boulder Wealth Advisors, rockhop.ai, PPS, LFO (Lafayette Family Orthodontics). Download from live site or Facebook shout-out posts. Note: sponsorship levels are being revised — confirm before adding new logos.
 
 ---
 
@@ -68,6 +67,7 @@ _(none)_
 - [x] **Hero photo** (`#hero-photo`) (2026-06-18) — replaced placeholder with `course-2.jpg` (male golfer teeing off with Colorado mountain backdrop at Indian Peaks).
 - [x] **Golf event photo** (`#event-photo`) (2026-06-18) — replaced placeholder with `course-1.jpg` (female golfer action shot).
 - [x] **Course photos ×2** (`#course-photo-1`, `#course-photo-2`) (2026-06-18) — redesigned to side-by-side columns; `img-2017.jpg` (fairway) + `course-2.jpg` (mountain backdrop) fill both slots.
+- [x] **Sponsor logos** (`#sponsor-1`…`#sponsor-9`) (2026-06-18) — downloaded all 9 logos from centaurusboosters.org; expanded grid from 6 to 9 slots using auto-fill; white card treatment on light background.
 
 ---
 
