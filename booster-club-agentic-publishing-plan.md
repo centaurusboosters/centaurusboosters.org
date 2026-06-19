@@ -737,7 +737,18 @@ timeout
 
 ### Milestone 0 — Repository and preview baseline
 
-**Status:** `[ ]`
+**Status:** `[BLOCKED: P1 — Netlify account not yet connected; all other M0 artifacts are done]`
+
+**Progress log (2026-06-19):**
+- [x] `netlify.toml` written (`publish = "public"`, security headers)
+- [x] `.github/workflows/validate.yml` written (triggers on PR and push to main)
+- [x] `scripts/validate-site.sh` written and verified locally — all 10 checks pass against current `public/index.html`
+- [x] `docs/operations.md` written with click-by-click setup steps for P1, P5, P6, P7, P8, GitHub Project, stale-lock recovery
+- [x] 11 required GitHub labels created in `kurtharriger/2026-boosters`
+- [x] `main` branch protection active: PRs required, `validate` check required, force pushes blocked
+- [ ] Netlify connection (P1) — requires human in Netlify console (see `docs/operations.md`)
+- [ ] Deploy Preview URL verified — blocked on P1
+- [ ] GitHub Project created with Status field — requires human in GitHub Projects UI (see `docs/operations.md`)
 
 Deliver:
 
@@ -750,9 +761,9 @@ Deliver:
 
 Acceptance criteria:
 
-- A manual branch and PR produce a preview URL.
-- Validation runs on every PR.
-- `main` cannot be pushed directly by the agent identity.
+- A manual branch and PR produce a preview URL. **[BLOCKED: P1]**
+- Validation runs on every PR. **[DONE — workflow committed; will run on next PR]**
+- `main` cannot be pushed directly by the agent identity. **[DONE — branch protection active]**
 
 ### Milestone 1 — Manual agent command
 
