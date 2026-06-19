@@ -55,7 +55,8 @@ The POC should optimize for a working end-to-end loop, low cost, safety, and obs
 4. **Do not trust every public issue.**
    An issue is agent-eligible only when:
    - it belongs to the configured repository;
-   - its original creator is an allowlisted account
+   - its original creator is an allowlisted account or GitHub App;
+   - it has the `source:google-form` label; and
    - it has the `agent:eligible` label.
 
 5. **Use GitHub Project Status for workflow state.**
@@ -863,9 +864,153 @@ The POC is complete when:
 
 ---
 
+
+## 20A. Claude Coordinator/Subagent Execution Model
+
+When implementing this plan with Claude Code, prefer a coordinator/subagent workflow.
+
+### Core pattern
+
+```text
+Main coordinator
+    ↓ selects one task slice
+Implementor subagent
+    ↓ makes code/config changes
+Read-only reviewer subagents
+    ↓ report concise findings
+Main coordinator
+    ↓ updates plan, validates, commits, stops
+```
+
+### Coordinator responsibilities
+
+The main Claude session should preserve high-level context and avoid becoming the long-running implementation scratchpad.
+
+The coordinator owns:
+
+- reading this plan;
+- selecting the next incomplete task;
+- defining a narrow task slice;
+- spawning exactly one implementor subagent;
+- deciding whether reviewer subagents are needed;
+- interpreting reviewer feedback;
+- requesting focused revisions;
+- updating this plan;
+- recording test evidence;
+- committing completed work;
+- stopping after one completed task slice.
+
+The coordinator may make small plan, documentation, or integration edits, but should avoid doing most implementation work directly.
+
+### Implementor subagent responsibilities
+
+The implementor subagent owns the context-heavy work:
+
+- inspecting relevant repository files;
+- modifying code, configuration, scripts, workflows, or documentation for the selected slice;
+- running targeted checks;
+- debugging local failures;
+- reporting what changed.
+
+Only one implementor subagent may run at a time.
+
+The implementor subagent must report:
+
+```text
+- task slice implemented
+- files changed
+- commands run
+- test/check results
+- risks or unresolved questions
+- recommended next step
+```
+
+### Reviewer subagent responsibilities
+
+Reviewer subagents are read-only unless the coordinator explicitly says otherwise.
+
+Use reviewer subagents for focused review after the implementor finishes:
+
+| Reviewer | Use when | Output |
+|---|---|---|
+| Security reviewer | webhook, auth, token, permission, GitHub App, secret handling, branch protection, deployment access | concise severity-ranked findings |
+| Validation reviewer | tests, CI, HTML validation, Playwright checks, local scripts, acceptance criteria | missing checks and failure risks |
+| Docs reviewer | setup instructions, operations docs, handoff docs, runbooks | clarity gaps and setup omissions |
+| GitHub/API researcher | GitHub Projects, webhooks, labels, Apps Script, Netlify behavior is uncertain | verified implementation notes and references |
+
+Reviewer subagents must not make broad edits. They should return concise findings with severity, rationale, and suggested fixes.
+
+### Preferred model and effort guidance
+
+Use the cheapest model that is likely to succeed for the current task. Escalate only when blocked or when the task has security/architecture risk.
+
+| Role / task | Preferred model tier | Effort |
+|---|---|---|
+| Coordinator selecting next task and updating plan | Sonnet-class | Low to medium |
+| Static site edits, Netlify config, basic validation scripts | Sonnet-class | Medium |
+| Webhook runner implementation, queue/idempotency, GitHub API integration | Sonnet-class or Opus-class if stuck | Medium to high |
+| Security review of webhook/auth/permissions/secrets | Opus-class | High |
+| Architecture review before cloud migration | Opus-class | High |
+| Docs/operator guide cleanup | Sonnet-class or Haiku-class | Low |
+| Mechanical formatting, simple copy edits, small test fixes | Haiku-class or cheapest available | Low |
+| Final milestone review before declaring POC complete | Opus-class | High |
+
+If Claude Code exposes only a smaller set of model choices in the current environment, map them as follows:
+
+```text
+Opus-class  = strongest reasoning model available
+Sonnet-class = default balanced coding model
+Haiku-class = cheapest/fastest model available
+```
+
+Do not use Opus-class for every implementation step by default. Reserve it for security, architecture, difficult debugging, and final review.
+
+### Subagent rules
+
+- Do not run multiple implementor subagents in parallel.
+- Do not allow overlapping edits.
+- Do not implement later milestones early.
+- Do not let reviewers modify files unless explicitly instructed.
+- Do not let subagents change the plan status directly unless asked by the coordinator.
+- Do not auto-merge or deploy production changes.
+- Stop after one completed task slice so the human can review progress.
+
+### Recommended `/goal` prompt
+
+```text
+Read `booster-club-agentic-publishing-plan.md`.
+
+Act as the main coordinator for an incremental implementation loop.
+
+Your job is not to implement the entire plan in one run. Your job is to complete exactly one coherent task slice from the next incomplete milestone, update the plan, and stop.
+
+For this iteration:
+
+1. Inspect the repository and the plan.
+2. Identify the first incomplete milestone or task slice.
+3. State the selected task slice and acceptance criteria.
+4. Spawn exactly one implementor subagent to perform the code/config changes for that slice.
+5. Give the implementor a narrow assignment, explicit constraints, and the relevant acceptance criteria.
+6. Require the implementor to report files changed, commands run, test results, risks, and unresolved questions.
+7. After implementation, spawn read-only reviewer subagents only if useful:
+   - security reviewer for auth, webhook, token, permission, or deployment changes;
+   - validation reviewer for tests, CI, parsing, and site checks;
+   - docs reviewer for setup, operations, or handoff docs;
+   - GitHub/API researcher only when API behavior is uncertain.
+8. Reviewer subagents must not edit files. They must return concise severity-ranked findings and suggested fixes.
+9. If reviewer findings require changes, send one focused revision request to the implementor subagent or make a minimal coordinator edit.
+10. Run final relevant checks.
+11. Update `booster-club-agentic-publishing-plan.md` with completed work, decisions, test evidence, and the next task.
+12. Commit only if the task slice is complete and checks pass.
+13. Stop and report what changed, what was tested, and what should happen next.
+
+Do not run multiple implementor subagents in parallel. Do not allow overlapping edits. Do not implement later milestones early. Do not auto-merge or deploy production changes.
+```
+
+
 ## 20. Implementation Instructions for Claude or Codex
 
-Implement this plan milestone by milestone.
+Implement this plan milestone by milestone. When using Claude Code, follow the coordinator/subagent execution model in Section 20A.
 
 ### Required execution order
 
