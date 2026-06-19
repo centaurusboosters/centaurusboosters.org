@@ -137,7 +137,7 @@
     </div>
 
     <!-- spotlight: mission -->
-    <div id="spot-mission" class="spot" style="position:absolute; inset:0; z-index:3; display:flex; flex-direction:column; justify-content:center; padding:0 6vw; opacity:0;">
+    <div id="spot-mission" class="spot" style="position:absolute; inset:0; z-index:3; display:flex; flex-direction:column; justify-content:center; padding:0 6vw; opacity:0; pointer-events:none;">
       <div style="display:inline-flex; align-items:center; gap:10px; background:rgba(255,255,255,.14); color:#fff; font-weight:800; font-size:13px; letter-spacing:.16em; padding:8px 16px; border-radius:3px; width:max-content;">SUPPORTING CHS ATHLETICS</div>
       <h1 style="font-family:'Anton',sans-serif; font-weight:400; font-size:96px; line-height:.92; color:#fff; margin:22px 0 0; letter-spacing:.01em; max-width:700px; text-shadow:0 2px 24px rgba(0,0,0,.35);">EVERY WARRIOR.<br>EVERY <span style="color:#d8242f;">TEAM.</span></h1>
       <p style="color:#cdd6ee; font-size:19px; line-height:1.5; max-width:540px; margin:24px 0 0; font-weight:500;">We fund the gear, travel, and grants that let Centaurus athletes compete and grow. Join the club that backs every program.</p>
@@ -350,7 +350,7 @@
   var dots  = [document.getElementById('dot-golf'),  document.getElementById('dot-mission')];
   var i = 0;
   function show(n) {
-    spots.forEach(function (s, k) { if (s) s.style.opacity = k === n ? 1 : 0; });
+    spots.forEach(function (s, k) { if (s) { s.style.opacity = k === n ? 1 : 0; s.style.pointerEvents = k === n ? '' : 'none'; } });
     dots.forEach(function (d, k) { if (d) d.style.background = k === n ? '#d8242f' : 'rgba(255,255,255,.3)'; });
   }
   setInterval(function () { i = i ? 0 : 1; show(i); }, 4600);
