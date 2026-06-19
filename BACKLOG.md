@@ -38,7 +38,6 @@ _(none)_
 
 > Placeholders are now plain `<div class="img-ph …" id="…">` boxes (no more `image-slot` custom element). To add an image, replace the placeholder div with an `<img>` of the same `id` and sizing, or set a `background-image` on it. Keep the ids. Never add a broken `<img>` with no real `src`.
 
-- [ ] **Hero photo** (`#hero-photo`) — replace placeholder with a real golf course / game-day photo. Best candidates: golf course landscape shots from the 2024 tournament Facebook album (group at Indian Peaks with mountain backdrop)
 - [ ] **Golf event photo** (`#event-photo`) — event section left column; use a golfer group shot from the tournament
 - [ ] **Course photos ×2** (`#course-photo-1`, `#course-photo-2`) — Indian Peaks course section; use course/fairway photos
 - [ ] **Real sponsor logos** (`#sponsor-1`…`#sponsor-6`) — replace 6 placeholder boxes with actual logos from centaurusboosters.org sponsors: Westbound Realty (BestNationalCO.com), Auguste Escoffier School of Culinary Arts, Kong Ice, Alpine Valley Oral Surgery, Rudrocks, Boulder Wealth Advisors, rockhop.ai, PPS, LFO (Lafayette Family Orthodontics). Download from live site or Facebook shout-out posts. Note: sponsorship levels are being revised — confirm before adding new logos.
@@ -68,6 +67,7 @@ _(none)_
 - [x] **Add 2 missing silent-auction items** (2026-06-18) — added "interior design services" and "dog lover treats" to the Silent Auction card, completing the Google Sites item list.
 - [x] **Mobile navigation** (2026-06-18) — added hamburger button + full-width dropdown for screens < 768px using CSS media queries and a small vanilla JS toggle; desktop nav unchanged.
 - [x] **Add scroll-to-top behavior / sticky CTA** (2026-06-18) — added fixed "DONATE ↓" FAB on mobile only, appears after 600px scroll via passive scroll listener; hidden on desktop.
+- [x] **Hero photo** (`#hero-photo`) (2026-06-18) — replaced placeholder with `course-2.jpg` (male golfer teeing off with Colorado mountain backdrop at Indian Peaks).
 
 ---
 
