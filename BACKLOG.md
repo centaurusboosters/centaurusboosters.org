@@ -38,7 +38,7 @@ _(none)_
 
 > Placeholders are now plain `<div class="img-ph …" id="…">` boxes (no more `image-slot` custom element). To add an image, replace the placeholder div with an `<img>` of the same `id` and sizing, or set a `background-image` on it. Keep the ids. Never add a broken `<img>` with no real `src`.
 
-- [ ] **Course photos ×2** (`#course-photo-1`, `#course-photo-2`) — Indian Peaks course section; use course/fairway photos
+- [ ] **Second course photo** (`#course-photo-2`) — still needs a landscape/fairway shot of Indian Peaks (no suitable asset available yet; use Facebook album or event photos from future tournaments)
 - [ ] **Real sponsor logos** (`#sponsor-1`…`#sponsor-6`) — replace 6 placeholder boxes with actual logos from centaurusboosters.org sponsors: Westbound Realty (BestNationalCO.com), Auguste Escoffier School of Culinary Arts, Kong Ice, Alpine Valley Oral Surgery, Rudrocks, Boulder Wealth Advisors, rockhop.ai, PPS, LFO (Lafayette Family Orthodontics). Download from live site or Facebook shout-out posts. Note: sponsorship levels are being revised — confirm before adding new logos.
 
 ---
@@ -68,6 +68,7 @@ _(none)_
 - [x] **Add scroll-to-top behavior / sticky CTA** (2026-06-18) — added fixed "DONATE ↓" FAB on mobile only, appears after 600px scroll via passive scroll listener; hidden on desktop.
 - [x] **Hero photo** (`#hero-photo`) (2026-06-18) — replaced placeholder with `course-2.jpg` (male golfer teeing off with Colorado mountain backdrop at Indian Peaks).
 - [x] **Golf event photo** (`#event-photo`) (2026-06-18) — replaced placeholder with `course-1.jpg` (female golfer action shot).
+- [x] **Course photo 1** (`#course-photo-1`) (2026-06-18) — replaced placeholder with `img-2017.jpg` (golfer on fairway at Indian Peaks). `#course-photo-2` needs a landscape shot — no suitable asset yet.
 
 ---
 
