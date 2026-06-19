@@ -121,9 +121,10 @@ information. A request is NOT implementable without clarification if:
 If clarification is needed:
 1. Make **no content changes** to any file.
 2. Comment on the issue with **no more than three direct, focused questions**.
-3. Update Project Status to `Needs Clarification` (best-effort).
-4. `git checkout main` to release the concurrency lock.
-5. Exit successfully without a PR.
+3. Add label `needs:human-input` to the issue (best-effort, via `gh issue edit --add-label "needs:human-input"`).
+4. Update Project Status to `Needs Clarification` (best-effort).
+5. `git checkout main` to release the concurrency lock.
+6. Exit successfully without a PR.
 
 ---
 

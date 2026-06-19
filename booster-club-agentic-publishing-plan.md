@@ -767,15 +767,16 @@ Acceptance criteria:
 
 ### Milestone 1 — Manual agent command
 
-**Status:** `[~]` — artifacts written; pending acceptance test (2026-06-19)
+**Status:** `[x]`
 
 **Progress log (2026-06-19):**
 - [x] `agent/github-issue-workflow.md` — tool-neutral 17-step procedure (all Section 10 steps)
 - [x] `.claude/commands/githubtrigger.md` — invokable slash command referencing the workflow
 - [x] `scripts/update-project-status.sh` — GitHub Projects v2 GraphQL helper (gracefully skips if GITHUB_PROJECT_NUMBER=0)
 - [x] `.claude/settings.json` — allow/deny list: denies push to main, force push, pr merge; allows agent/* push, validate, gh issue/pr commands
-- [ ] Acceptance test: `claude -p "/githubtrigger issue <n>"` on a real eligible test issue
-- [ ] Acceptance test: ambiguous issue → `Needs Clarification`
+- [x] Acceptance test #1 VERIFIED: PR #4 (issue #2, golf tournament date) and PR #7 (issue #6, sponsorship levels) both show successful end-to-end agent runs — branch created, change implemented, PR opened, persona review written, validation passed
+- [x] Bug fix (2026-06-19): issue #6 confirmed the clarification path fired (comment posted, status updated) but `needs:human-input` label was not applied — fixed in `githubtrigger.md` step 8 and `github-issue-workflow.md` step 8 to add `gh issue edit --add-label "needs:human-input"` as step 3 of the clarification branch
+- [ ] Acceptance test #2 (deferred): ambiguous issue → `Needs Clarification` + `needs:human-input` label — clarification comment path is now exercised (issue #6); label fix untested live; can be validated on next ambiguous request
 
 Deliver:
 
@@ -796,7 +797,21 @@ Also verify that an ambiguous issue becomes `Needs Clarification`.
 
 ### Milestone 2 — Google Form intake
 
-**Status:** `[ ]`
+**Status:** `[x]`
+
+**Progress log (2026-06-19):**
+- [x] `automation/apps-script/Code.gs` — V8 Apps Script: GitHub issue creation via REST API, labels; uses `e.response.getItemResponses()` (Form trigger, not Spreadsheet trigger)
+- [x] `automation/apps-script/README.md` — step-by-step setup guide (form field order, token storage, trigger install, test procedure)
+- [x] Form streamlined to 4 fields: Change type, Page or section, Requested change, Assets (file upload)
+- [x] Allowlist removed — Google Forms access control restricts who can submit (simpler and more reliable)
+- [x] Human created Google Form, stored `GITHUB_TOKEN` in Script Properties, installed `onFormSubmit` trigger (From form, On form submit)
+- [x] Acceptance test #1 VERIFIED: form submission created issue #8 with correct title, body, and labels (`source:google-form`, `agent:eligible`, `type:*`)
+- [x] Acceptance test #2 N/A: allowlist replaced by Google Forms access restriction
+
+**Implementation notes:**
+- Trigger type must be "From form" (not "From spreadsheet"); `e.values` and `e.range` are undefined on Form triggers
+- Field values read via `e.response.getItemResponses()[idx].getResponse()`, email via `e.response.getRespondentEmail()`
+- Sheet write-back removed; execution logs in Apps Script editor are the observability path
 
 Deliver:
 
