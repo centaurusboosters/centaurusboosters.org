@@ -472,7 +472,12 @@ Because v1 has no always-on reconcile loop, the work itself must be safe to star
 
 > The branch lock is the *agent-side* guard and works even for a manual `claude -p` invocation with no worker running. The worker's SQLite single-worker queue (above) is the *infrastructure-side* guard. Both apply; they are complementary, not redundant.
 
-**Notification mechanism (`kurtharriger@gmail.com`):** the concurrency-guard abort, the watchdog (lesson #6), and rate-limit pauses (lesson #4) all need to reach the maintainer. For v1 use the simplest reliable channel available on the minipc — a small `scripts/notify.sh` wrapping local `mail`/`sendmail`, or an authenticated POST to the Apps Script web app (which can send the email, reusing the §12 "later enhancement" web app). Keep it a single helper so all three callers share one tested path (mirrors autoDev's `notify.sh`). Always also write the event to the local log as a fallback in case email delivery fails. This helper is a small M3 deliverable; until it exists, the guard may abort with a logged error only.
+**Notification mechanism (`kurtharriger@gmail.com`) — must NOT depend on Claude.** The concurrency-guard abort, the watchdog (lesson #6), and rate-limit pauses (lesson #4) all need to reach the maintainer. It is tempting to send these via Claude's own email/Gmail MCP connector under the maintainer's subscription, but that is the wrong foundation for two reasons:
+
+1. **The watchdog fires when Claude is *not running*** (engine stalled/crashed) — the single most important alert is exactly the case where a Claude-dependent send is impossible. This is why autoDev's `notify.sh` has zero Claude dependency.
+2. **The headless `claude -p` runner on the minipc is a separate environment** from any interactive Claude session and only has the MCP connectors explicitly configured for it — connector availability is not inherited from the subscription automatically.
+
+**Decision:** use a single `scripts/notify.sh` that does **not** depend on Claude — wrapping local `mail`/`sendmail`, or an authenticated POST to the Apps Script web app (which sends the email, reusing the §12 "later enhancement" web app). All three callers (guard, watchdog, rate-limit) share this one tested path (mirrors autoDev's `notify.sh`), so notifications work whether or not Claude is alive or has an email connector. Always also write the event to the local log as a fallback if delivery fails. This helper is a small M3 deliverable; until it exists, the guard aborts with a logged error only.
 
 ---
 
