@@ -151,8 +151,8 @@
 
     <!-- dots -->
     <div style="position:absolute; bottom:26px; left:6vw; display:flex; gap:9px; z-index:5;">
-      <span id="dot-golf" style="width:34px; height:5px; border-radius:3px; background:#d8242f; transition:background .5s;"></span>
-      <span id="dot-mission" style="width:34px; height:5px; border-radius:3px; background:rgba(255,255,255,.3); transition:background .5s;"></span>
+      <span id="dot-golf" style="width:34px; height:5px; border-radius:3px; background:#d8242f; transition:background .5s; cursor:pointer;"></span>
+      <span id="dot-mission" style="width:34px; height:5px; border-radius:3px; background:rgba(255,255,255,.3); transition:background .5s; cursor:pointer;"></span>
     </div>
   </div>
 
@@ -351,20 +351,44 @@
   var spots = [document.getElementById('spot-golf'), document.getElementById('spot-mission')];
   var dots  = [document.getElementById('dot-golf'),  document.getElementById('dot-mission')];
   var i = 0;
+  var len = spots.length;
+
   function show(n) {
-    spots.forEach(function (s, k) {
-      if (!s) return;
-      s.style.transform = k === n ? 'translateX(0%)' : (k < n ? 'translateX(-100%)' : 'translateX(100%)');
-      s.style.pointerEvents = k === n ? '' : 'none';
-    });
+    if (n === i && spots[n].style.transform === 'translateX(0%)') return;
+    var incoming = spots[n];
+    var outgoing = spots[i];
+    // Snap incoming to off-right without transition, then animate in
+    incoming.style.transition = 'none';
+    incoming.style.transform = 'translateX(100%)';
+    incoming.style.pointerEvents = 'none';
+    incoming.offsetWidth; // force reflow
+    incoming.style.transition = '';
+    incoming.style.transform = 'translateX(0%)';
+    incoming.style.pointerEvents = '';
+    outgoing.style.transform = 'translateX(-100%)';
+    outgoing.style.pointerEvents = 'none';
+    i = n;
     dots.forEach(function (d, k) { if (d) d.style.background = k === n ? '#d8242f' : 'rgba(255,255,255,.3)'; });
   }
-  var hero = spots[0] && spots[0].parentElement;
-  var timer = setInterval(function () { i = i ? 0 : 1; show(i); }, 7000);
-  if (hero) {
-    hero.addEventListener('mouseenter', function () { clearInterval(timer); });
-    hero.addEventListener('mouseleave', function () { timer = setInterval(function () { i = i ? 0 : 1; show(i); }, 7000); });
-  }
+
+  function advance() { show((i + 1) % len); }
+  var timer = setInterval(advance, 7000);
+
+  // Clickable dots
+  dots.forEach(function (d, k) {
+    if (!d) return;
+    d.style.cursor = 'pointer';
+    d.addEventListener('click', function () { clearInterval(timer); show(k); timer = setInterval(advance, 7000); });
+  });
+
+  // Pause only when hovering a CTA button inside the hero
+  spots.forEach(function (s) {
+    if (!s) return;
+    s.querySelectorAll('button, a').forEach(function (btn) {
+      btn.addEventListener('mouseenter', function () { clearInterval(timer); });
+      btn.addEventListener('mouseleave', function () { timer = setInterval(advance, 7000); });
+    });
+  });
 })();
 (function () {
   var burger = document.getElementById('nav-burger');
