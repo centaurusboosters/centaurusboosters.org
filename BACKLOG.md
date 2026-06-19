@@ -31,7 +31,6 @@ _(none)_
 
 ### P3 — Mobile & Accessibility
 
-- [ ] **Mobile navigation** — add hamburger menu for screens < 768px; current nav overflows and is unusable on phones
 - [ ] **Add scroll-to-top behavior / sticky CTA** — consider a floating "Register" or "Donate" button visible while scrolling on mobile
 
 ---
@@ -68,6 +67,7 @@ _(none)_
 - [x] **Fix merch store link** (2026-06-18) — replaced dead `href="#"` "Visit store →" with a "COMING SOON" badge; no real store URL available.
 - [x] **Add "on 8 of 18 holes" to Skills Challenge** (2026-06-18) — appended "on 8 of the 18 holes" to the Skills Challenge line in the Event-Day Add-Ons card.
 - [x] **Add 2 missing silent-auction items** (2026-06-18) — added "interior design services" and "dog lover treats" to the Silent Auction card, completing the Google Sites item list.
+- [x] **Mobile navigation** (2026-06-18) — added hamburger button + full-width dropdown for screens < 768px using CSS media queries and a small vanilla JS toggle; desktop nav unchanged.
 
 ---
 
