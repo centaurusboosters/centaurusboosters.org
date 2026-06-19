@@ -28,7 +28,6 @@ _(none)_
 
 ### P2 — Completeness (high value, text-only)
 
-- [ ] **Add 2 missing silent-auction items** — _small._ The Silent Auction card already lists massages, CU Football & Avs tickets, themed baskets, tutoring. Google Sites also lists **interior design services** and **dog lover treats** — add those two.
 
 ### P3 — Mobile & Accessibility
 
@@ -68,6 +67,7 @@ _(none)_
 - [x] **Add programs/sports callout** (2026-06-18) — added "Programs We Support" pill-grid section after the stat band, naming all 14 programs + "more".
 - [x] **Fix merch store link** (2026-06-18) — replaced dead `href="#"` "Visit store →" with a "COMING SOON" badge; no real store URL available.
 - [x] **Add "on 8 of 18 holes" to Skills Challenge** (2026-06-18) — appended "on 8 of the 18 holes" to the Skills Challenge line in the Event-Day Add-Ons card.
+- [x] **Add 2 missing silent-auction items** (2026-06-18) — added "interior design services" and "dog lover treats" to the Silent Auction card, completing the Google Sites item list.
 
 ---
 
