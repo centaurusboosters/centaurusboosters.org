@@ -28,6 +28,51 @@
   #fab { display:none; position:fixed; bottom:24px; right:20px; z-index:45; background:#d8242f; color:#fff; text-decoration:none; font-weight:800; font-size:14px; letter-spacing:.06em; padding:14px 22px; border-radius:3px; box-shadow:0 4px 18px rgba(0,0,0,.4); opacity:0; transition:opacity .3s; pointer-events:none; }
   #fab.visible { opacity:1; pointer-events:auto; }
   @media (max-width:767px) { #fab { display:block; } }
+
+  @media (max-width:767px) {
+    /* Hero */
+    .hero-img-panel { width:100% !important; }
+    #spot-golf h1, #spot-mission h1 { font-size:44px !important; }
+    .hero-cta { flex-direction:column !important; }
+    .hero-cta a { text-align:center !important; font-size:15px !important; padding:14px 20px !important; }
+
+    /* Stat band: stack vertically */
+    .stat-band { grid-template-columns:1fr !important; }
+    .stat-band > div { border-right:none !important; border-bottom:1px solid rgba(255,255,255,.2); }
+    .stat-band > div:last-child { border-bottom:none; }
+
+    /* Section headings */
+    #golf h2 { font-size:36px !important; }
+    #register h2, #donate h2 { font-size:36px !important; }
+    #getinvolved h2 { font-size:30px !important; }
+    #sponsor h2 { font-size:34px !important; }
+
+    /* Main event: photo above, cards below */
+    .event-grid { grid-template-columns:1fr !important; }
+    #event-photo { min-height:240px !important; }
+
+    /* Course: stack text/map above photos */
+    .course-outer { grid-template-columns:1fr !important; }
+    .course-photos { height:200px !important; }
+
+    /* Ways to give: single column */
+    .ways-grid { grid-template-columns:1fr !important; }
+
+    /* Sponsor layout: single column, unstick sidebar */
+    .sponsor-layout { grid-template-columns:1fr !important; }
+    .sponsor-sticky { position:static !important; }
+
+    /* Grants: single column, less padding */
+    .grants-grid { grid-template-columns:1fr !important; }
+    #grants h3 { font-size:28px !important; }
+    .grants-grid > div { padding:28px !important; }
+
+    /* Hero date separators: hide when items wrap */
+    .hero-sep { display:none; }
+
+    /* Section padding reduction */
+    #golf, #register, #getinvolved, #sponsor, #donate, #grants { padding:52px 5vw !important; }
+  }
 </style>
 </head>
 <body>
@@ -65,7 +110,7 @@
   <!-- ===================== HERO (rotating spotlight) ===================== -->
   <div style="position:relative; height:680px; overflow:hidden; background:linear-gradient(125deg,#0b1838 0%,#14275e 55%,#0b1838 100%);">
     <!-- right image panel -->
-    <div style="position:absolute; right:0; top:0; bottom:0; width:50%; z-index:1;">
+    <div class="hero-img-panel" style="position:absolute; right:0; top:0; bottom:0; width:50%; z-index:1;">
       <img id="hero-photo" src="assets/course-2.jpg" alt="Golfer teeing off with Colorado mountain backdrop at Indian Peaks Golf Course" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:center;">
       <div style="position:absolute; inset:0; background:linear-gradient(90deg,#0b1838 0%, rgba(11,24,56,.65) 35%, rgba(11,24,56,.15) 100%); pointer-events:none;"></div>
     </div>
@@ -76,9 +121,9 @@
       <div style="display:inline-flex; align-items:center; gap:10px; background:#d8242f; color:#fff; font-weight:800; font-size:13px; letter-spacing:.16em; padding:8px 16px; border-radius:3px; width:max-content;">NOW REGISTERING · 2ND ANNUAL</div>
       <h1 style="font-family:'Anton',sans-serif; font-weight:400; font-size:96px; line-height:.92; color:#fff; margin:22px 0 0; letter-spacing:.01em; max-width:680px; text-shadow:0 2px 24px rgba(0,0,0,.35);">CENTAURUS<br>GOLF TOURNAMENT</h1>
       <div style="display:flex; flex-wrap:wrap; gap:22px; margin-top:24px; color:#cdd6ee; font-weight:700; font-size:17px;">
-        <span>SUN · SEPT 14, 2025</span><span style="color:#5e74b3;">|</span><span>9AM SHOTGUN START</span><span style="color:#5e74b3;">|</span><span>INDIAN PEAKS GOLF COURSE</span>
+        <span>SUN · SEPT 14, 2025</span><span class="hero-sep" style="color:#5e74b3;">|</span><span>9AM SHOTGUN START</span><span class="hero-sep" style="color:#5e74b3;">|</span><span>INDIAN PEAKS GOLF COURSE</span>
       </div>
-      <div style="display:flex; gap:14px; margin-top:34px;">
+      <div class="hero-cta" style="display:flex; gap:14px; margin-top:34px;">
         <a href="#register" style="background:#d8242f; color:#fff; text-decoration:none; font-weight:800; font-size:16px; letter-spacing:.04em; padding:16px 30px; border-radius:3px;">REGISTER A FOURSOME →</a>
         <a href="#golf" style="background:rgba(255,255,255,.06); color:#fff; text-decoration:none; font-weight:800; font-size:16px; letter-spacing:.04em; padding:16px 30px; border-radius:3px; border:2px solid rgba(255,255,255,.35);">EVENT DETAILS</a>
       </div>
@@ -89,7 +134,7 @@
       <div style="display:inline-flex; align-items:center; gap:10px; background:rgba(255,255,255,.14); color:#fff; font-weight:800; font-size:13px; letter-spacing:.16em; padding:8px 16px; border-radius:3px; width:max-content;">SUPPORTING CHS ATHLETICS</div>
       <h1 style="font-family:'Anton',sans-serif; font-weight:400; font-size:96px; line-height:.92; color:#fff; margin:22px 0 0; letter-spacing:.01em; max-width:700px; text-shadow:0 2px 24px rgba(0,0,0,.35);">EVERY WARRIOR.<br>EVERY <span style="color:#d8242f;">TEAM.</span></h1>
       <p style="color:#cdd6ee; font-size:19px; line-height:1.5; max-width:540px; margin:24px 0 0; font-weight:500;">We fund the gear, travel, and grants that let Centaurus athletes compete and grow. Join the club that backs every program.</p>
-      <div style="display:flex; gap:14px; margin-top:34px;">
+      <div class="hero-cta" style="display:flex; gap:14px; margin-top:34px;">
         <a href="#sponsor" style="background:#fff; color:#0b1838; text-decoration:none; font-weight:800; font-size:16px; letter-spacing:.04em; padding:16px 30px; border-radius:3px;">GET INVOLVED</a>
         <a href="#donate" style="background:rgba(255,255,255,.06); color:#fff; text-decoration:none; font-weight:800; font-size:16px; letter-spacing:.04em; padding:16px 30px; border-radius:3px; border:2px solid rgba(255,255,255,.35);">DONATE</a>
       </div>
@@ -111,7 +156,7 @@
   </div>
 
   <!-- ===================== STAT BAND ===================== -->
-  <div style="display:grid; grid-template-columns:repeat(3,1fr); background:#d8242f;">
+  <div class="stat-band" style="display:grid; grid-template-columns:repeat(3,1fr); background:#d8242f;">
     <div style="padding:30px 6vw; text-align:center; border-right:1px solid rgba(255,255,255,.2);"><div style="font-family:'Anton',sans-serif; font-size:46px; color:#fff; line-height:1;">20+</div><div style="color:#ffd9db; font-weight:700; font-size:13px; letter-spacing:.12em; margin-top:8px;">PROGRAMS SUPPORTED</div></div>
     <div style="padding:30px; text-align:center; border-right:1px solid rgba(255,255,255,.2);"><div style="font-family:'Anton',sans-serif; font-size:46px; color:#fff; line-height:1;">$580</div><div style="color:#ffd9db; font-weight:700; font-size:13px; letter-spacing:.12em; margin-top:8px;">PER FOURSOME</div></div>
     <div style="padding:30px; text-align:center;"><div style="font-family:'Anton',sans-serif; font-size:46px; color:#fff; line-height:1;">18</div><div style="color:#ffd9db; font-weight:700; font-size:13px; letter-spacing:.12em; margin-top:8px;">HOLES · SCRAMBLE</div></div>
@@ -147,7 +192,7 @@
     <div style="display:flex; align-items:center; gap:12px; color:#7fa0ff; font-weight:800; font-size:13px; letter-spacing:.18em;"><span style="width:30px; height:2px; background:#d8242f;"></span>THE MAIN EVENT</div>
     <h2 style="font-family:'Anton',sans-serif; font-size:58px; color:#fff; margin:14px 0 0; line-height:.98;">A DAY OF GOLF, FOOD &amp; FUN</h2>
     <p style="color:#aebbe0; font-size:18px; line-height:1.6; max-width:620px; margin:16px 0 0;">Come support Centaurus High School Athletics while you enjoy a day golfing 18 holes at Indian Peaks. Warm up with complimentary range balls, then play a team scramble.</p>
-    <div style="display:grid; grid-template-columns:1.1fr .9fr; gap:36px; margin-top:42px; align-items:stretch;">
+    <div class="event-grid" style="display:grid; grid-template-columns:1.1fr .9fr; gap:36px; margin-top:42px; align-items:stretch;">
       <img id="event-photo" src="assets/course-1.jpg" alt="Golfer swinging at Indian Peaks Golf Course during the Centaurus Warriors tournament" style="min-height:380px; width:100%; border-radius:6px; object-fit:cover; object-position:center; display:block;">
       <div style="display:flex; flex-direction:column; gap:14px;">
         <div style="background:#13265a; border-radius:4px; padding:22px 24px; border-left:4px solid #d8242f;"><div style="color:#fff; font-weight:800; font-size:18px;">18-Hole Scramble · Teams of 4</div><div style="color:#aebbe0; font-size:15px; margin-top:6px; line-height:1.5;">Range balls, golf cart &amp; a tourney gift included. Warm up before your tee time.</div></div>
@@ -160,7 +205,7 @@
 
   <!-- ===================== THE COURSE ===================== -->
   <div style="padding:84px 6vw; background:#0e1f47;">
-    <div style="display:grid; grid-template-columns:1fr 1fr; gap:40px; align-items:center;">
+    <div class="course-outer" style="display:grid; grid-template-columns:1fr 1fr; gap:40px; align-items:center;">
       <div>
         <div style="display:flex; align-items:center; gap:12px; color:#7fa0ff; font-weight:800; font-size:13px; letter-spacing:.18em;"><span style="width:30px; height:2px; background:#d8242f;"></span>THE COURSE</div>
         <h2 style="font-family:'Anton',sans-serif; font-size:50px; color:#fff; margin:14px 0 0; line-height:1;">INDIAN PEAKS<br>GOLF COURSE</h2>
@@ -169,7 +214,7 @@
           <iframe title="Indian Peaks Golf Course map" src="https://maps-api-ssl.google.com/maps?hl=en-US&ll=40.002572,-105.123782&output=embed&q=2300+Indian+Peaks+Trail,+Lafayette,+CO+80026,+United+States+(Indian+Peaks+Golf+Course)&z=15" width="100%" height="260" frameborder="0" style="display:block; border:0;" loading="lazy"></iframe>
         </div>
       </div>
-      <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px; height:520px;">
+      <div class="course-photos" style="display:grid; grid-template-columns:1fr 1fr; gap:16px; height:520px;">
         <img id="course-photo-1" src="assets/img-2017.jpg" alt="Golfer on the fairway at Indian Peaks Golf Course" style="width:100%; height:100%; border-radius:6px; object-fit:cover; object-position:center top; display:block;">
         <img id="course-photo-2" src="assets/course-2.jpg" alt="Golfer teeing off with Colorado mountain backdrop at Indian Peaks Golf Course" style="width:100%; height:100%; border-radius:6px; object-fit:cover; object-position:center; display:block;">
       </div>
@@ -194,7 +239,7 @@
       <div style="color:#7fa0ff; font-weight:800; font-size:13px; letter-spacing:.18em;">GET INVOLVED</div>
       <h2 style="font-family:'Anton',sans-serif; font-size:46px; color:#fff; margin:12px 0 0;">WAYS TO BACK THE WARRIORS</h2>
     </div>
-    <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:20px;">
+    <div class="ways-grid" style="display:grid; grid-template-columns:repeat(3,1fr); gap:20px;">
       <a href="#sponsor" style="text-decoration:none; background:linear-gradient(160deg,#16285c,#0e1d45); border-radius:5px; padding:34px; border-top:4px solid #d8242f; display:block;"><div style="color:#fff; font-family:'Anton',sans-serif; font-size:28px;">SPONSOR</div><p style="color:#aebbe0; font-size:15px; line-height:1.55;">Banner placement, Warrior TV, tournament promotion &amp; a free foursome. Annual or sport-specific options.</p><span style="color:#7fa0ff; font-weight:800; font-size:14px;">See packages →</span></a>
       <a href="#donate" style="text-decoration:none; background:linear-gradient(160deg,#16285c,#0e1d45); border-radius:5px; padding:34px; border-top:4px solid #d8242f; display:block;"><div style="color:#fff; font-family:'Anton',sans-serif; font-size:28px;">DONATE</div><p style="color:#aebbe0; font-size:15px; line-height:1.55;">Every dollar funds gear, travel, grants &amp; scholarships for Centaurus athletes.</p><span style="color:#7fa0ff; font-weight:800; font-size:14px;">Give now →</span></a>
       <div style="background:linear-gradient(160deg,#16285c,#0e1d45); border-radius:5px; padding:34px; border-top:4px solid #d8242f;"><div style="color:#fff; font-family:'Anton',sans-serif; font-size:28px;">SHOP MERCH</div><p style="color:#aebbe0; font-size:15px; line-height:1.55;">Rep the Warriors. Proceeds go straight back to the programs.</p><span style="display:inline-block; color:#7fa0ff; font-weight:800; font-size:13px; letter-spacing:.06em; border:1px solid rgba(127,160,255,.35); padding:5px 12px; border-radius:3px;">COMING SOON</span></div>
@@ -203,8 +248,8 @@
 
   <!-- ===================== SPONSOR ===================== -->
   <div id="sponsor" style="padding:84px 6vw; background:#f3f5fb; scroll-margin-top:72px;">
-    <div style="display:grid; grid-template-columns:.85fr 1.15fr; gap:48px; align-items:start;">
-      <div style="position:sticky; top:90px;">
+    <div class="sponsor-layout" style="display:grid; grid-template-columns:.85fr 1.15fr; gap:48px; align-items:start;">
+      <div class="sponsor-sticky" style="position:sticky; top:90px;">
         <div style="color:#1c3fb0; font-weight:800; font-size:13px; letter-spacing:.18em;">BECOME A SPONSOR</div>
         <h2 style="font-family:'Anton',sans-serif; font-size:48px; color:#0b1838; margin:12px 0 16px; line-height:1;">PUT YOUR BRAND<br>BEHIND THE WARRIORS</h2>
         <p style="color:#55585f; font-size:16px; line-height:1.6; margin:0 0 22px;">Annual and sport-specific options that reach families across every Centaurus program and the golf tournament.</p>
@@ -237,7 +282,7 @@
 
   <!-- ===================== GRANTS & SCHOLARSHIPS ===================== -->
   <div id="grants" style="padding:84px 6vw; background:#fff; scroll-margin-top:72px;">
-    <div style="display:grid; grid-template-columns:1fr 1fr; gap:24px;">
+    <div class="grants-grid" style="display:grid; grid-template-columns:1fr 1fr; gap:24px;">
       <div style="background:#0b1838; border-radius:6px; padding:42px; color:#fff;"><div style="color:#7fa0ff; font-weight:800; font-size:13px; letter-spacing:.16em;">FOR COACHES</div><h3 style="font-family:'Anton',sans-serif; font-size:38px; margin:10px 0 12px;">TEAM GRANTS</h3><p style="color:#aebbe0; font-size:15px; line-height:1.6; margin:0 0 22px;">Booster funds go directly to programs for equipment, travel, and the extras that make a season. Coaches can apply each year.</p><a href="https://docs.google.com/forms/d/e/1FAIpQLSd1mrOefRs-h8FGCy1Mb7JM7hn5Il79Tbn3HH-sooDD8Hy0vw/viewform" target="_blank" rel="noopener" style="background:#d8242f; color:#fff; text-decoration:none; font-weight:800; font-size:14px; padding:13px 24px; border-radius:3px;">APPLY FOR A GRANT →</a></div>
       <div style="background:#d8242f; border-radius:6px; padding:42px; color:#fff;"><div style="color:#ffd0d3; font-weight:800; font-size:13px; letter-spacing:.16em;">FOR SENIORS</div><h3 style="font-family:'Anton',sans-serif; font-size:38px; margin:10px 0 12px;">SENIOR SCHOLARSHIPS</h3><p style="color:#ffe0e2; font-size:15px; line-height:1.6; margin:0 0 22px;">We celebrate graduating Warrior athletes with scholarships that send them into their next chapter strong.</p><a href="https://docs.google.com/forms/d/e/1FAIpQLSdQ1QgG9k04HTN1ElW4mlIUT073MPgvwdqeyFeLnAWZyreBPQ/viewform" target="_blank" rel="noopener" style="background:#fff; color:#d8242f; text-decoration:none; font-weight:800; font-size:14px; padding:13px 24px; border-radius:3px;">APPLY NOW →</a></div>
     </div>
