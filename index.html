@@ -25,9 +25,17 @@
   #nav-mobile a.mobile-donate { color:#fff; background:#d8242f; text-align:center; padding:14px; border-radius:3px; margin-top:10px; border:none; }
   #nav-mobile.open { display:flex; }
   @media (max-width:767px) { .nav-links { display:none !important; } .nav-burger { display:flex !important; } }
-  #fab { display:none; position:fixed; bottom:24px; right:20px; z-index:45; background:#d8242f; color:#fff; text-decoration:none; font-weight:800; font-size:14px; letter-spacing:.06em; padding:14px 22px; border-radius:3px; box-shadow:0 4px 18px rgba(0,0,0,.4); opacity:0; transition:opacity .3s; pointer-events:none; }
-  #fab.visible { opacity:1; pointer-events:auto; }
-  @media (max-width:767px) { #fab { display:block; } }
+  /* Form modal */
+  #form-modal { display:none; position:fixed; inset:0; z-index:200; align-items:center; justify-content:center; }
+  #form-modal.open { display:flex; }
+  #form-modal-back { position:absolute; inset:0; background:rgba(5,10,28,.75); backdrop-filter:blur(8px); -webkit-backdrop-filter:blur(8px); }
+  #form-modal-box { position:relative; background:#fff; border-radius:8px; width:min(860px,94vw); max-height:90vh; overflow:hidden; display:flex; flex-direction:column; box-shadow:0 28px 80px rgba(0,0,0,.55); }
+  #form-modal-head { display:flex; align-items:center; justify-content:space-between; padding:14px 20px; border-bottom:1px solid #e5e8f0; flex-shrink:0; background:#fff; }
+  #form-modal-title { font-family:'Anton',sans-serif; font-size:17px; color:#0b1838; letter-spacing:.05em; }
+  #form-modal-close { background:none; border:none; font-size:22px; cursor:pointer; color:#555; padding:2px 8px; line-height:1; border-radius:4px; }
+  #form-modal-close:hover { background:#f0f0f0; }
+  #form-modal-iframe { width:100%; flex:1; border:0; display:block; min-height:580px; }
+  @media (max-width:767px) { #form-modal-box { width:100%; height:100dvh; max-height:100dvh; border-radius:0; } #form-modal-iframe { min-height:unset; } }
 
   @media (max-width:767px) {
     /* Hero */
@@ -228,8 +236,8 @@
       <h2 style="font-family:'Anton',sans-serif; font-size:54px; color:#0b1838; margin:12px 0 8px;">CLAIM YOUR TEE TIME</h2>
       <p style="color:#55585f; font-size:16px; line-height:1.55; margin:0;">Sign up right here — register a full foursome or join as an individual and we'll build your team. Questions? Contact Kelly Marcus at kelly@centaurusboosters.org.</p>
     </div>
-    <div style="max-width:800px; margin:0 auto; background:#fff; border-radius:6px; box-shadow:0 10px 34px rgba(11,24,56,.14); overflow:hidden; border:1px solid #e3e7f1;">
-      <iframe title="Tournament registration form" src="https://docs.google.com/forms/d/e/1FAIpQLSdwS-RQ9RPclV8E_lqwKLl5vDOT890LV9UljSraub0lqTyekA/viewform?embedded=true" width="100%" height="640" frameborder="0" marginheight="0" marginwidth="0" loading="lazy" style="display:block;">Loading…</iframe>
+    <div style="text-align:center; margin-top:8px;">
+      <button class="form-trigger" data-form-src="https://docs.google.com/forms/d/e/1FAIpQLSdwS-RQ9RPclV8E_lqwKLl5vDOT890LV9UljSraub0lqTyekA/viewform?embedded=true" data-form-title="TOURNAMENT REGISTRATION" style="background:#d8242f; color:#fff; font-family:'Archivo',sans-serif; font-weight:800; font-size:17px; letter-spacing:.06em; padding:18px 52px; border-radius:3px; border:none; cursor:pointer;">REGISTER NOW →</button>
     </div>
   </div>
 
@@ -262,8 +270,8 @@
         </div>
         <p style="color:#797c83; font-size:14px; margin-top:24px; line-height:1.6;">Questions? Contact CJ Riggins &amp; Steve Seeger<br>cj@centaurusboosters.org · steve@centaurusboosters.org</p>
       </div>
-      <div style="background:#fff; border-radius:6px; box-shadow:0 10px 34px rgba(11,24,56,.14); overflow:hidden; border:1px solid #e3e7f1;">
-        <iframe title="Sponsorship form" src="https://docs.google.com/forms/d/e/1FAIpQLSf-y_9WdzQJXq0ugcBpL3vVKT_m9VViLp-rbqGwWY3wykrIog/viewform?embedded=true" width="100%" height="700" frameborder="0" marginheight="0" marginwidth="0" loading="lazy" style="display:block;">Loading…</iframe>
+      <div style="background:#f3f5fb; border-radius:6px; padding:48px 36px; border:1px solid #dde3f0; display:flex; align-items:center; justify-content:center; min-height:200px;">
+        <button class="form-trigger" data-form-src="https://docs.google.com/forms/d/e/1FAIpQLSf-y_9WdzQJXq0ugcBpL3vVKT_m9VViLp-rbqGwWY3wykrIog/viewform?embedded=true" data-form-title="SPONSORSHIP INQUIRY" style="background:#0b1838; color:#fff; font-family:'Archivo',sans-serif; font-weight:800; font-size:17px; letter-spacing:.06em; padding:18px 52px; border-radius:3px; border:none; cursor:pointer;">BECOME A SPONSOR →</button>
       </div>
     </div>
   </div>
@@ -275,8 +283,8 @@
       <h2 style="font-family:'Anton',sans-serif; font-size:54px; color:#fff; margin:12px 0 8px;">FUEL THE PROGRAMS</h2>
       <p style="color:#aebbe0; font-size:16px; line-height:1.55; margin:0;">Your gift funds gear, travel, grants &amp; scholarships for every Centaurus athlete. Give any amount right here.</p>
     </div>
-    <div style="max-width:800px; margin:0 auto; background:#fff; border-radius:6px; box-shadow:0 10px 40px rgba(0,0,0,.3); overflow:hidden; border:1px solid #e3e7f1;">
-      <iframe title="Donate form" src="https://docs.google.com/forms/d/e/1FAIpQLSefCBgzkS9VAD7rTyWQ_ZbYmj3JiJxQHMHr4u88D8Aw_8yiqQ/viewform?embedded=true" width="100%" height="680" frameborder="0" marginheight="0" marginwidth="0" loading="lazy" style="display:block;">Loading…</iframe>
+    <div style="text-align:center; margin-top:8px;">
+      <button class="form-trigger" data-form-src="https://docs.google.com/forms/d/e/1FAIpQLSefCBgzkS9VAD7rTyWQ_ZbYmj3JiJxQHMHr4u88D8Aw_8yiqQ/viewform?embedded=true" data-form-title="DONATE" style="background:#d8242f; color:#fff; font-family:'Archivo',sans-serif; font-weight:800; font-size:17px; letter-spacing:.06em; padding:18px 52px; border-radius:3px; border:none; cursor:pointer;">DONATE NOW →</button>
     </div>
   </div>
 
@@ -315,12 +323,21 @@
     <div style="border-top:1px solid rgba(255,255,255,.1); margin-top:28px; padding-top:18px; font-size:13px; color:#6f7da6;">© 2025 Centaurus Warriors Booster Club · 501(c)(3) nonprofit</div>
   </div>
 
+
+  <!-- ===================== FORM MODAL ===================== -->
+  <div id="form-modal" role="dialog" aria-modal="true" aria-labelledby="form-modal-title">
+    <div id="form-modal-back"></div>
+    <div id="form-modal-box">
+      <div id="form-modal-head">
+        <span id="form-modal-title"></span>
+        <button id="form-modal-close" aria-label="Close">✕</button>
+      </div>
+      <iframe id="form-modal-iframe" src="" title="" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
+    </div>
+  </div>
+
 </div>
 
-<a href="#donate" id="fab" aria-label="Donate now">DONATE ↓</a>
-
-<!-- Hero spotlight cross-fade (replaces the dc-runtime DCLogic). Degrades to the
-     golf slide when JS is off, so the page is fully readable without scripts. -->
 <script>
 (function () {
   var spots = [document.getElementById('spot-golf'), document.getElementById('spot-mission')];
@@ -348,11 +365,30 @@
   });
 })();
 (function () {
-  var fab = document.getElementById('fab');
-  if (!fab) return;
-  window.addEventListener('scroll', function () {
-    fab.classList.toggle('visible', window.scrollY > 600);
-  }, { passive: true });
+  var modal = document.getElementById('form-modal');
+  var iframe = document.getElementById('form-modal-iframe');
+  var titleEl = document.getElementById('form-modal-title');
+  var closeBtn = document.getElementById('form-modal-close');
+  var backdrop = document.getElementById('form-modal-back');
+  function open(src, title) {
+    titleEl.textContent = title || '';
+    iframe.src = src;
+    modal.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function close() {
+    modal.classList.remove('open');
+    iframe.src = '';
+    document.body.style.overflow = '';
+  }
+  closeBtn.addEventListener('click', close);
+  backdrop.addEventListener('click', close);
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape') close(); });
+  document.querySelectorAll('.form-trigger').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      open(btn.dataset.formSrc, btn.dataset.formTitle);
+    });
+  });
 })();
 </script>
 </body>

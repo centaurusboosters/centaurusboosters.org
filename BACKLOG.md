@@ -64,6 +64,8 @@ _(none)_
 - [x] **Add 2 missing silent-auction items** (2026-06-18) — added "interior design services" and "dog lover treats" to the Silent Auction card, completing the Google Sites item list.
 - [x] **Mobile navigation** (2026-06-18) — added hamburger button + full-width dropdown for screens < 768px using CSS media queries and a small vanilla JS toggle; desktop nav unchanged.
 - [x] **Add scroll-to-top behavior / sticky CTA** (2026-06-18) — added fixed "DONATE ↓" FAB on mobile only, appears after 600px scroll via passive scroll listener; hidden on desktop.
+- [x] **Remove FAB / replace inline forms with modal overlay** (2026-06-18) — removed intrusive floating "DONATE ↓" button; replaced 3 embedded Google Form iframes with trigger buttons that open a shared modal overlay (blurred backdrop, centered on desktop, full-screen on mobile with `100dvh`).
+- [x] **Mobile responsive layout** (2026-06-18) — added class attributes to 10 layout elements and wrote comprehensive `@media (max-width:767px)` block: single-column grids, hero font/CTA stacking, section padding, heading sizes, stat band borders.
 - [x] **Hero photo** (`#hero-photo`) (2026-06-18) — replaced placeholder with `course-2.jpg` (male golfer teeing off with Colorado mountain backdrop at Indian Peaks).
 - [x] **Golf event photo** (`#event-photo`) (2026-06-18) — replaced placeholder with `course-1.jpg` (female golfer action shot).
 - [x] **Course photos ×2** (`#course-photo-1`, `#course-photo-2`) (2026-06-18) — redesigned to side-by-side columns; `img-2017.jpg` (fairway) + `course-2.jpg` (mountain backdrop) fill both slots.
