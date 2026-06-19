@@ -1,3 +1,7 @@
+---
+description: Run one iteration of the site-improvement loop — implement the top BACKLOG item, verify in-browser, update the backlog, and commit. Use `/loop /goal` for the full loop.
+---
+
 # /goal — Iterative Site Improvement Loop
 
 One improvement per invocation. Each run leaves the site shippable and committed.
