@@ -737,7 +737,7 @@ timeout
 
 ### Milestone 0 — Repository and preview baseline
 
-**Status:** `[BLOCKED: P1 — Netlify account not yet connected; all other M0 artifacts are done]`
+**Status:** `[x]`
 
 **Progress log (2026-06-19):**
 - [x] `netlify.toml` written (`publish = "public"`, security headers)
@@ -767,7 +767,15 @@ Acceptance criteria:
 
 ### Milestone 1 — Manual agent command
 
-**Status:** `[ ]`
+**Status:** `[~]` — artifacts written; pending acceptance test (2026-06-19)
+
+**Progress log (2026-06-19):**
+- [x] `agent/github-issue-workflow.md` — tool-neutral 17-step procedure (all Section 10 steps)
+- [x] `.claude/commands/githubtrigger.md` — invokable slash command referencing the workflow
+- [x] `scripts/update-project-status.sh` — GitHub Projects v2 GraphQL helper (gracefully skips if GITHUB_PROJECT_NUMBER=0)
+- [x] `.claude/settings.json` — allow/deny list: denies push to main, force push, pr merge; allows agent/* push, validate, gh issue/pr commands
+- [ ] Acceptance test: `claude -p "/githubtrigger issue <n>"` on a real eligible test issue
+- [ ] Acceptance test: ambiguous issue → `Needs Clarification`
 
 Deliver:
 
