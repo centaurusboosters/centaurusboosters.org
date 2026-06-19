@@ -1,26 +1,26 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<script src="./support.js"></script>
-</head>
-<body>
-<x-dc>
-<helmet>
+<title>Centaurus Warriors Booster Club — Supporting CHS Athletics</title>
+<meta name="description" content="The Centaurus Warriors Booster Club funds gear, travel, grants, and scholarships for every Centaurus High School athletic program. Register for the 2nd Annual Golf Tournament, sponsor, or donate.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Anton&family=Archivo:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-<script src="image-slot.js"></script>
 <style>
   * { box-sizing: border-box; }
   html { scroll-behavior: smooth; }
   body { margin: 0; background:#0b1838; }
-  .ph-light { background-image: repeating-linear-gradient(45deg, rgba(255,255,255,.06) 0 16px, rgba(255,255,255,.12) 16px 32px); }
   a.navlink { position:relative; }
   a.navlink:hover { color:#fff !important; }
+  .spot { transition: opacity .9s ease; }
+  .img-ph { display:flex; align-items:center; justify-content:center; text-align:center; padding:12px; font-weight:700; font-size:12px; letter-spacing:.08em; text-transform:uppercase; }
+  .img-ph-dark { background-image: repeating-linear-gradient(45deg, rgba(255,255,255,.06) 0 16px, rgba(255,255,255,.12) 16px 32px); color:#7fa0ff; }
+  .img-ph-light { background:#e9edf6; border:1px dashed #c4cde0; color:#9aa6c4; }
 </style>
-</helmet>
+</head>
+<body>
 
 <div id="top" style="font-family:'Archivo',sans-serif; background:#0b1838; width:100%; overflow-x:hidden;">
 
@@ -46,13 +46,13 @@
   <div style="position:relative; height:680px; overflow:hidden; background:linear-gradient(125deg,#0b1838 0%,#14275e 55%,#0b1838 100%);">
     <!-- right image panel -->
     <div style="position:absolute; right:0; top:0; bottom:0; width:50%; z-index:1;">
-      <image-slot id="hero-photo" shape="rect" placeholder="Drop a game-day or golf-course photo" style="position:absolute; inset:0; width:100%; height:100%; display:block;"></image-slot>
+      <div id="hero-photo" class="img-ph img-ph-dark" style="position:absolute; inset:0; width:100%; height:100%;">Drop a game-day or golf-course photo</div>
       <div style="position:absolute; inset:0; background:linear-gradient(90deg,#0b1838 0%, rgba(11,24,56,.65) 35%, rgba(11,24,56,.15) 100%); pointer-events:none;"></div>
     </div>
     <div style="position:absolute; left:-60px; top:50%; transform:translateY(-50%); width:520px; height:520px; border-radius:50%; background:radial-gradient(circle at 40% 40%, rgba(216,36,47,.4), transparent 65%); filter:blur(12px); z-index:2;"></div>
 
     <!-- spotlight: golf -->
-    <div style="position:absolute; inset:0; z-index:3; display:flex; flex-direction:column; justify-content:center; padding:0 6vw; transition:opacity .9s ease; opacity:{{ golfOn }};">
+    <div id="spot-golf" class="spot" style="position:absolute; inset:0; z-index:3; display:flex; flex-direction:column; justify-content:center; padding:0 6vw; opacity:1;">
       <div style="display:inline-flex; align-items:center; gap:10px; background:#d8242f; color:#fff; font-weight:800; font-size:13px; letter-spacing:.16em; padding:8px 16px; border-radius:3px; width:max-content;">NOW REGISTERING · 2ND ANNUAL</div>
       <h1 style="font-family:'Anton',sans-serif; font-weight:400; font-size:96px; line-height:.92; color:#fff; margin:22px 0 0; letter-spacing:.01em; max-width:680px; text-shadow:0 2px 24px rgba(0,0,0,.35);">CENTAURUS<br>GOLF TOURNAMENT</h1>
       <div style="display:flex; flex-wrap:wrap; gap:22px; margin-top:24px; color:#cdd6ee; font-weight:700; font-size:17px;">
@@ -65,7 +65,7 @@
     </div>
 
     <!-- spotlight: mission -->
-    <div style="position:absolute; inset:0; z-index:3; display:flex; flex-direction:column; justify-content:center; padding:0 6vw; transition:opacity .9s ease; opacity:{{ missionOn }};">
+    <div id="spot-mission" class="spot" style="position:absolute; inset:0; z-index:3; display:flex; flex-direction:column; justify-content:center; padding:0 6vw; opacity:0;">
       <div style="display:inline-flex; align-items:center; gap:10px; background:rgba(255,255,255,.14); color:#fff; font-weight:800; font-size:13px; letter-spacing:.16em; padding:8px 16px; border-radius:3px; width:max-content;">SUPPORTING CHS ATHLETICS</div>
       <h1 style="font-family:'Anton',sans-serif; font-weight:400; font-size:96px; line-height:.92; color:#fff; margin:22px 0 0; letter-spacing:.01em; max-width:700px; text-shadow:0 2px 24px rgba(0,0,0,.35);">EVERY WARRIOR.<br>EVERY <span style="color:#d8242f;">TEAM.</span></h1>
       <p style="color:#cdd6ee; font-size:19px; line-height:1.5; max-width:540px; margin:24px 0 0; font-weight:500;">We fund the gear, travel, and grants that let Centaurus athletes compete and grow. Join the club that backs every program.</p>
@@ -77,8 +77,8 @@
 
     <!-- dots -->
     <div style="position:absolute; bottom:26px; left:6vw; display:flex; gap:9px; z-index:5;">
-      <span style="width:34px; height:5px; border-radius:3px; background:{{ golfDot }}; transition:background .5s;"></span>
-      <span style="width:34px; height:5px; border-radius:3px; background:{{ missionDot }}; transition:background .5s;"></span>
+      <span id="dot-golf" style="width:34px; height:5px; border-radius:3px; background:#d8242f; transition:background .5s;"></span>
+      <span id="dot-mission" style="width:34px; height:5px; border-radius:3px; background:rgba(255,255,255,.3); transition:background .5s;"></span>
     </div>
   </div>
 
@@ -95,7 +95,7 @@
     <h2 style="font-family:'Anton',sans-serif; font-size:58px; color:#fff; margin:14px 0 0; line-height:.98;">A DAY OF GOLF, FOOD &amp; FUN</h2>
     <p style="color:#aebbe0; font-size:18px; line-height:1.6; max-width:620px; margin:16px 0 0;">Come support Centaurus High School Athletics while you enjoy a day golfing 18 holes at Indian Peaks. Warm up with complimentary range balls, then play a team scramble.</p>
     <div style="display:grid; grid-template-columns:1.1fr .9fr; gap:36px; margin-top:42px; align-items:stretch;">
-      <image-slot id="event-photo" shape="rounded" radius="6" placeholder="Drop a course / golfers photo" style="min-height:380px; display:block; width:100%;"></image-slot>
+      <div id="event-photo" class="img-ph img-ph-dark" style="min-height:380px; width:100%; border-radius:6px;">Drop a course / golfers photo</div>
       <div style="display:flex; flex-direction:column; gap:14px;">
         <div style="background:#13265a; border-radius:4px; padding:22px 24px; border-left:4px solid #d8242f;"><div style="color:#fff; font-weight:800; font-size:18px;">18-Hole Scramble · Teams of 4</div><div style="color:#aebbe0; font-size:15px; margin-top:6px; line-height:1.5;">Range balls, golf cart &amp; a tourney gift included. Warm up before your tee time.</div></div>
         <div style="background:#13265a; border-radius:4px; padding:22px 24px; border-left:4px solid #d8242f;"><div style="color:#fff; font-weight:800; font-size:18px;">Event-Day Add-Ons</div><div style="color:#aebbe0; font-size:15px; margin-top:6px; line-height:1.5;">Mulligan packages · Skills Challenge vs. a CHS golfer · Split the Pot · Closest to the Pin · Longest Drive.</div></div>
@@ -117,8 +117,8 @@
         </div>
       </div>
       <div style="display:grid; grid-template-rows:1fr 1fr; gap:16px; height:520px;">
-        <image-slot id="course-photo-1" shape="rounded" radius="6" placeholder="Drop a course photo" style="display:block; width:100%; height:100%;"></image-slot>
-        <image-slot id="course-photo-2" shape="rounded" radius="6" placeholder="Drop a course photo" style="display:block; width:100%; height:100%;"></image-slot>
+        <div id="course-photo-1" class="img-ph img-ph-dark" style="width:100%; height:100%; border-radius:6px;">Drop a course photo</div>
+        <div id="course-photo-2" class="img-ph img-ph-dark" style="width:100%; height:100%; border-radius:6px;">Drop a course photo</div>
       </div>
     </div>
   </div>
@@ -194,19 +194,19 @@
   <div style="padding:54px 6vw; background:#f3f5fb;">
     <div style="text-align:center; color:#0b1838; font-weight:800; font-size:13px; letter-spacing:.18em; margin-bottom:26px;">PROUDLY SUPPORTED BY OUR SPONSORS</div>
     <div style="display:grid; grid-template-columns:repeat(6,1fr); gap:16px;">
-      <image-slot id="sponsor-1" shape="rounded" radius="4" placeholder="Logo" style="height:84px; display:block; width:100%;"></image-slot>
-      <image-slot id="sponsor-2" shape="rounded" radius="4" placeholder="Logo" style="height:84px; display:block; width:100%;"></image-slot>
-      <image-slot id="sponsor-3" shape="rounded" radius="4" placeholder="Logo" style="height:84px; display:block; width:100%;"></image-slot>
-      <image-slot id="sponsor-4" shape="rounded" radius="4" placeholder="Logo" style="height:84px; display:block; width:100%;"></image-slot>
-      <image-slot id="sponsor-5" shape="rounded" radius="4" placeholder="Logo" style="height:84px; display:block; width:100%;"></image-slot>
-      <image-slot id="sponsor-6" shape="rounded" radius="4" placeholder="Logo" style="height:84px; display:block; width:100%;"></image-slot>
+      <div id="sponsor-1" class="img-ph img-ph-light" style="height:84px; width:100%; border-radius:4px;">Logo</div>
+      <div id="sponsor-2" class="img-ph img-ph-light" style="height:84px; width:100%; border-radius:4px;">Logo</div>
+      <div id="sponsor-3" class="img-ph img-ph-light" style="height:84px; width:100%; border-radius:4px;">Logo</div>
+      <div id="sponsor-4" class="img-ph img-ph-light" style="height:84px; width:100%; border-radius:4px;">Logo</div>
+      <div id="sponsor-5" class="img-ph img-ph-light" style="height:84px; width:100%; border-radius:4px;">Logo</div>
+      <div id="sponsor-6" class="img-ph img-ph-light" style="height:84px; width:100%; border-radius:4px;">Logo</div>
     </div>
   </div>
 
   <!-- ===================== FOOTER ===================== -->
   <div style="padding:54px 6vw; background:#070f24; color:#aebbe0;">
     <div style="display:flex; justify-content:space-between; align-items:flex-start; gap:40px; flex-wrap:wrap;">
-      <div style="display:flex; gap:16px; align-items:center;"><img src="assets/warriors-logo.png" style="width:52px; height:52px; object-fit:contain;"><div><div style="font-family:'Anton',sans-serif; color:#fff; font-size:20px;">CENTAURUS WARRIORS</div><div style="font-size:12px; letter-spacing:.18em; color:#7fa0ff; font-weight:700;">BOOSTER CLUB</div></div></div>
+      <div style="display:flex; gap:16px; align-items:center;"><img src="assets/warriors-logo.png" alt="Centaurus Warriors Booster Club" style="width:52px; height:52px; object-fit:contain;"><div><div style="font-family:'Anton',sans-serif; color:#fff; font-size:20px;">CENTAURUS WARRIORS</div><div style="font-size:12px; letter-spacing:.18em; color:#7fa0ff; font-weight:700;">BOOSTER CLUB</div></div></div>
       <div style="font-size:14px; line-height:1.9;"><div style="color:#fff; font-weight:800; margin-bottom:6px;">CONTACT</div>Players — Kelly Marcus<br>Sponsorship — CJ Riggins &amp; Steve Seeger<br>kelly@centaurusboosters.org</div>
       <div style="font-size:14px; line-height:1.9;"><div style="color:#fff; font-weight:800; margin-bottom:6px;">THE COURSE</div>Indian Peaks Golf Course<br>2300 Indian Peaks Trail<br>Lafayette, CO 80026</div>
       <div style="font-size:14px; line-height:1.9;"><div style="color:#fff; font-weight:800; margin-bottom:6px;">CONNECT</div><a href="#" style="color:#7fa0ff; text-decoration:none;">Facebook</a></div>
@@ -215,24 +215,20 @@
   </div>
 
 </div>
-</x-dc>
-<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1280,&quot;height&quot;:900}}">
-class Component extends DCLogic {
-  state = { spot: 0 };
-  componentDidMount() {
-    this._t = setInterval(() => this.setState(s => ({ spot: s.spot ? 0 : 1 })), 4600);
+
+<!-- Hero spotlight cross-fade (replaces the dc-runtime DCLogic). Degrades to the
+     golf slide when JS is off, so the page is fully readable without scripts. -->
+<script>
+(function () {
+  var spots = [document.getElementById('spot-golf'), document.getElementById('spot-mission')];
+  var dots  = [document.getElementById('dot-golf'),  document.getElementById('dot-mission')];
+  var i = 0;
+  function show(n) {
+    spots.forEach(function (s, k) { if (s) s.style.opacity = k === n ? 1 : 0; });
+    dots.forEach(function (d, k) { if (d) d.style.background = k === n ? '#d8242f' : 'rgba(255,255,255,.3)'; });
   }
-  componentWillUnmount() { clearInterval(this._t); }
-  renderVals() {
-    const golf = this.state.spot === 0;
-    return {
-      golfOn: golf ? 1 : 0,
-      missionOn: golf ? 0 : 1,
-      golfDot: golf ? '#d8242f' : 'rgba(255,255,255,.3)',
-      missionDot: golf ? 'rgba(255,255,255,.3)' : '#d8242f',
-    };
-  }
-}
+  setInterval(function () { i = i ? 0 : 1; show(i); }, 4600);
+})();
 </script>
 </body>
 </html>

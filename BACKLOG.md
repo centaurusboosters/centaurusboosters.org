@@ -2,7 +2,11 @@
 
 Prioritized by the Product Owner persona: shippable after every item, text before images, trust signals before polish, static before dynamic.
 
-Sources audited: centaurusboosters.org, sites.google.com/centaurusboosters.org/2025-centaurus-golf-tournament, Facebook photos page.
+**Source of truth:** `index.html` — plain static HTML (graduated off the dc-runtime design format on 2026-06-18). No React/Babel/build step; the only script is an ~8-line vanilla hero cross-fade.
+
+**Shippable means:** opens and renders correctly as static files (verified in-browser) and deploys to Vercel as static files (zero-config). Serve over a local http server when verifying — the Google Form iframes render blank over `file://`.
+
+Content audited against: centaurusboosters.org, sites.google.com/centaurusboosters.org/2025-centaurus-golf-tournament, Facebook photos page — then **reconciled against the current `index.html` on 2026-06-18** (the redesign already absorbed much of the old-site content, so several original audit items were already partly done; corrected below).
 
 ---
 
@@ -11,21 +15,26 @@ _(none)_
 
 ---
 
+## BLOCKED — needs human input (loop must skip these)
+
+- [ ] **Sponsorship tier table** — add a visible pricing grid above the sponsorship form. Known structure from Google Sites: Annual / Sport-specific options including webpage, tournament promo, gym banner, football field, tennis courts, Warrior TV, free foursome; plus a Hole Sponsor tier (~$500 on a Facebook promo graphic). **Blocked:** Kelly said the sponsorship levels are being revised — do not hardcode prices. Resolve current tiers/prices with Kelly, then move to P2.
+
+---
+
 ## TODO — Static Content (no images needed)
 
 ### P1 — Trust & Accuracy (ship blockers)
 
 - [ ] **Fix Facebook footer link** — currently `href="#"`, should be `https://www.facebook.com/centaurusboosters/`
-- [ ] **Add CJ Riggins email to sponsorship contact** — footer only shows Steve, but sponsorship form copy says "CJ Riggins & Steve Seeger / cj@centaurusboosters.org / steve@centaurusboosters.org"
+- [ ] **Add CJ Riggins email to sponsorship contact** — the Sponsor section names "CJ Riggins & Steve Seeger" but only lists `steve@centaurusboosters.org`. Add `cj@centaurusboosters.org`. (The footer CONTACT block also lists only `kelly@centaurusboosters.org` for all roles — consider adding the sponsorship emails there too.)
 - [ ] **Add vision statement section** — text from centaurusboosters.org: *"The Centaurus Booster Club is devoted to enriching the experience of students engaged in Centaurus Programs. Our vision is to cultivate a positive and supportive environment, promoting teamwork, sportsmanship, and personal growth."* — add between hero and stat band, or as its own "About" block
 
 ### P2 — Completeness (high value, text-only)
 
-- [ ] **Sponsorship tier table** — add visible pricing grid above the sponsorship form. Known tiers from Google Sites: Annual/Sport-specific options, includes: webpage, tournament promo, gym banner, football field, tennis courts, Warrior TV, free foursome. Add a hole sponsor tier at $500 (seen on Facebook promo graphic)
-- [ ] **Add Skills Challenge detail** — golf section says "Skills Challenge" but Google Sites specifies "vs. a CHS golfer on 8 of the 18 holes" — update the event details card
-- [ ] **Expand silent auction list** — current copy is vague; Google Sites lists: massages, interior design services, themed baskets, tutoring, CU Football tickets, Avs tickets, dog lover treats — update the Event-Day Add-Ons card
 - [ ] **Add programs/sports callout** — stat band says "20+ programs" but never names them. Add a short sports list section (or even just a text block): Football, Basketball, Baseball, Softball, Soccer, Swimming, Tennis, Golf, Cross Country, Track, Volleyball, Wrestling, Lacrosse, Cheerleading, and more
-- [ ] **Fix merch store link** — currently `href="#"`. Either link to actual store or change to "Coming Soon" with a note
+- [ ] **Fix merch store link** — the SHOP MERCH card's "Visit store →" is `href="#"`. Either link to the actual store or change to "Coming Soon" with a note (and drop the dead link)
+- [ ] **Add "on 8 of 18 holes" to Skills Challenge** — _small._ The Event-Day Add-Ons card already says "Skills Challenge vs. a CHS golfer". Google Sites specifies it's "on 8 of the 18 holes" — append that detail.
+- [ ] **Add 2 missing silent-auction items** — _small._ The Silent Auction card already lists massages, CU Football & Avs tickets, themed baskets, tutoring. Google Sites also lists **interior design services** and **dog lover treats** — add those two.
 
 ### P3 — Mobile & Accessibility
 
@@ -36,10 +45,12 @@ _(none)_
 
 ## TODO — Images (requires assets)
 
-- [ ] **Hero photo** — replace `image-slot` placeholder with a real golf course / game-day photo. Best candidates: golf course landscape shots from the 2024 tournament Facebook album (group at Indian Peaks with mountain backdrop)
-- [ ] **Golf event photo** — event section left column image slot; use a golfer group shot from the tournament
-- [ ] **Course photos (×2)** — two slots in the Indian Peaks course section; use course/fairway photos
-- [ ] **Real sponsor logos** — replace 6 placeholder slots with actual logos from centaurusboosters.org sponsors: Westbound Realty (BestNationalCO.com), Auguste Escoffier School of Culinary Arts, Kong Ice, Alpine Valley Oral Surgery, Rudrocks, Boulder Wealth Advisors, rockhop.ai, PPS, LFO (Lafayette Family Orthodontics). Download from live site or Facebook shout-out posts. Note: sponsorship levels are being revised — confirm before adding new logos.
+> Placeholders are now plain `<div class="img-ph …" id="…">` boxes (no more `image-slot` custom element). To add an image, replace the placeholder div with an `<img>` of the same `id` and sizing, or set a `background-image` on it. Keep the ids. Never add a broken `<img>` with no real `src`.
+
+- [ ] **Hero photo** (`#hero-photo`) — replace placeholder with a real golf course / game-day photo. Best candidates: golf course landscape shots from the 2024 tournament Facebook album (group at Indian Peaks with mountain backdrop)
+- [ ] **Golf event photo** (`#event-photo`) — event section left column; use a golfer group shot from the tournament
+- [ ] **Course photos ×2** (`#course-photo-1`, `#course-photo-2`) — Indian Peaks course section; use course/fairway photos
+- [ ] **Real sponsor logos** (`#sponsor-1`…`#sponsor-6`) — replace 6 placeholder boxes with actual logos from centaurusboosters.org sponsors: Westbound Realty (BestNationalCO.com), Auguste Escoffier School of Culinary Arts, Kong Ice, Alpine Valley Oral Surgery, Rudrocks, Boulder Wealth Advisors, rockhop.ai, PPS, LFO (Lafayette Family Orthodontics). Download from live site or Facebook shout-out posts. Note: sponsorship levels are being revised — confirm before adding new logos.
 
 ---
 
@@ -54,7 +65,9 @@ _(none)_
 ---
 
 ## DONE
-_(none yet — loop hasn't run)_
+
+- [x] **Graduate to plain static HTML** (2026-06-18, pre-loop) — removed `<x-dc>` / `support.js` / `image-slot.js` / Babel / React; reimplemented the hero spotlight cross-fade as ~8 lines of vanilla JS that degrade gracefully to the golf slide with JS off. Verified rendering in-browser with zero console errors.
+- [x] **Add `<title>` + meta description + lang + image alt** (2026-06-18, pre-loop) — page previously had no title (was invisible to search/social). Added a descriptive title, meta description, `<html lang="en">`, and alt text on the footer logo.
 
 ---
 

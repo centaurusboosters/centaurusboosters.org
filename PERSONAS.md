@@ -1,6 +1,6 @@
 # Reviewer Personas — Centaurus Warriors Booster Club Website
 
-These personas are used by the `/goal` agent loop to evaluate the site from multiple angles before prioritizing each improvement.
+These personas drove the initial prioritization in `BACKLOG.md`. During the `/goal` loop they are the **verification lens**: after each change, the relevant persona's "definition of done" is the bar the rendered result must clear (Step 3 of the loop). The backlog order is fixed during the loop — personas evaluate, they don't re-prioritize mid-run.
 
 ---
 
