@@ -25,7 +25,6 @@ _(none)_
 
 ### P1 — Trust & Accuracy (ship blockers)
 
-- [ ] **Add CJ Riggins email to sponsorship contact** — the Sponsor section names "CJ Riggins & Steve Seeger" but only lists `steve@centaurusboosters.org`. Add `cj@centaurusboosters.org`. (The footer CONTACT block also lists only `kelly@centaurusboosters.org` for all roles — consider adding the sponsorship emails there too.)
 - [ ] **Add vision statement section** — text from centaurusboosters.org: *"The Centaurus Booster Club is devoted to enriching the experience of students engaged in Centaurus Programs. Our vision is to cultivate a positive and supportive environment, promoting teamwork, sportsmanship, and personal growth."* — add between hero and stat band, or as its own "About" block
 
 ### P2 — Completeness (high value, text-only)
@@ -68,6 +67,7 @@ _(none)_
 - [x] **Graduate to plain static HTML** (2026-06-18, pre-loop) — removed `<x-dc>` / `support.js` / `image-slot.js` / Babel / React; reimplemented the hero spotlight cross-fade as ~8 lines of vanilla JS that degrade gracefully to the golf slide with JS off. Verified rendering in-browser with zero console errors.
 - [x] **Add `<title>` + meta description + lang + image alt** (2026-06-18, pre-loop) — page previously had no title (was invisible to search/social). Added a descriptive title, meta description, `<html lang="en">`, and alt text on the footer logo.
 - [x] **Fix Facebook footer link** (2026-06-18) — updated footer `<a>` to `https://www.facebook.com/centaurusboosters/` with `target="_blank" rel="noopener"`.
+- [x] **Add CJ Riggins email to sponsorship contact** (2026-06-18) — added `cj@centaurusboosters.org` to the sponsor section contact line and both sponsorship emails as mailto links in the footer CONTACT block.
 
 ---
 
