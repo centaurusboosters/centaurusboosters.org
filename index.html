@@ -25,6 +25,9 @@
   #nav-mobile a.mobile-donate { color:#fff; background:#d8242f; text-align:center; padding:14px; border-radius:3px; margin-top:10px; border:none; }
   #nav-mobile.open { display:flex; }
   @media (max-width:767px) { .nav-links { display:none !important; } .nav-burger { display:flex !important; } }
+  #fab { display:none; position:fixed; bottom:24px; right:20px; z-index:45; background:#d8242f; color:#fff; text-decoration:none; font-weight:800; font-size:14px; letter-spacing:.06em; padding:14px 22px; border-radius:3px; box-shadow:0 4px 18px rgba(0,0,0,.4); opacity:0; transition:opacity .3s; pointer-events:none; }
+  #fab.visible { opacity:1; pointer-events:auto; }
+  @media (max-width:767px) { #fab { display:block; } }
 </style>
 </head>
 <body>
@@ -266,6 +269,8 @@
 
 </div>
 
+<a href="#donate" id="fab" aria-label="Donate now">DONATE ↓</a>
+
 <!-- Hero spotlight cross-fade (replaces the dc-runtime DCLogic). Degrades to the
      golf slide when JS is off, so the page is fully readable without scripts. -->
 <script>
@@ -293,6 +298,13 @@
       burger.setAttribute('aria-expanded', 'false');
     });
   });
+})();
+(function () {
+  var fab = document.getElementById('fab');
+  if (!fab) return;
+  window.addEventListener('scroll', function () {
+    fab.classList.toggle('visible', window.scrollY > 600);
+  }, { passive: true });
 })();
 </script>
 </body>
