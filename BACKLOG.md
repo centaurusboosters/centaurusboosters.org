@@ -28,7 +28,6 @@ _(none)_
 
 ### P2 — Completeness (high value, text-only)
 
-- [ ] **Fix merch store link** — the SHOP MERCH card's "Visit store →" is `href="#"`. Either link to the actual store or change to "Coming Soon" with a note (and drop the dead link)
 - [ ] **Add "on 8 of 18 holes" to Skills Challenge** — _small._ The Event-Day Add-Ons card already says "Skills Challenge vs. a CHS golfer". Google Sites specifies it's "on 8 of the 18 holes" — append that detail.
 - [ ] **Add 2 missing silent-auction items** — _small._ The Silent Auction card already lists massages, CU Football & Avs tickets, themed baskets, tutoring. Google Sites also lists **interior design services** and **dog lover treats** — add those two.
 
@@ -68,6 +67,7 @@ _(none)_
 - [x] **Add CJ Riggins email to sponsorship contact** (2026-06-18) — added `cj@centaurusboosters.org` to the sponsor section contact line and both sponsorship emails as mailto links in the footer CONTACT block.
 - [x] **Add vision statement section** (2026-06-18) — added "About Us" block between hero and stat band using verbatim text from centaurusboosters.org.
 - [x] **Add programs/sports callout** (2026-06-18) — added "Programs We Support" pill-grid section after the stat band, naming all 14 programs + "more".
+- [x] **Fix merch store link** (2026-06-18) — replaced dead `href="#"` "Visit store →" with a "COMING SOON" badge; no real store URL available.
 
 ---
 
