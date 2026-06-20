@@ -8,6 +8,7 @@ const branch =
 
 export default defineConfig({
   branch,
+  clientId: '0c72549b-ebe4-4549-9da3-a44660d46574',
   build: {
     publicFolder: 'public',
     outputFolder: 'admin',
