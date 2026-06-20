@@ -1,8 +1,13 @@
+import Nav from '../components/next-sections/Nav';
+import Hero from '../components/next-sections/Hero';
+import Footer from '../components/next-sections/Footer';
+
 export default function Home() {
   return (
-    <main>
-      <h1>Centaurus Warriors Booster Club</h1>
-      <p>Next.js migration scaffold.</p>
-    </main>
+    <div id="top">
+      <Nav />
+      <Hero />
+      <Footer />
+    </div>
   );
 }
