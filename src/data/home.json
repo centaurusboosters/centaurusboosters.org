@@ -103,7 +103,6 @@
           "type": "p",
           "children": [
             {
-              "type": "text",
               "text": "The Centaurus Booster Club is devoted to enriching the experience of students engaged in Centaurus Programs. Our vision is to cultivate a positive and supportive environment, promoting teamwork, sportsmanship, and personal growth."
             }
           ]
@@ -123,7 +122,6 @@
               "type": "p",
               "children": [
                 {
-                  "type": "text",
                   "text": "Booster funds go directly to programs for equipment, travel, and the extras that make a season. Coaches can apply each year."
                 }
               ]
@@ -143,7 +141,6 @@
               "type": "p",
               "children": [
                 {
-                  "type": "text",
                   "text": "We celebrate graduating Warrior athletes with scholarships that send them into their next chapter strong."
                 }
               ]
