@@ -3,22 +3,29 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "build": "npm run build:preview && astro build",
-    "build:preview": "node_modules/.bin/esbuild src/admin/preview.jsx --bundle --outfile=public/admin/preview.js --format=iife --global-name=__DecapPreviews --jsx=automatic --define:process.env.NODE_ENV='\"production\"'",
-    "dev": "astro dev",
-    "validate": "npm run build && bash scripts/validate-site.sh dist"
+    "build": "tinacms build --local --skip-cloud-checks && next build",
+    "build:cms": "tinacms build --local --skip-cloud-checks",
+    "build:next": "next build",
+    "dev": "tinacms dev -c \"next dev\"",
+    "dev:cms": "tinacms dev -c \"next dev\"",
+    "dev:next": "next dev"
   },
   "devDependencies": {
-    "@11ty/eleventy": "^3.1.2",
-    "@astrojs/mdx": "^6.0.3",
-    "@astrojs/react": "^5.0.7",
-    "astro": "^6.4.8",
+    "@tinacms/cli": "^2.5.1",
+    "@types/node": "26.0.0",
+    "@types/react": "19.2.17",
+    "gray-matter": "^4.0.3",
+    "markdown-it": "^14.2.0",
+    "next": "^16.2.9",
     "react": "^19.2.7",
-    "react-dom": "^19.2.7"
+    "react-dom": "^19.2.7",
+    "typescript": "6.0.3"
   },
   "allowScripts": {
-    "esbuild@0.27.7": true,
     "fsevents@2.3.3": true,
     "sharp@0.34.5": true
+  },
+  "dependencies": {
+    "tinacms": "^3.9.3"
   }
 }

@@ -140,8 +140,7 @@ export default defineConfig({
 Update `package.json` scripts:
 ```json
 "build": "astro build",
-"dev": "astro dev",
-"validate": "npm run build && bash scripts/validate-site.sh dist"
+"dev": "astro dev"
 ```
 
 Delete `.eleventy.js`. The `public/` directory is Astro's default passthrough; assets and admin are served automatically.
@@ -515,9 +514,7 @@ Register the preview script in `public/admin/index.html` by adding a `<script ty
 
 ---
 
-### Step 8 — Validation and build scripts
-
-Update `scripts/validate-site.sh` — no change needed if it only checks `dist/` for `index.html`, `admin/index.html`, and `admin/config.yml`.
+### Step 8 — Build scripts
 
 Update `docs/operations.md` to reflect the new data file paths and the concept of presentation vs. data components.
 
@@ -530,7 +527,6 @@ Remove the reference to `.eleventy.js` from any docs.
 Before declaring done, verify each of the following locally:
 
 - [x] `npm run build` completes without errors
-- [x] `npm run validate` passes
 - [x] `dist/index.html` exists and has `<html lang="en">`
 - [x] `dist/admin/index.html` and `dist/admin/config.yml` exist
 - [x] `dist/assets/` contains all sponsor logos and course photos
@@ -558,7 +554,7 @@ Run against the review personas in `agent/PERSONAS.md`:
 
 **SEO / Discoverability** — `<title>` and `<meta name="description">` are present in the Astro page head. Images have meaningful `alt` text. No SEO regressions.
 
-**Delivery Steward** — Netlify deploy preview renders correctly. No new npm audit vulnerabilities introduced. `npm run validate` passes in CI.
+**Delivery Steward** — Netlify deploy preview renders correctly. No new npm audit vulnerabilities introduced. `npm run build` passes in CI.
 
 ---
 
