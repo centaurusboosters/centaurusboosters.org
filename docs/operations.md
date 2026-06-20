@@ -60,6 +60,7 @@ The Decap CMS admin is available at `/admin/` on deployed builds. It currently m
 - Decap uses the GitHub backend, not Netlify Identity or Git Gateway.
 - Admins need GitHub accounts with write access to `kurtharriger/2026-boosters`.
 - Decap targets `main` in `public/admin/config.yml`.
+- Decap uses `gilded-genie-b2528a.netlify.app` as its Netlify OAuth site domain so local admin testing can route auth through the correct Netlify site.
 - `publish_mode: editorial_workflow` makes Decap create content branches and pull requests instead of committing directly to protected `main`.
 - Netlify builds deploy previews for CMS pull requests and rebuilds production after a PR is merged.
 
@@ -76,6 +77,8 @@ The Decap CMS admin is available at `/admin/` on deployed builds. It currently m
 6. Add or install the **GitHub** authentication provider.
 7. Paste the GitHub OAuth App client ID and client secret, then save.
 8. Visit `/admin/` on the deployed Netlify URL, choose GitHub login, and confirm Decap can read the **Site Data → Sponsors** entry.
+
+For local testing, run `npm run serve` and open `http://localhost:8080/admin/`. Do not open `public/admin/index.html` directly with a `file://` URL; Decap auth expects to run from an HTTP origin.
 
 ### Editing sponsors
 
