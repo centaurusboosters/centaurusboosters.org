@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "build": "astro build",
+    "build": "npm run build:preview && astro build",
+    "build:preview": "node_modules/.bin/esbuild src/admin/preview.jsx --bundle --outfile=public/admin/preview.js --format=iife --global-name=__DecapPreviews --jsx=automatic --define:process.env.NODE_ENV='\"production\"'",
     "dev": "astro dev",
     "validate": "npm run build && bash scripts/validate-site.sh dist"
   },

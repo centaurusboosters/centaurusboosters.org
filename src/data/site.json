@@ -1,0 +1,22 @@
+{
+  "copyright": "© 2026 Centaurus Warriors Booster Club · 501(c)(3) nonprofit",
+  "social": {
+    "facebook": "https://www.facebook.com/centaurusboosters/"
+  },
+  "hero_mission": {
+    "badge": "Supporting CHS Athletics",
+    "headline_line1": "EVERY WARRIOR.",
+    "headline_line2": "EVERY",
+    "headline_accent": "TEAM.",
+    "body": "We fund the gear, travel, and grants that let Centaurus athletes compete and grow. Join the club that backs every program."
+  },
+  "donate": {
+    "headline": "FUEL THE PROGRAMS",
+    "body": "Your gift funds gear, travel, grants & scholarships for every Centaurus athlete. Give any amount right here."
+  },
+  "sponsor_cta": {
+    "headline_line1": "PUT YOUR BRAND",
+    "headline_line2": "BEHIND THE WARRIORS",
+    "intro": "Annual and sport-specific options that reach families across every Centaurus program and the golf tournament."
+  }
+}

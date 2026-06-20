@@ -8,7 +8,14 @@
   "price_foursome": 580,
   "holes": 18,
   "format": "Scramble",
+  "format_label": "18-Hole Scramble · Teams of 4",
   "inclusions": ["Range balls","Golf cart","18 holes","Tournament gift"],
   "add_ons": ["Mulligan Packages","Closest to the Pin","Skills Challenge","Longest Drive","Split the Pot"],
-  "auction_description": "Massages, interior design services, CU Football & Avs tickets, themed baskets, tutoring, dog lover treats & more. Bid before lunch."
+  "auction_description": "Massages, interior design services, CU Football & Avs tickets, themed baskets, tutoring, dog lover treats & more. Bid before lunch.",
+  "section_headline": "A DAY OF GOLF, FOOD & FUN",
+  "section_intro": "Come support Centaurus High School Athletics while you enjoy a day golfing 18 holes at Indian Peaks. Warm up with complimentary range balls, then play a team scramble.",
+  "course_description": "A Hale Irwin Signature Design — championship golf with extraordinary Front Range views.",
+  "register_headline": "CLAIM YOUR TEE TIME",
+  "register_intro": "Sign up right here — register a full foursome or join as an individual and we'll build your team.",
+  "arrive_by": "8:00 AM"
 }

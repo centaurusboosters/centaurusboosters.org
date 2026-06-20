@@ -41,6 +41,24 @@ collections:
           - { label: "Address", name: "address", widget: "string" }
           - { label: "Price per player ($)", name: "price_player", widget: "number" }
           - { label: "Price per foursome ($)", name: "price_foursome", widget: "number" }
+          - { label: "Holes", name: "holes", widget: "number" }
+          - { label: "Format", name: "format", widget: "string" }
+          - { label: "Format label", name: "format_label", widget: "string" }
+          - label: "Inclusions"
+            name: "inclusions"
+            widget: "list"
+            field: { label: "Item", name: "item", widget: "string" }
+          - label: "Event-day add-ons"
+            name: "add_ons"
+            widget: "list"
+            field: { label: "Item", name: "item", widget: "string" }
+          - { label: "Auction description", name: "auction_description", widget: "text" }
+          - { label: "Section headline", name: "section_headline", widget: "string" }
+          - { label: "Section intro", name: "section_intro", widget: "text" }
+          - { label: "Course description", name: "course_description", widget: "text" }
+          - { label: "Register headline", name: "register_headline", widget: "string" }
+          - { label: "Register intro", name: "register_intro", widget: "text" }
+          - { label: "Arrive by", name: "arrive_by", widget: "string" }
 
       - name: "contacts"
         label: "Contacts"
@@ -59,6 +77,66 @@ collections:
             fields:
               - { label: "Name", name: "name", widget: "string" }
               - { label: "Email", name: "email", widget: "string" }
+
+      - name: "site_data_sponsor_benefits"
+        label: "Sponsor Benefits"
+        file: "src/data/sponsor-benefits.json"
+        format: "json"
+        fields:
+          - label: "Benefits"
+            name: "items"
+            widget: "list"
+
+      - name: "site_data_get_involved"
+        label: "Get Involved Cards"
+        file: "src/data/get-involved.json"
+        format: "json"
+        fields:
+          - label: "Cards"
+            name: "items"
+            widget: "list"
+            summary: "{{fields.title}}"
+            fields:
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Description", name: "description", widget: "text" }
+              - { label: "Link label", name: "link_label", widget: "string", required: false }
+              - { label: "Form key", name: "form", widget: "string", required: false }
+              - { label: "Form title", name: "form_title", widget: "string", required: false }
+              - { label: "Coming soon", name: "coming_soon", widget: "boolean", default: false, required: false }
+
+      - name: "site"
+        label: "Site Content"
+        file: "src/data/site.json"
+        format: "json"
+        fields:
+          - { label: "Copyright line", name: "copyright", widget: "string" }
+          - label: "Social links"
+            name: "social"
+            widget: "object"
+            fields:
+              - { label: "Facebook URL", name: "facebook", widget: "string" }
+          - label: "Hero — Mission slide"
+            name: "hero_mission"
+            widget: "object"
+            fields:
+              - { label: "Badge text", name: "badge", widget: "string" }
+              - { label: "Headline line 1", name: "headline_line1", widget: "string" }
+              - { label: "Headline line 2 (before accent)", name: "headline_line2", widget: "string" }
+              - { label: "Headline accent word (red)", name: "headline_accent", widget: "string" }
+              - { label: "Body", name: "body", widget: "text" }
+          - label: "Donate section"
+            name: "donate"
+            widget: "object"
+            fields:
+              - { label: "Headline", name: "headline", widget: "string" }
+              - { label: "Body", name: "body", widget: "text" }
+          - label: "Sponsor CTA section"
+            name: "sponsor_cta"
+            widget: "object"
+            fields:
+              - { label: "Headline line 1", name: "headline_line1", widget: "string" }
+              - { label: "Headline line 2", name: "headline_line2", widget: "string" }
+              - { label: "Intro", name: "intro", widget: "text" }
 
   - name: "content"
     label: "Page Content"

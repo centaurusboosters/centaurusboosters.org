@@ -1,24 +1,14 @@
 ---
+import sponsorBenefits from '../../data/sponsor-benefits.json';
 import contacts from '../../data/contacts.json';
 import forms from '../../data/forms.json';
+import site from '../../data/site.json';
+import SponsorCTASection from '../ui/SponsorCTASection.jsx';
 ---
-<div id="sponsor" style="padding:84px 6vw; background:#f3f5fb; scroll-margin-top:72px;">
-  <div class="sponsor-layout" style="display:grid; grid-template-columns:.85fr 1.15fr; gap:48px; align-items:start;">
-    <div class="sponsor-sticky" style="position:sticky; top:90px;">
-      <div style="color:#1c3fb0; font-weight:800; font-size:13px; letter-spacing:.18em;">BECOME A SPONSOR</div>
-      <h2 style="font-family:'Anton',sans-serif; font-size:48px; color:#0b1838; margin:12px 0 16px; line-height:1;">PUT YOUR BRAND<br>BEHIND THE WARRIORS</h2>
-      <p style="color:#55585f; font-size:16px; line-height:1.6; margin:0 0 22px;">Annual and sport-specific options that reach families across every Centaurus program and the golf tournament.</p>
-      <div style="display:flex; flex-direction:column; gap:11px;">
-        <div style="display:flex; gap:11px; align-items:flex-start; color:#2c2f36; font-size:15px;"><span style="color:#d8242f; font-weight:900;">✓</span>Webpage promotion</div>
-        <div style="display:flex; gap:11px; align-items:flex-start; color:#2c2f36; font-size:15px;"><span style="color:#d8242f; font-weight:900;">✓</span>Banners in the gym, football field &amp; tennis courts</div>
-        <div style="display:flex; gap:11px; align-items:flex-start; color:#2c2f36; font-size:15px;"><span style="color:#d8242f; font-weight:900;">✓</span>Warrior TV promotion</div>
-        <div style="display:flex; gap:11px; align-items:flex-start; color:#2c2f36; font-size:15px;"><span style="color:#d8242f; font-weight:900;">✓</span>Promotion at the golf tournament</div>
-        <div style="display:flex; gap:11px; align-items:flex-start; color:#2c2f36; font-size:15px;"><span style="color:#d8242f; font-weight:900;">✓</span>A complimentary foursome at the tournament</div>
-      </div>
-      <p style="color:#797c83; font-size:14px; margin-top:24px; line-height:1.6;">Questions? Contact {contacts.sponsorship[0].name} &amp; {contacts.sponsorship[1].name}<br><a href={`mailto:${contacts.sponsorship[0].email}`}>{contacts.sponsorship[0].email}</a> · <a href={`mailto:${contacts.sponsorship[1].email}`}>{contacts.sponsorship[1].email}</a></p>
-    </div>
-    <div style="background:#f3f5fb; border-radius:6px; padding:48px 36px; border:1px solid #dde3f0; display:flex; align-items:center; justify-content:center; min-height:200px;">
-      <button class="form-trigger" data-form-src={forms.sponsorship} data-form-title="SPONSORSHIP INQUIRY" style="background:#0b1838; color:#fff; font-family:'Archivo',sans-serif; font-weight:800; font-size:17px; letter-spacing:.06em; padding:18px 52px; border-radius:3px; border:none; cursor:pointer;">BECOME A SPONSOR →</button>
-    </div>
-  </div>
-</div>
+<SponsorCTASection
+  headline={[site.sponsor_cta.headline_line1, site.sponsor_cta.headline_line2]}
+  intro={site.sponsor_cta.intro}
+  benefits={sponsorBenefits.items}
+  contacts={contacts.sponsorship}
+  sponsorshipFormUrl={forms.sponsorship}
+/>
