@@ -1,6 +1,7 @@
 ---
 import contacts from '../../data/contacts.json';
 import tournament from '../../data/tournament.json';
+import site from '../../data/site.json';
 
 const addressParts = tournament.address.split(', ');
 ---
@@ -29,8 +30,8 @@ const addressParts = tournament.address.split(', ');
     </div>
     <div style="font-size:14px; line-height:1.9;">
       <div style="color:#fff; font-weight:800; margin-bottom:6px;">CONNECT</div>
-      <a href="https://www.facebook.com/centaurusboosters/" target="_blank" rel="noopener" style="color:#7fa0ff; text-decoration:none;">Facebook</a>
+      <a href={site.social.facebook} target="_blank" rel="noopener" style="color:#7fa0ff; text-decoration:none;">Facebook</a>
     </div>
   </div>
-  <div style="border-top:1px solid rgba(255,255,255,.1); margin-top:28px; padding-top:18px; font-size:13px; color:#6f7da6;">© 2026 Centaurus Warriors Booster Club · 501(c)(3) nonprofit</div>
+  <div style="border-top:1px solid rgba(255,255,255,.1); margin-top:28px; padding-top:18px; font-size:13px; color:#6f7da6;">{site.copyright}</div>
 </div>

@@ -1,6 +1,5 @@
 ---
-import '../styles/global.css';
-import '../styles/components.css';
+import Layout from '../layouts/Layout.astro';
 import Nav from '../components/sections/Nav.astro';
 import Hero from '../components/sections/Hero.astro';
 import About from '../components/sections/About.astro';
@@ -17,33 +16,25 @@ import SponsorStrip from '../components/sections/SponsorStrip.astro';
 import Footer from '../components/sections/Footer.astro';
 import FormModal from '../components/sections/FormModal.astro';
 ---
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Centaurus Warriors Booster Club — Supporting CHS Athletics</title>
-    <meta name="description" content="The Centaurus Warriors Booster Club funds gear, travel, grants, and scholarships for every Centaurus High School athletic program. Register for the 2nd Annual Golf Tournament, sponsor, or donate." />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Archivo:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
-  </head>
-  <body>
-    <div id="top" style="font-family:'Archivo',sans-serif; background:#0b1838; width:100%; overflow-x:hidden;">
-      <Nav />
-      <Hero />
-      <About />
-      <StatBand />
-      <Programs />
-      <GolfEvent />
-      <Course />
-      <Register />
-      <GetInvolved />
-      <SponsorCTA />
-      <Donate />
-      <Grants />
-      <SponsorStrip />
-      <Footer />
-      <FormModal />
-    </div>
-  </body>
-</html>
+<Layout
+  title="Centaurus Warriors Booster Club — Supporting CHS Athletics"
+  description="The Centaurus Warriors Booster Club funds gear, travel, grants, and scholarships for every Centaurus High School athletic program. Register for the 2nd Annual Golf Tournament, sponsor, or donate."
+>
+  <div id="top">
+    <Nav />
+    <Hero />
+    <About />
+    <StatBand />
+    <Programs />
+    <GolfEvent />
+    <Course />
+    <Register />
+    <GetInvolved />
+    <SponsorCTA />
+    <Donate />
+    <Grants />
+    <SponsorStrip />
+    <Footer />
+    <FormModal />
+  </div>
+</Layout>

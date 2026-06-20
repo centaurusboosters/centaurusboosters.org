@@ -1,11 +1,12 @@
 ---
 import forms from '../../data/forms.json';
+import site from '../../data/site.json';
 ---
 <div id="donate" style="padding:84px 6vw; background:#0b1838; scroll-margin-top:72px;">
   <div style="text-align:center; max-width:680px; margin:0 auto 30px;">
     <div style="color:#7fa0ff; font-weight:800; font-size:13px; letter-spacing:.18em;">DONATE</div>
-    <h2 style="font-family:'Anton',sans-serif; font-size:54px; color:#fff; margin:12px 0 8px;">FUEL THE PROGRAMS</h2>
-    <p style="color:#aebbe0; font-size:16px; line-height:1.55; margin:0;">Your gift funds gear, travel, grants &amp; scholarships for every Centaurus athlete. Give any amount right here.</p>
+    <h2 style="font-family:'Anton',sans-serif; font-size:54px; color:#fff; margin:12px 0 8px;">{site.donate.headline}</h2>
+    <p style="color:#aebbe0; font-size:16px; line-height:1.55; margin:0;">{site.donate.body}</p>
   </div>
   <div style="text-align:center; margin-top:8px;">
     <button class="form-trigger" data-form-src={forms.donate} data-form-title="DONATE" style="background:#d8242f; color:#fff; font-family:'Archivo',sans-serif; font-weight:800; font-size:17px; letter-spacing:.06em; padding:18px 52px; border-radius:3px; border:none; cursor:pointer;">DONATE NOW →</button>

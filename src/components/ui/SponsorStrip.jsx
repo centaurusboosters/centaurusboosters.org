@@ -1,7 +1,7 @@
 import SponsorCard from './SponsorCard.jsx';
 
 export default function SponsorStrip({ sponsors }) {
-  const active = sponsors.filter(s => s.enabled);
+  const active = sponsors.filter(s => s.enabled !== false);
   return (
     <div className="sponsor-strip-grid">
       {active.map(s => (
