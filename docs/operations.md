@@ -47,13 +47,13 @@ Local verification:
 2. Run `npm run build`.
 3. Run `bash scripts/validate-site.sh dist`.
 
-Use `npm run serve` for local development.
+Use `npm run dev` for local development (Astro dev server on port 4321). Use `npm run build` to generate a production build in `dist/`.
 
 ---
 
 ## CMS admin workflow
 
-The Decap CMS admin is available at `/admin/` on deployed builds. It currently manages the sponsor strip data in `src/_data/sponsors.json`.
+The Decap CMS admin is available at `/admin/` on deployed builds. It manages structured data in `src/data/` (sponsors, tournament details, contacts) and prose content in `src/content/` (about, grants).
 
 ### Access model
 
@@ -78,7 +78,7 @@ The Decap CMS admin is available at `/admin/` on deployed builds. It currently m
 7. Paste the GitHub OAuth App client ID and client secret, then save.
 8. Visit `/admin/` on the deployed Netlify URL, choose GitHub login, and confirm Decap can read the **Site Data → Sponsors** entry.
 
-For local testing, run `npm run serve` and open `http://localhost:8080/admin/`. Do not open `public/admin/index.html` directly with a `file://` URL; Decap auth expects to run from an HTTP origin.
+For local testing, run `npm run dev` and open `http://localhost:8080/admin/`. Do not open `public/admin/index.html` directly with a `file://` URL; Decap auth expects to run from an HTTP origin.
 
 ### Editing sponsors
 
