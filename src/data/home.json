@@ -73,55 +73,55 @@
     "items": [
       {
         "name": "Westbound Realty",
-        "logo": "assets/logo-westbound.png",
+        "logo": "/assetsassets/logo-westbound.png",
         "alt": "Westbound Realty",
         "enabled": true
       },
       {
         "name": "Auguste Escoffier School of Culinary Arts",
-        "logo": "assets/logo-escoffier.jpg",
+        "logo": "/assetsassets/logo-escoffier.jpg",
         "alt": "Auguste Escoffier School of Culinary Arts",
         "enabled": true
       },
       {
         "name": "Kona Ice",
-        "logo": "assets/logo-kona-ice.jpg",
+        "logo": "/assetsassets/logo-kona-ice.jpg",
         "alt": "Kona Ice",
         "enabled": true
       },
       {
         "name": "Alpine Valley Oral Surgery",
-        "logo": "assets/logo-alpine-valley.png",
+        "logo": "/assetsassets/logo-alpine-valley.png",
         "alt": "Alpine Valley Oral Surgery",
         "enabled": true
       },
       {
         "name": "Mudrocks Tap & Tavern",
-        "logo": "assets/logo-mudrocks.jpg",
+        "logo": "/assetsassets/logo-mudrocks.jpg",
         "alt": "Mudrocks Tap & Tavern",
         "enabled": true
       },
       {
         "name": "Boulder Wealth Advisors",
-        "logo": "assets/logo-boulder-wealth.png",
+        "logo": "/assetsassets/logo-boulder-wealth.png",
         "alt": "Boulder Wealth Advisors",
         "enabled": true
       },
       {
         "name": "rockhop.ai",
-        "logo": "assets/logo-rockhop.png",
+        "logo": "/assetsassets/logo-rockhop.png",
         "alt": "rockhop.ai",
         "enabled": true
       },
       {
         "name": "Pinnacle Product Sales",
-        "logo": "assets/logo-pps.png",
+        "logo": "/assetsassets/logo-pps.png",
         "alt": "Pinnacle Product Sales",
         "enabled": true
       },
       {
         "name": "Lafayette Family Orthodontics",
-        "logo": "assets/logo-lfo.png",
+        "logo": "/assetsassets/logo-lfo.png",
         "alt": "Lafayette Family Orthodontics",
         "enabled": true
       }
@@ -161,7 +161,7 @@
   },
   "about": {
     "title": "About Us",
-    "body": "The Centaurus Booster Club is devoted to enriching the experience of students engaged in Centaurus Programs. Our vision is to cultivate a positive and supportive environment, promoting teamwork, sportsmanship, and personal growth.\n"
+    "body": "The Centaurus Booster Club is  to enriching the experience of students engaged in Centaurus Programs. Our vision is to cultivate a positive and supportive environment, promoting teamwork, sportsmanship, and personal growth.\n"
   },
   "grants": {
     "items": [
