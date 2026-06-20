@@ -1,7 +1,14 @@
 import { renderContentMarkdown } from '../../lib/content';
+import { getTinaDocument } from '../../lib/tina-content';
+import AboutEditor from './AboutEditor';
 
-export default function About() {
+export default async function About() {
   const about = renderContentMarkdown('about', 'index.mdx');
+  const tina = await getTinaDocument('about', 'index.mdx');
+
+  if (tina) {
+    return <AboutEditor tina={tina} fallbackHtml={about.html} />;
+  }
 
   return (
     <div style={{ padding: '56px 6vw', background: '#0e1f47', textAlign: 'center' }}>
