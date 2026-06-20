@@ -1,7 +1,11 @@
 backend:
   name: github
   repo: kurtharriger/2026-boosters
-  branch: cms
+  branch: main
+  site_domain: gilded-genie-b2528a.netlify.app
+  squash_merges: true
+
+publish_mode: editorial_workflow
 
 media_folder: "public/assets"
 public_folder: "assets"
