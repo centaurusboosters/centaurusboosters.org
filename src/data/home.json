@@ -10,8 +10,19 @@
     "holes": 18,
     "format": "Scramble",
     "format_label": "18-Hole Scramble · Teams of 4",
-    "inclusions": ["Range balls", "Golf cart", "18 holes", "Tournament gift"],
-    "add_ons": ["Mulligan Packages", "Closest to the Pin", "Skills Challenge", "Longest Drive", "Split the Pot"],
+    "inclusions": [
+      "Range balls",
+      "Golf cart",
+      "18 holes",
+      "Tournament gift"
+    ],
+    "add_ons": [
+      "Mulligan Packages",
+      "Closest to the Pin",
+      "Skills Challenge",
+      "Longest Drive",
+      "Split the Pot"
+    ],
     "auction_description": "Massages, interior design services, CU Football & Avs tickets, themed baskets, tutoring, dog lover treats & more. Bid before lunch.",
     "section_headline": "A DAY OF GOLF, FOOD & FUN",
     "section_intro": "Come support Centaurus High School Athletics while you enjoy a day golfing 18 holes at Indian Peaks. Warm up with complimentary range balls, then play a team scramble.",
@@ -43,23 +54,77 @@
     }
   },
   "contacts": {
-    "players": { "name": "Kelly Marcus", "email": "kelly@centaurusboosters.org" },
+    "players": {
+      "name": "Kelly Marcus",
+      "email": "kelly@centaurusboosters.org"
+    },
     "sponsorship": [
-      { "name": "CJ Riggins", "email": "cj@centaurusboosters.org" },
-      { "name": "Steve Seeger", "email": "steve@centaurusboosters.org" }
+      {
+        "name": "CJ Riggins",
+        "email": "cj@centaurusboosters.org"
+      },
+      {
+        "name": "Steve Seeger",
+        "email": "steve@centaurusboosters.org"
+      }
     ]
   },
   "sponsors": {
     "items": [
-      { "name": "Westbound Realty", "logo": "assets/logo-westbound.png", "alt": "Westbound Realty", "enabled": true },
-      { "name": "Auguste Escoffier School of Culinary Arts", "logo": "assets/logo-escoffier.jpg", "alt": "Auguste Escoffier School of Culinary Arts", "enabled": true },
-      { "name": "Kona Ice", "logo": "assets/logo-kona-ice.jpg", "alt": "Kona Ice", "enabled": true },
-      { "name": "Alpine Valley Oral Surgery", "logo": "assets/logo-alpine-valley.png", "alt": "Alpine Valley Oral Surgery", "enabled": true },
-      { "name": "Mudrocks Tap & Tavern", "logo": "assets/logo-mudrocks.jpg", "alt": "Mudrocks Tap & Tavern", "enabled": true },
-      { "name": "Boulder Wealth Advisors", "logo": "assets/logo-boulder-wealth.png", "alt": "Boulder Wealth Advisors", "enabled": true },
-      { "name": "rockhop.ai", "logo": "assets/logo-rockhop.png", "alt": "rockhop.ai", "enabled": true },
-      { "name": "Pinnacle Product Sales", "logo": "assets/logo-pps.png", "alt": "Pinnacle Product Sales", "enabled": true },
-      { "name": "Lafayette Family Orthodontics", "logo": "assets/logo-lfo.png", "alt": "Lafayette Family Orthodontics", "enabled": true }
+      {
+        "name": "Westbound Realty",
+        "logo": "assets/logo-westbound.png",
+        "alt": "Westbound Realty",
+        "enabled": true
+      },
+      {
+        "name": "Auguste Escoffier School of Culinary Arts",
+        "logo": "assets/logo-escoffier.jpg",
+        "alt": "Auguste Escoffier School of Culinary Arts",
+        "enabled": true
+      },
+      {
+        "name": "Kona Ice",
+        "logo": "assets/logo-kona-ice.jpg",
+        "alt": "Kona Ice",
+        "enabled": true
+      },
+      {
+        "name": "Alpine Valley Oral Surgery",
+        "logo": "assets/logo-alpine-valley.png",
+        "alt": "Alpine Valley Oral Surgery",
+        "enabled": true
+      },
+      {
+        "name": "Mudrocks Tap & Tavern",
+        "logo": "assets/logo-mudrocks.jpg",
+        "alt": "Mudrocks Tap & Tavern",
+        "enabled": true
+      },
+      {
+        "name": "Boulder Wealth Advisors",
+        "logo": "assets/logo-boulder-wealth.png",
+        "alt": "Boulder Wealth Advisors",
+        "enabled": true
+      },
+      {
+        "name": "rockhop.ai",
+        "logo": "assets/logo-rockhop.png",
+        "alt": "rockhop.ai",
+        "enabled": true
+      },
+      {
+        "name": "Pinnacle Product Sales",
+        "logo": "assets/logo-pps.png",
+        "alt": "Pinnacle Product Sales",
+        "enabled": true
+      },
+      {
+        "name": "Lafayette Family Orthodontics",
+        "logo": "assets/logo-lfo.png",
+        "alt": "Lafayette Family Orthodontics",
+        "enabled": true
+      }
     ]
   },
   "sponsor_benefits": {
@@ -96,57 +161,21 @@
   },
   "about": {
     "title": "About Us",
-    "body": {
-      "type": "root",
-      "children": [
-        {
-          "type": "p",
-          "children": [
-            {
-              "text": "The Centaurus Booster Club is devoted to enriching the experience of students engaged in Centaurus Programs. Our vision is to cultivate a positive and supportive environment, promoting teamwork, sportsmanship, and personal growth."
-            }
-          ]
-        }
-      ]
-    }
+    "body": "The Centaurus Booster Club is devoted to enriching the experience of students engaged in Centaurus Programs. Our vision is to cultivate a positive and supportive environment, promoting teamwork, sportsmanship, and personal growth.\n"
   },
   "grants": {
     "items": [
       {
         "audience": "For Coaches",
         "title": "Team Grants",
-        "body": {
-          "type": "root",
-          "children": [
-            {
-              "type": "p",
-              "children": [
-                {
-                  "text": "Booster funds go directly to programs for equipment, travel, and the extras that make a season. Coaches can apply each year."
-                }
-              ]
-            }
-          ]
-        },
+        "body": "\\[object Object]\n",
         "cta_label": "Apply for a Grant",
         "form": "team_grant"
       },
       {
         "audience": "For Seniors",
         "title": "Senior Scholarships",
-        "body": {
-          "type": "root",
-          "children": [
-            {
-              "type": "p",
-              "children": [
-                {
-                  "text": "We celebrate graduating Warrior athletes with scholarships that send them into their next chapter strong."
-                }
-              ]
-            }
-          ]
-        },
+        "body": "\\[object Object]\n",
         "cta_label": "Apply Now",
         "form": "scholarship"
       }
