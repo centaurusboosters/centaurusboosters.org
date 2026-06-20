@@ -3,14 +3,17 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "build": "next build",
+    "build": "tinacms build --local --skip-cloud-checks && next build",
+    "build:cms": "tinacms build --local --skip-cloud-checks",
     "build:next": "next build",
-    "dev": "next dev",
+    "dev": "tinacms dev -c \"next dev\"",
+    "dev:cms": "tinacms dev -c \"next dev\"",
     "dev:next": "next dev",
     "validate": "npm run build && bash scripts/validate-site.sh out"
   },
   "devDependencies": {
     "@11ty/eleventy": "^3.1.2",
+    "@tinacms/cli": "^2.5.1",
     "@types/node": "26.0.0",
     "@types/react": "19.2.17",
     "gray-matter": "^4.0.3",
@@ -23,5 +26,8 @@
   "allowScripts": {
     "fsevents@2.3.3": true,
     "sharp@0.34.5": true
+  },
+  "dependencies": {
+    "tinacms": "^3.9.3"
   }
 }

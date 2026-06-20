@@ -1,0 +1,109 @@
+fragment SponsorsParts on Sponsors {
+  __typename
+  items {
+    __typename
+    name
+    logo
+    alt
+    enabled
+  }
+}
+
+fragment TournamentParts on Tournament {
+  __typename
+  edition
+  date
+  time
+  venue
+  address
+  price_player
+  price_foursome
+  holes
+  format
+  format_label
+  inclusions
+  add_ons
+  auction_description
+  section_headline
+  section_intro
+  course_description
+  register_headline
+  register_intro
+  arrive_by
+}
+
+fragment ContactsParts on Contacts {
+  __typename
+  players {
+    __typename
+    name
+    email
+  }
+  sponsorship {
+    __typename
+    name
+    email
+  }
+}
+
+fragment Sponsor_benefitsParts on Sponsor_benefits {
+  __typename
+  items
+}
+
+fragment Get_involvedParts on Get_involved {
+  __typename
+  items {
+    __typename
+    title
+    description
+    link_label
+    form
+    form_title
+    coming_soon
+  }
+}
+
+fragment SiteParts on Site {
+  __typename
+  copyright
+  social {
+    __typename
+    facebook
+  }
+  hero_mission {
+    __typename
+    badge
+    headline_line1
+    headline_line2
+    headline_accent
+    body
+  }
+  donate {
+    __typename
+    headline
+    body
+  }
+  sponsor_cta {
+    __typename
+    headline_line1
+    headline_line2
+    intro
+  }
+}
+
+fragment AboutParts on About {
+  __typename
+  title
+  body
+}
+
+fragment GrantsParts on Grants {
+  __typename
+  audience
+  title
+  body
+  cta_label
+  form
+  theme
+}
