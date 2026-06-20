@@ -9,7 +9,7 @@ Migrate the booster site from Eleventy + Nunjucks to Astro with React components
 | Step | Description | Status |
 |------|-------------|--------|
 | 1 | Astro baseline (install, config, netlify, scripts) | `[x]` |
-| 2 | CSS extraction (move inline styles, verify visual parity) | `[ ]` |
+| 2 | CSS extraction (move inline styles, verify visual parity) | `[x]` |
 | 3 | Data files (sponsors move + new JSON files) | `[ ]` |
 | 4 | MDX content files (collections config + content) | `[ ]` |
 | 5 | Shared React components (SponsorStrip, SponsorCard) | `[ ]` |

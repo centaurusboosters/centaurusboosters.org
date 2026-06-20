@@ -1,0 +1,80 @@
+/* Nav */
+a.navlink { position: relative; }
+a.navlink:hover { color: #fff !important; }
+
+.nav-burger { display: none; flex-direction: column; justify-content: space-between; width: 26px; height: 20px; background: none; border: none; padding: 0; cursor: pointer; }
+.nav-burger span { display: block; width: 100%; height: 2px; background: #fff; border-radius: 2px; }
+
+#nav-mobile { display: none; position: absolute; left: 0; right: 0; top: 100%; background: rgba(8,18,44,.97); border-top: 1px solid rgba(255,255,255,.1); padding: 8px 6vw 20px; flex-direction: column; z-index: 49; }
+#nav-mobile a { display: block; color: #cdd6ee; text-decoration: none; font-weight: 700; font-size: 15px; letter-spacing: .06em; padding: 14px 0; border-bottom: 1px solid rgba(255,255,255,.07); }
+#nav-mobile a.mobile-donate { color: #fff; background: #d8242f; text-align: center; padding: 14px; border-radius: 3px; margin-top: 10px; border: none; }
+#nav-mobile.open { display: flex; }
+
+/* Hero spotlight */
+.spot { transition: transform 0.7s cubic-bezier(0.4,0,0.2,1); }
+
+/* Image placeholders */
+.img-ph { display: flex; align-items: center; justify-content: center; text-align: center; padding: 12px; font-weight: 700; font-size: 12px; letter-spacing: .08em; text-transform: uppercase; }
+.img-ph-dark { background-image: repeating-linear-gradient(45deg, rgba(255,255,255,.06) 0 16px, rgba(255,255,255,.12) 16px 32px); color: #7fa0ff; }
+.img-ph-light { background: #e9edf6; border: 1px dashed #c4cde0; color: #9aa6c4; }
+
+/* Form modal */
+#form-modal { display: none; position: fixed; inset: 0; z-index: 200; align-items: center; justify-content: center; }
+#form-modal.open { display: flex; }
+#form-modal-back { position: absolute; inset: 0; background: rgba(5,10,28,.75); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); }
+#form-modal-box { position: relative; background: #fff; border-radius: 8px; width: min(860px,94vw); max-height: 90vh; overflow: hidden; display: flex; flex-direction: column; box-shadow: 0 28px 80px rgba(0,0,0,.55); }
+#form-modal-head { display: flex; align-items: center; justify-content: space-between; padding: 14px 20px; border-bottom: 1px solid #e5e8f0; flex-shrink: 0; background: #fff; }
+#form-modal-title { font-family: 'Anton', sans-serif; font-size: 17px; color: #0b1838; letter-spacing: .05em; }
+#form-modal-close { background: none; border: none; font-size: 22px; cursor: pointer; color: #555; padding: 2px 8px; line-height: 1; border-radius: 4px; }
+#form-modal-close:hover { background: #f0f0f0; }
+#form-modal-iframe { width: 100%; flex: 1; border: 0; display: block; min-height: 580px; }
+
+/* Responsive */
+@media (max-width: 767px) {
+  .nav-links { display: none !important; }
+  .nav-burger { display: flex !important; }
+
+  #form-modal-box { width: 100%; height: 100dvh; max-height: 100dvh; border-radius: 0; }
+  #form-modal-iframe { min-height: unset; }
+
+  /* Hero */
+  .hero-img-panel { width: 100% !important; }
+  #spot-golf h1, #spot-mission h1 { font-size: 44px !important; }
+  .hero-cta { flex-direction: column !important; }
+  .hero-cta a { text-align: center !important; font-size: 15px !important; padding: 14px 20px !important; }
+  .hero-sep { display: none; }
+
+  /* Stat band: stack vertically */
+  .stat-band { grid-template-columns: 1fr !important; }
+  .stat-band > div { border-right: none !important; border-bottom: 1px solid rgba(255,255,255,.2); }
+  .stat-band > div:last-child { border-bottom: none; }
+
+  /* Section headings */
+  #golf h2 { font-size: 36px !important; }
+  #register h2, #donate h2 { font-size: 36px !important; }
+  #getinvolved h2 { font-size: 30px !important; }
+  #sponsor h2 { font-size: 34px !important; }
+
+  /* Main event: photo above, cards below */
+  .event-grid { grid-template-columns: 1fr !important; }
+  #event-photo { min-height: 240px !important; }
+
+  /* Course: stack text/map above photos */
+  .course-outer { grid-template-columns: 1fr !important; }
+  .course-photos { height: 200px !important; }
+
+  /* Ways to give: single column */
+  .ways-grid { grid-template-columns: 1fr !important; }
+
+  /* Sponsor layout: single column, unstick sidebar */
+  .sponsor-layout { grid-template-columns: 1fr !important; }
+  .sponsor-sticky { position: static !important; }
+
+  /* Grants: single column, less padding */
+  .grants-grid { grid-template-columns: 1fr !important; }
+  #grants h3 { font-size: 28px !important; }
+  .grants-grid > div { padding: 28px !important; }
+
+  /* Section padding reduction */
+  #golf, #register, #getinvolved, #sponsor, #donate, #grants { padding: 52px 5vw !important; }
+}
