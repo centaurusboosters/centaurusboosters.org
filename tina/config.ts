@@ -27,6 +27,7 @@ export default defineConfig({
         format: 'json',
         match: { include: 'sponsors' },
         ui: {
+          router: () => '/',
           allowedActions: {
             create: false,
             delete: false,
@@ -55,6 +56,7 @@ export default defineConfig({
         format: 'json',
         match: { include: 'tournament' },
         ui: {
+          router: () => '/',
           allowedActions: {
             create: false,
             delete: false,
@@ -89,6 +91,7 @@ export default defineConfig({
         format: 'json',
         match: { include: 'contacts' },
         ui: {
+          router: () => '/',
           allowedActions: {
             create: false,
             delete: false,
@@ -124,6 +127,7 @@ export default defineConfig({
         format: 'json',
         match: { include: 'sponsor-benefits' },
         ui: {
+          router: () => '/',
           allowedActions: {
             create: false,
             delete: false,
@@ -138,6 +142,7 @@ export default defineConfig({
         format: 'json',
         match: { include: 'get-involved' },
         ui: {
+          router: () => '/',
           allowedActions: {
             create: false,
             delete: false,
@@ -168,6 +173,7 @@ export default defineConfig({
         format: 'json',
         match: { include: 'site' },
         ui: {
+          router: () => '/',
           allowedActions: {
             create: false,
             delete: false,
@@ -220,6 +226,7 @@ export default defineConfig({
         path: 'src/content/about',
         format: 'mdx',
         ui: {
+          router: () => '/',
           allowedActions: {
             create: false,
             delete: false,
@@ -236,6 +243,7 @@ export default defineConfig({
         path: 'src/content/grants',
         format: 'mdx',
         ui: {
+          router: () => '/',
           allowedActions: {
             create: false,
             delete: false,
