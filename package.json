@@ -3,12 +3,14 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "build": "npm run build:preview && astro build",
+    "build": "next build",
+    "build:astro": "npm run build:preview && astro build",
     "build:preview": "node_modules/.bin/esbuild src/admin/preview.jsx --bundle --outfile=public/admin/preview.js --format=iife --global-name=__DecapPreviews --jsx=automatic --define:process.env.NODE_ENV='\"production\"'",
     "build:next": "next build",
-    "dev": "astro dev",
+    "dev": "next dev",
+    "dev:astro": "astro dev",
     "dev:next": "next dev",
-    "validate": "npm run build && bash scripts/validate-site.sh dist"
+    "validate": "npm run build && bash scripts/validate-site.sh out"
   },
   "devDependencies": {
     "@11ty/eleventy": "^3.1.2",
