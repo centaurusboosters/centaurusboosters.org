@@ -78,7 +78,7 @@ The Decap CMS admin is available at `/admin/` on deployed builds. It manages str
 7. Paste the GitHub OAuth App client ID and client secret, then save.
 8. Visit `/admin/` on the deployed Netlify URL, choose GitHub login, and confirm Decap can read the **Site Data → Sponsors** entry.
 
-For local testing, run `npm run dev` and open `http://localhost:8080/admin/`. Do not open `public/admin/index.html` directly with a `file://` URL; Decap auth expects to run from an HTTP origin.
+For local testing, run `npm run dev` and open `http://localhost:4321/admin/index.html`. Astro's dev server does not serve directory index files from `public/` subdirectories, so you must include the `index.html` suffix locally. In production, Netlify handles `/admin/` → `/admin/index.html` automatically. Do not open `public/admin/index.html` directly with a `file://` URL; Decap auth expects to run from an HTTP origin.
 
 ### Editing sponsors
 
