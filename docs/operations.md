@@ -23,7 +23,7 @@ This guide covers the one-time human setup steps required to activate the agenti
 6. In the build settings form:
    - **Branch to deploy:** `main`
    - **Build command:** `npm run build`
-   - **Publish directory:** `dist`
+   - **Publish directory:** `out`
    - These values are also in `netlify.toml` at the repo root, which Netlify reads automatically.
 7. Click **Deploy site**.
 8. Wait for the initial deploy to complete. The site will be live at a `*.netlify.app` URL.
@@ -39,15 +39,15 @@ Open a test PR (any file change against `main`). After a few minutes, a Netlify 
 
 ## P3 — Build and publish directory
 
-The site now builds with Eleventy. Netlify runs `npm run build` and publishes `dist/`. Static assets and the Decap admin app still live under `public/`, and Eleventy copies them into the generated site.
+The site now builds with Next.js static export. Netlify runs `npm run build` and publishes `out/`. Static assets and the legacy Decap admin app still live under `public/`, and Next copies them into the exported site.
 
 Local verification:
 
 1. Run `npm ci`.
 2. Run `npm run build`.
-3. Run `bash scripts/validate-site.sh dist`.
+3. Run `bash scripts/validate-site.sh out`.
 
-Use `npm run dev` for local development (Astro dev server on port 4321). Use `npm run build` to generate a production build in `dist/`.
+Use `npm run dev` for local development (Next dev server on port 3000 by default). Use `npm run build` to generate a production export in `out/`.
 
 ---
 
@@ -78,7 +78,7 @@ The Decap CMS admin is available at `/admin/` on deployed builds. It manages str
 7. Paste the GitHub OAuth App client ID and client secret, then save.
 8. Visit `/admin/` on the deployed Netlify URL, choose GitHub login, and confirm Decap can read the **Site Data → Sponsors** entry.
 
-For local testing, run `npm run dev` and open `http://localhost:4321/admin/index.html`. Astro's dev server does not serve directory index files from `public/` subdirectories, so you must include the `index.html` suffix locally. In production, Netlify handles `/admin/` → `/admin/index.html` automatically. Do not open `public/admin/index.html` directly with a `file://` URL; Decap auth expects to run from an HTTP origin.
+For local testing, run `npm run dev` and open `http://localhost:3000/admin/index.html`. In production, Netlify handles `/admin/` → `/admin/index.html` automatically. Do not open `public/admin/index.html` directly with a `file://` URL; Decap auth expects to run from an HTTP origin.
 
 ### Editing sponsors
 
