@@ -58,8 +58,8 @@ The TinaCMS admin is available at `/admin/index.html`. It manages structured dat
 
 - TinaCMS is configured in `tina/config.ts`.
 - Local editing runs through `npm run dev`, which starts Tina's local content API and the Next dev server together.
-- The current build uses Tina's local/self-hosted mode (`tinacms build --local --skip-cloud-checks`) and does not require TinaCloud credentials.
-- Production auth and Git write behavior will be finalized as part of the self-hosted Tina backend setup.
+- Production builds use TinaCloud mode (`tinacms build`) and require `TINA_TOKEN` (or `NEXT_PUBLIC_TINA_TOKEN`) in the deploy environment.
+- Use `npm run build:local` when you need a credential-free local static build.
 - Netlify rebuilds production after content changes are committed and merged.
 
 ### Local Tina setup
