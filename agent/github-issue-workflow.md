@@ -161,7 +161,7 @@ If validation fails:
 
 ## Step 11 — Persona review gate (advisory)
 
-Select the persona(s) from `PERSONAS.md` that match the issue's `type:` label:
+Select the persona(s) from `agent/PERSONAS.md` that match the issue's `type:` label:
 
 | `type:` label | Persona |
 |---|---|

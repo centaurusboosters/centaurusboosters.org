@@ -19,6 +19,12 @@
         return Array.isArray(value) ? value : [];
       }
 
+      function previewAssetPath(path) {
+        if (!path) return "";
+        if (/^(https?:)?\/\//.test(path) || path.charAt(0) === "/") return path;
+        return "/" + path;
+      }
+
       function sponsorCard(sponsor, index) {
         return h(
           "div",
@@ -36,7 +42,7 @@
             }
           },
           h("img", {
-            src: sponsor.logo || "",
+            src: previewAssetPath(sponsor.logo),
             alt: sponsor.alt || sponsor.name || "",
             style: {
               maxWidth: "100%",

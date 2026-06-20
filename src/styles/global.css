@@ -1,0 +1,16 @@
+:root {
+  --color-navy: #0b1838;
+  --color-navy-dark: #070f24;
+  --color-navy-mid: #0e1f47;
+  --color-navy-light: #13265a;
+  --color-red: #d8242f;
+  --color-blue-muted: #7fa0ff;
+  --color-text-dim: #aebbe0;
+  --color-text-nav: #cdd6ee;
+  --font-display: 'Anton', sans-serif;
+  --font-body: 'Archivo', sans-serif;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { margin: 0; background: #0b1838; }

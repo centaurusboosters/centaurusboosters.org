@@ -16,7 +16,7 @@ collections:
     files:
       - name: "sponsors"
         label: "Sponsors"
-        file: "src/_data/sponsors.json"
+        file: "src/data/sponsors.json"
         format: "json"
         fields:
           - label: "Sponsors"
@@ -24,16 +24,69 @@ collections:
             widget: "list"
             summary: "{{fields.name}}"
             fields:
-              - label: "Name"
-                name: "name"
-                widget: "string"
-              - label: "Logo"
-                name: "logo"
-                widget: "image"
-              - label: "Alt text"
-                name: "alt"
-                widget: "string"
-              - label: "Enabled"
-                name: "enabled"
-                widget: "boolean"
-                default: true
+              - { label: "Name", name: "name", widget: "string" }
+              - { label: "Logo", name: "logo", widget: "image" }
+              - { label: "Alt text", name: "alt", widget: "string" }
+              - { label: "Enabled", name: "enabled", widget: "boolean", default: true }
+
+      - name: "tournament"
+        label: "Tournament Details"
+        file: "src/data/tournament.json"
+        format: "json"
+        fields:
+          - { label: "Edition", name: "edition", widget: "string" }
+          - { label: "Date", name: "date", widget: "string" }
+          - { label: "Time", name: "time", widget: "string" }
+          - { label: "Venue", name: "venue", widget: "string" }
+          - { label: "Address", name: "address", widget: "string" }
+          - { label: "Price per player ($)", name: "price_player", widget: "number" }
+          - { label: "Price per foursome ($)", name: "price_foursome", widget: "number" }
+
+      - name: "contacts"
+        label: "Contacts"
+        file: "src/data/contacts.json"
+        format: "json"
+        fields:
+          - label: "Players contact"
+            name: "players"
+            widget: "object"
+            fields:
+              - { label: "Name", name: "name", widget: "string" }
+              - { label: "Email", name: "email", widget: "string" }
+          - label: "Sponsorship contacts"
+            name: "sponsorship"
+            widget: "list"
+            fields:
+              - { label: "Name", name: "name", widget: "string" }
+              - { label: "Email", name: "email", widget: "string" }
+
+  - name: "content"
+    label: "Page Content"
+    files:
+      - name: "about"
+        label: "About / Mission"
+        file: "src/content/about/index.mdx"
+        format: "frontmatter"
+        fields:
+          - { label: "Title", name: "title", widget: "string" }
+          - { label: "Body", name: "body", widget: "markdown" }
+
+      - name: "grants_team"
+        label: "Team Grants"
+        file: "src/content/grants/team-grants.mdx"
+        format: "frontmatter"
+        fields:
+          - { label: "Audience label", name: "audience", widget: "string" }
+          - { label: "Title", name: "title", widget: "string" }
+          - { label: "Body", name: "body", widget: "markdown" }
+          - { label: "CTA label", name: "cta_label", widget: "string" }
+
+      - name: "grants_scholarships"
+        label: "Senior Scholarships"
+        file: "src/content/grants/senior-scholarships.mdx"
+        format: "frontmatter"
+        fields:
+          - { label: "Audience label", name: "audience", widget: "string" }
+          - { label: "Title", name: "title", widget: "string" }
+          - { label: "Body", name: "body", widget: "markdown" }
+          - { label: "CTA label", name: "cta_label", widget: "string" }

@@ -1,0 +1,22 @@
+---
+import tournament from '../../data/tournament.json';
+import contacts from '../../data/contacts.json';
+import forms from '../../data/forms.json';
+---
+<div id="register" style="padding:84px 6vw; background:#f3f5fb; scroll-margin-top:72px;">
+  <div style="text-align:center; max-width:680px; margin:0 auto 30px;">
+    <div style="color:#1c3fb0; font-weight:800; font-size:13px; letter-spacing:.18em;">REGISTER NOW</div>
+    <h2 style="font-family:'Anton',sans-serif; font-size:54px; color:#0b1838; margin:12px 0 8px;">CLAIM YOUR TEE TIME</h2>
+    <p style="color:#55585f; font-size:16px; line-height:1.55; margin:0;">Sign up right here — register a full foursome or join as an individual and we'll build your team. Questions? Contact {contacts.players.name} at <a href={`mailto:${contacts.players.email}`}>{contacts.players.email}</a>.</p>
+  </div>
+  <div style="display:flex; flex-wrap:wrap; justify-content:center; gap:12px 32px; background:#0b1838; border-radius:6px; padding:18px 28px; margin:0 auto 28px; max-width:680px;">
+    <span style="color:#aebbe0; font-size:14px; font-weight:700; white-space:nowrap;">⏰ ARRIVE BY 8:00 AM</span>
+    <span style="color:rgba(255,255,255,.2); font-size:14px;">|</span>
+    <span style="color:#aebbe0; font-size:14px; font-weight:700; white-space:nowrap;">🏌 9:00 AM SHOTGUN START</span>
+    <span style="color:rgba(255,255,255,.2); font-size:14px;">|</span>
+    <span style="color:#aebbe0; font-size:14px; font-weight:700; white-space:nowrap;">👥 REGISTER UP TO 4 PLAYERS</span>
+  </div>
+  <div style="text-align:center; margin-top:8px;">
+    <button class="form-trigger" data-form-src={forms.registration} data-form-title="TOURNAMENT REGISTRATION" style="background:#d8242f; color:#fff; font-family:'Archivo',sans-serif; font-weight:800; font-size:17px; letter-spacing:.06em; padding:18px 52px; border-radius:3px; border:none; cursor:pointer;">REGISTER NOW →</button>
+  </div>
+</div>
