@@ -1,3 +1,17 @@
 {
-  "extends": "astro/tsconfigs/base"
+  "extends": "astro/tsconfigs/base",
+  "compilerOptions": {
+    "allowJs": true,
+    "jsx": "preserve",
+    "noEmit": true,
+    "plugins": [{ "name": "next" }]
+  },
+  "include": [
+    "next-env.d.ts",
+    "src/app/**/*.js",
+    "src/app/**/*.jsx",
+    "src/app/**/*.ts",
+    "src/app/**/*.tsx"
+  ],
+  "exclude": ["node_modules", "automation"]
 }
