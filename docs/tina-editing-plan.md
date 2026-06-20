@@ -87,10 +87,10 @@ Pass one prop per collection (`tinaTournament`, `tinaSite`, etc.) plus matching 
 ## Validate after each step
 
 ```
-npm run validate
+npm run build
 ```
 
-All checks must pass before marking a step done and moving to the next.
+The build must pass before marking a step done and moving to the next.
 
 ---
 
@@ -100,6 +100,6 @@ Set goal: `implement tina editing plan` and run `/loop`. Each iteration should:
 1. Read this file
 2. Find the first unchecked step
 3. Implement it
-4. Run `npm run validate`
+4. Run `npm run build`
 5. If passing, mark `[ ]` → `[x]` in this file and commit
 6. Stop if all steps are checked

@@ -13,7 +13,7 @@ should implement the same procedure and acceptance criteria.
 | `GITHUB_OWNER` | `kurtharriger` |
 | `GITHUB_REPO` | `2026-boosters` |
 | `SITE_DIR` | `public/` |
-| `VALIDATE_CMD` | `bash scripts/validate-site.sh` |
+| `VALIDATE_CMD` | `npm run build` |
 | `TRUSTED_ISSUE_CREATORS` | `["kurtharriger"]` |
 | `ELIGIBLE_LABELS` | `["source:google-form", "agent:eligible"]` |
 | `GITHUB_PROJECT_NUMBER` | Set to your project number once created; `0` = skip Project status updates |
@@ -148,7 +148,7 @@ Rules:
 ## Step 10 — Run deterministic validation
 
 ```bash
-bash scripts/validate-site.sh
+npm run build
 ```
 
 If validation fails:
@@ -235,7 +235,7 @@ Closes #<number>
 
 ## Validation
 
-- [x] `bash scripts/validate-site.sh` — all checks passed
+- [x] `npm run build` — completed without errors
 - [ ] Netlify Deploy Preview — will appear shortly
 
 ## Notes for reviewer

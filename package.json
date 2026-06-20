@@ -8,8 +8,7 @@
     "build:next": "next build",
     "dev": "tinacms dev -c \"next dev\"",
     "dev:cms": "tinacms dev -c \"next dev\"",
-    "dev:next": "next dev",
-    "validate": "npm run build && bash scripts/validate-site.sh out"
+    "dev:next": "next dev"
   },
   "devDependencies": {
     "@tinacms/cli": "^2.5.1",

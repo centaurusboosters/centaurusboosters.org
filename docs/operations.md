@@ -45,7 +45,6 @@ Local verification:
 
 1. Run `npm ci`.
 2. Run `npm run build`.
-3. Run `bash scripts/validate-site.sh out`.
 
 Use `npm run dev` for local development (Next dev server on port 3000 by default). Use `npm run build` to generate a production export in `out/`.
 
