@@ -1,9 +1,8 @@
 'use client';
 
-import { tinaField, useEditableDocument } from '../tina/editable';
+import { tinaField } from '../tina/editable';
 
-export default function SponsorStripClient({ tina, staticData }) {
-  const sponsors = useEditableDocument(tina, 'sponsors', staticData);
+export default function SponsorStripClient({ sponsors }) {
   const active = sponsors.items.filter((s) => s.enabled !== false);
 
   return (

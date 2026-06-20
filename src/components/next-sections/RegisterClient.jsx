@@ -1,12 +1,9 @@
 'use client';
 
 import forms from '../../data/forms.json';
-import { tinaField, useEditableDocument } from '../tina/editable';
+import { tinaField } from '../tina/editable';
 
-export default function RegisterClient({ tinaTournament, tinaContacts, staticTournament, staticContacts }) {
-  const tournament = useEditableDocument(tinaTournament, 'tournament', staticTournament);
-  const contacts = useEditableDocument(tinaContacts, 'contacts', staticContacts);
-
+export default function RegisterClient({ tournament, contacts }) {
   return (
     <div id="register" style={{ padding: '84px 6vw', background: '#f3f5fb', scrollMarginTop: 72 }}>
       <div style={{ textAlign: 'center', maxWidth: 680, margin: '0 auto 30px' }}>

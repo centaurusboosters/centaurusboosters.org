@@ -1,13 +1,9 @@
 'use client';
 
 import forms from '../../data/forms.json';
-import { tinaField, useEditableDocument } from '../tina/editable';
+import { tinaField } from '../tina/editable';
 
-export default function SponsorCTAClient({ tinaSite, tinaBenefits, tinaContacts, staticSite, staticBenefits, staticContacts }) {
-  const site = useEditableDocument(tinaSite, 'site', staticSite);
-  const sponsorBenefits = useEditableDocument(tinaBenefits, 'sponsor_benefits', staticBenefits);
-  const contacts = useEditableDocument(tinaContacts, 'contacts', staticContacts);
-
+export default function SponsorCTAClient({ site, sponsorBenefits, contacts }) {
   const cta = site.sponsor_cta;
   const benefits = sponsorBenefits.items;
   const sponsorship = contacts.sponsorship;

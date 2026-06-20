@@ -1,10 +1,8 @@
 'use client';
 
-import { tinaField, useEditableDocument } from '../tina/editable';
+import { tinaField } from '../tina/editable';
 
-export default function GolfEventClient({ tina, staticData }) {
-  const tournament = useEditableDocument(tina, 'tournament', staticData);
-
+export default function GolfEventClient({ tournament }) {
   return (
     <div id="golf" style={{ padding: '84px 6vw', background: '#0b1838', scrollMarginTop: 72 }}>
       <div style={eyebrowStyle}><span style={ruleStyle}></span>THE MAIN EVENT</div>

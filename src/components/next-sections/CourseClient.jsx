@@ -1,10 +1,8 @@
 'use client';
 
-import { tinaField, useEditableDocument } from '../tina/editable';
+import { tinaField } from '../tina/editable';
 
-export default function CourseClient({ tina, staticData }) {
-  const tournament = useEditableDocument(tina, 'tournament', staticData);
-
+export default function CourseClient({ tournament }) {
   return (
     <div style={{ padding: '84px 6vw', background: '#0e1f47' }}>
       <div className="course-outer" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 40, alignItems: 'center' }}>

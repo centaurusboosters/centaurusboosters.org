@@ -2,11 +2,9 @@
 
 import { useEffect, useState } from 'react';
 import forms from '../../data/forms.json';
-import { tinaField, useEditableDocument } from '../tina/editable';
+import { tinaField } from '../tina/editable';
 
-export default function HeroClient({ tinaTournament, tinaSite, staticTournament, staticSite }) {
-  const tournament = useEditableDocument(tinaTournament, 'tournament', staticTournament);
-  const site = useEditableDocument(tinaSite, 'site', staticSite);
+export default function HeroClient({ tournament, site }) {
   const mission = site.hero_mission;
 
   const [active, setActive] = useState(0);

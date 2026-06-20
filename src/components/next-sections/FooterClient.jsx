@@ -1,12 +1,8 @@
 'use client';
 
-import { tinaField, useEditableDocument } from '../tina/editable';
+import { tinaField } from '../tina/editable';
 
-export default function FooterClient({ tinaContacts, tinaTournament, tinaSite, staticContacts, staticTournament, staticSite }) {
-  const contacts = useEditableDocument(tinaContacts, 'contacts', staticContacts);
-  const tournament = useEditableDocument(tinaTournament, 'tournament', staticTournament);
-  const site = useEditableDocument(tinaSite, 'site', staticSite);
-
+export default function FooterClient({ contacts, tournament, site }) {
   const addressParts = tournament.address.split(', ');
 
   return (

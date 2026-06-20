@@ -1,11 +1,9 @@
 'use client';
 
 import forms from '../../data/forms.json';
-import { tinaField, useEditableDocument } from '../tina/editable';
+import { tinaField } from '../tina/editable';
 
-export default function DonateClient({ tina, staticData }) {
-  const site = useEditableDocument(tina, 'site', staticData);
-
+export default function DonateClient({ site }) {
   return (
     <div id="donate" style={{ padding: '84px 6vw', background: '#0b1838', scrollMarginTop: 72 }}>
       <div style={{ textAlign: 'center', maxWidth: 680, margin: '0 auto 30px' }}>

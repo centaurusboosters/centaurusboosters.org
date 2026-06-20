@@ -1,10 +1,9 @@
 'use client';
 
 import forms from '../../data/forms.json';
-import { tinaField, useEditableDocument } from '../tina/editable';
+import { tinaField } from '../tina/editable';
 
-export default function GetInvolvedClient({ tina, staticData }) {
-  const getInvolved = useEditableDocument(tina, 'get_involved', staticData);
+export default function GetInvolvedClient({ getInvolved }) {
   const items = getInvolved.items;
 
   return (
