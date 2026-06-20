@@ -16,7 +16,7 @@ Migrate the booster site from Eleventy + Nunjucks to Astro with React components
 | 6 | Section components (split index.njk into Astro components) | `[x]` |
 | 7 | Decap CMS config update (new paths + collections) | `[x]` |
 | 8 | Validation and build scripts + ops docs update | `[x]` |
-| 9 | Verification checklist | `[ ]` |
+| 9 | Verification checklist | `[BLOCKED: browser checks need manual verification]` |
 | 10 | Persona review | `[ ]` |
 
 ---
@@ -529,16 +529,16 @@ Remove the reference to `.eleventy.js` from any docs.
 
 Before declaring done, verify each of the following locally:
 
-- [ ] `npm run build` completes without errors
-- [ ] `npm run validate` passes
-- [ ] `dist/index.html` exists and has `<html lang="en">`
-- [ ] `dist/admin/index.html` and `dist/admin/config.yml` exist
-- [ ] `dist/assets/` contains all sponsor logos and course photos
+- [x] `npm run build` completes without errors
+- [x] `npm run validate` passes
+- [x] `dist/index.html` exists and has `<html lang="en">`
+- [x] `dist/admin/index.html` and `dist/admin/config.yml` exist
+- [x] `dist/assets/` contains all sponsor logos and course photos
+- [x] Sponsor strip renders all 9 enabled sponsors (SSR-confirmed in astro-island)
 - [ ] Homepage renders visually equivalent to the current Eleventy output (check in browser at `astro dev`)
 - [ ] Hero spotlight rotation works
 - [ ] Mobile nav burger opens/closes
 - [ ] Form modal opens on CTA clicks
-- [ ] Sponsor strip renders all 9 enabled sponsors
 - [ ] Decap `/admin/` page loads and can authenticate
 - [ ] Sponsors collection in Decap shows the 9 sponsors from `src/data/sponsors.json`
 - [ ] Tournament Details collection shows and saves edits
