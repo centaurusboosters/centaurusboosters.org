@@ -1,0 +1,17 @@
+import sponsorBenefits from '../../data/sponsor-benefits.json';
+import contacts from '../../data/contacts.json';
+import forms from '../../data/forms.json';
+import site from '../../data/site.json';
+import SponsorCTASection from '../ui/SponsorCTASection';
+
+export default function SponsorCTA() {
+  return (
+    <SponsorCTASection
+      headline={[site.sponsor_cta.headline_line1, site.sponsor_cta.headline_line2]}
+      intro={site.sponsor_cta.intro}
+      benefits={sponsorBenefits.items}
+      contacts={contacts.sponsorship}
+      sponsorshipFormUrl={forms.sponsorship}
+    />
+  );
+}
