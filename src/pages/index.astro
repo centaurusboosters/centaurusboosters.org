@@ -1,14 +1,49 @@
 ---
 import '../styles/global.css';
 import '../styles/components.css';
+import Nav from '../components/sections/Nav.astro';
+import Hero from '../components/sections/Hero.astro';
+import About from '../components/sections/About.astro';
+import StatBand from '../components/sections/StatBand.astro';
+import Programs from '../components/sections/Programs.astro';
+import GolfEvent from '../components/sections/GolfEvent.astro';
+import Course from '../components/sections/Course.astro';
+import Register from '../components/sections/Register.astro';
+import GetInvolved from '../components/sections/GetInvolved.astro';
+import SponsorCTA from '../components/sections/SponsorCTA.astro';
+import Donate from '../components/sections/Donate.astro';
+import Grants from '../components/sections/Grants.astro';
+import SponsorStrip from '../components/sections/SponsorStrip.astro';
+import Footer from '../components/sections/Footer.astro';
+import FormModal from '../components/sections/FormModal.astro';
 ---
 <html lang="en">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Centaurus Warriors Booster Club — Supporting CHS Athletics</title>
+    <meta name="description" content="The Centaurus Warriors Booster Club funds gear, travel, grants, and scholarships for every Centaurus High School athletic program. Register for the 2nd Annual Golf Tournament, sponsor, or donate." />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Archivo:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
   </head>
   <body>
-    <!-- Step 6 will replace this with section components -->
+    <div id="top" style="font-family:'Archivo',sans-serif; background:#0b1838; width:100%; overflow-x:hidden;">
+      <Nav />
+      <Hero />
+      <About />
+      <StatBand />
+      <Programs />
+      <GolfEvent />
+      <Course />
+      <Register />
+      <GetInvolved />
+      <SponsorCTA />
+      <Donate />
+      <Grants />
+      <SponsorStrip />
+      <Footer />
+      <FormModal />
+    </div>
   </body>
 </html>

@@ -1,0 +1,29 @@
+---
+import { getCollection, render } from 'astro:content';
+import forms from '../../data/forms.json';
+
+const grants = await getCollection('grants');
+const teamGrant = grants.find(g => g.id === 'team-grants');
+const seniorScholarship = grants.find(g => g.id === 'senior-scholarships');
+
+const { Content: TeamContent } = await render(teamGrant);
+const { Content: SeniorContent } = await render(seniorScholarship);
+---
+<div id="grants" style="padding:84px 6vw; background:#fff; scroll-margin-top:72px;">
+  <div class="grants-grid" style="display:grid; grid-template-columns:1fr 1fr; gap:24px;">
+    <!-- Team Grants (navy) -->
+    <div style="background:#0b1838; border-radius:6px; padding:40px;">
+      <div style="color:#7fa0ff; font-weight:800; font-size:12px; letter-spacing:.18em; margin-bottom:14px;">{teamGrant.data.audience}</div>
+      <h3 style="font-family:'Anton',sans-serif; font-size:38px; color:#fff; margin:0 0 16px; line-height:1.05;">{teamGrant.data.title}</h3>
+      <div style="color:#aebbe0; font-size:16px; line-height:1.6; margin-bottom:28px;"><TeamContent /></div>
+      <button class="form-trigger" data-form-src={forms[teamGrant.data.form]} data-form-title={teamGrant.data.cta_label} style="background:#d8242f; color:#fff; font-family:'Archivo',sans-serif; font-weight:800; font-size:15px; letter-spacing:.06em; padding:14px 32px; border-radius:3px; border:none; cursor:pointer;">{teamGrant.data.cta_label} →</button>
+    </div>
+    <!-- Senior Scholarships (red) -->
+    <div style="background:#d8242f; border-radius:6px; padding:40px;">
+      <div style="color:#ffd0d3; font-weight:800; font-size:12px; letter-spacing:.18em; margin-bottom:14px;">{seniorScholarship.data.audience}</div>
+      <h3 style="font-family:'Anton',sans-serif; font-size:38px; color:#fff; margin:0 0 16px; line-height:1.05;">{seniorScholarship.data.title}</h3>
+      <div style="color:#ffe0e2; font-size:16px; line-height:1.6; margin-bottom:28px;"><SeniorContent /></div>
+      <button class="form-trigger" data-form-src={forms[seniorScholarship.data.form]} data-form-title={seniorScholarship.data.cta_label} style="background:#fff; color:#d8242f; font-family:'Archivo',sans-serif; font-weight:800; font-size:15px; letter-spacing:.06em; padding:14px 32px; border-radius:3px; border:none; cursor:pointer;">{seniorScholarship.data.cta_label} →</button>
+    </div>
+  </div>
+</div>

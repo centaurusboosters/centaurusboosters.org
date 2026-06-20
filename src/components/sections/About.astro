@@ -1,0 +1,11 @@
+---
+import { getEntry, render } from 'astro:content';
+const entry = await getEntry('about', 'index');
+const { Content } = await render(entry);
+---
+<div style="padding:56px 6vw; background:#0e1f47; text-align:center;">
+  <div style="max-width:760px; margin:0 auto;">
+    <div style="display:flex; align-items:center; justify-content:center; gap:12px; color:#7fa0ff; font-weight:800; font-size:13px; letter-spacing:.18em; margin-bottom:18px;"><span style="width:30px; height:2px; background:#d8242f;"></span>ABOUT US<span style="width:30px; height:2px; background:#d8242f;"></span></div>
+    <p style="color:#cdd6ee; font-size:19px; line-height:1.65; margin:0; font-weight:500;"><Content /></p>
+  </div>
+</div>
