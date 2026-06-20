@@ -22,8 +22,8 @@ This guide covers the one-time human setup steps required to activate the agenti
 5. Search for and select **kurtharriger/2026-boosters**.
 6. In the build settings form:
    - **Branch to deploy:** `main`
-   - **Build command:** *(leave blank)*
-   - **Publish directory:** `public`
+   - **Build command:** `npm run build`
+   - **Publish directory:** `dist`
    - These values are also in `netlify.toml` at the repo root, which Netlify reads automatically.
 7. Click **Deploy site**.
 8. Wait for the initial deploy to complete. The site will be live at a `*.netlify.app` URL.
@@ -37,9 +37,46 @@ Open a test PR (any file change against `main`). After a few minutes, a Netlify 
 
 ---
 
-## P3 — Publish directory (Decision D) — already resolved
+## P3 — Build and publish directory
 
-Decision D was resolved as **Option A**: the static site lives in `public/` and Netlify's `publish` directory is set to `public`. The `netlify.toml` at the repo root already encodes this. No further action needed.
+The site now builds with Eleventy. Netlify runs `npm run build` and publishes `dist/`. Static assets and the Decap admin app still live under `public/`, and Eleventy copies them into the generated site.
+
+Local verification:
+
+1. Run `npm ci`.
+2. Run `npm run build`.
+3. Run `bash scripts/validate-site.sh dist`.
+
+Use `npm run serve` for local development.
+
+---
+
+## CMS admin workflow
+
+The Decap CMS admin is available at `/admin/` on deployed builds. It currently manages the sponsor strip data in `src/_data/sponsors.json`.
+
+### Access model
+
+- Decap uses the GitHub backend, not Netlify Identity or Git Gateway.
+- Admins need GitHub accounts with write access to `kurtharriger/2026-boosters`.
+- Decap commits content changes to the configured branch (`cms` in `public/admin/config.yml`).
+- Netlify rebuilds the site from Git after content changes land on the deployed branch.
+
+### Netlify/GitHub OAuth setup
+
+1. In GitHub, create an OAuth App for the site.
+2. Set the OAuth callback URL to the callback endpoint shown in Netlify's GitHub OAuth provider settings for this site.
+3. Copy the GitHub OAuth App client ID and client secret.
+4. In Netlify, configure the GitHub OAuth provider with that client ID and secret.
+5. Visit `/admin/`, choose GitHub login, and confirm Decap can read the Sponsors collection.
+
+### Editing sponsors
+
+1. Open `/admin/`.
+2. Log in with GitHub.
+3. Open **Site Data → Sponsors**.
+4. Add, remove, reorder, disable, rename, or replace sponsor logos.
+5. Save and confirm the GitHub commit and Netlify deploy complete.
 
 ---
 

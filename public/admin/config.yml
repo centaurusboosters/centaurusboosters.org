@@ -1,0 +1,35 @@
+backend:
+  name: github
+  repo: kurtharriger/2026-boosters
+  branch: cms
+
+media_folder: "public/assets"
+public_folder: "assets"
+
+collections:
+  - name: "site_data"
+    label: "Site Data"
+    files:
+      - name: "sponsors"
+        label: "Sponsors"
+        file: "src/_data/sponsors.json"
+        format: "json"
+        fields:
+          - label: "Sponsors"
+            name: "items"
+            widget: "list"
+            summary: "{{fields.name}}"
+            fields:
+              - label: "Name"
+                name: "name"
+                widget: "string"
+              - label: "Logo"
+                name: "logo"
+                widget: "image"
+              - label: "Alt text"
+                name: "alt"
+                widget: "string"
+              - label: "Enabled"
+                name: "enabled"
+                widget: "boolean"
+                default: true

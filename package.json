@@ -1,0 +1,13 @@
+{
+  "name": "centaurus-boosters-site",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "build": "eleventy",
+    "serve": "eleventy --serve",
+    "validate": "npm run build && bash scripts/validate-site.sh dist"
+  },
+  "devDependencies": {
+    "@11ty/eleventy": "^3.1.2"
+  }
+}
