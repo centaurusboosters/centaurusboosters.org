@@ -535,9 +535,9 @@ agent/issue-42-short-description
 
 ### Persona review gate (advisory)
 
-After deterministic validation passes and before opening the PR, the agent evaluates the rendered change through the **reviewer personas** (`PERSONAS.md`). This is the qualitative "does this actually serve the reader" layer that deterministic checks can't cover. Select only the persona(s) relevant to the request's `type:` label — do not run all of them on a one-line change:
+After deterministic validation passes and before opening the PR, the agent evaluates the rendered change through the **reviewer personas** (`agent/PERSONAS.md`). This is the qualitative "does this actually serve the reader" layer that deterministic checks can't cover. Select only the persona(s) relevant to the request's `type:` label — do not run all of them on a one-line change:
 
-| `type:` label | Persona gate (definition of done from `PERSONAS.md`) |
+| `type:` label | Persona gate (reviewer check from `agent/PERSONAS.md`) |
 |---|---|
 | `type:event` | Golf Tournament Registrant |
 | `type:sponsor` | Local Business / Prospective Sponsor |
