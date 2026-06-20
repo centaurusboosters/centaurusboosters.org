@@ -1,0 +1,16 @@
+[Unit]
+Description=Boosters Agentic Publishing Webhook Runner
+After=network.target
+
+[Service]
+Type=simple
+WorkingDirectory=/home/kurtharriger/boosters/automation/webhook-runner
+EnvironmentFile=/home/kurtharriger/boosters/automation/webhook-runner/.env
+ExecStart=/usr/bin/env node dist/index.js
+Restart=on-failure
+RestartSec=10
+StandardOutput=journal
+StandardError=journal
+
+[Install]
+WantedBy=default.target
