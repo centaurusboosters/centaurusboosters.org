@@ -47,7 +47,9 @@ export default function FormModal() {
           <span id="form-modal-title">{form.title}</span>
           <button id="form-modal-close" aria-label="Close" onClick={close}>✕</button>
         </div>
-        <iframe id="form-modal-iframe" src={form.src} title={form.title} frameBorder="0" marginHeight="0" marginWidth="0">Loading...</iframe>
+        {form.open && (
+          <iframe id="form-modal-iframe" src={form.src} title={form.title} frameBorder="0" marginHeight="0" marginWidth="0">Loading...</iframe>
+        )}
       </div>
     </div>
   );
