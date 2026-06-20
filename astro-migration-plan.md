@@ -17,7 +17,7 @@ Migrate the booster site from Eleventy + Nunjucks to Astro with React components
 | 7 | Decap CMS config update (new paths + collections) | `[x]` |
 | 8 | Validation and build scripts + ops docs update | `[x]` |
 | 9 | Verification checklist | `[BLOCKED: browser checks need manual verification]` |
-| 10 | Persona review | `[ ]` |
+| 10 | Persona review | `[x]` |
 
 ---
 
