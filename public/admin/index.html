@@ -47,7 +47,7 @@
         );
       }
 
-      CMS.registerPreviewTemplate("site_data", function SponsorDataPreview(props) {
+      CMS.registerPreviewTemplate("sponsors", function SponsorDataPreview(props) {
         var sponsors = toArray(props.entry.getIn(["data", "items"])).filter(function (sponsor) {
           return sponsor && sponsor.enabled !== false;
         });
