@@ -1,23 +1,27 @@
 #!/usr/bin/env bash
 # Site validation script — runs in CI and locally.
-# Usage: bash scripts/validate-site.sh [site-dir]
+# Usage: bash scripts/validate-site.sh [html-file-or-site-dir]
 set -euo pipefail
 
-SITE_DIR="${1:-public}"
-HTML="$SITE_DIR/index.html"
+TARGET="${1:-.next/server/app/index.html}"
+if [ -d "$TARGET" ]; then
+  HTML="$TARGET/index.html"
+else
+  HTML="$TARGET"
+fi
 ERRORS=0
 
 pass() { echo "PASS: $1"; }
 fail() { echo "FAIL: $1"; ERRORS=$((ERRORS + 1)); }
 
-echo "=== Validating site in $SITE_DIR ==="
+echo "=== Validating site HTML: $HTML ==="
 echo ""
 
 # 1. HTML file must exist
 if [ -f "$HTML" ]; then
   pass "index.html exists"
 else
-  fail "index.html missing from $SITE_DIR/"
+  fail "index.html missing at $HTML"
   echo "Cannot continue — index.html not found."
   exit 1
 fi
