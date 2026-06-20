@@ -1,75 +1,87 @@
 # Reviewer Personas — Centaurus Warriors Booster Club Website
 
-These personas are the **advisory quality gate** in the agentic publishing pipeline. When the `/githubtrigger` skill implements an administrator's change request (see `booster-club-agentic-publishing-plan.md` §10, "Persona review gate"), the persona(s) matching the request's `type:` label provide the qualitative review of the rendered result before the PR opens — the "does this actually serve the reader" layer that deterministic checks can't cover.
+These personas are the **advisory quality gate** for website changes. They help reviewers judge whether a change serves the people who rely on the site, beyond whether the code builds or the links work.
 
-The gate is **advisory**: its assessment is written into the PR/issue comment for the human reviewer; it does not auto-block the PR. The only exception is a clearly-unmet definition of done, which should route the request to `Needs Clarification` rather than ship ("ask, don't invent").
+Use only the personas relevant to a change. The review is advisory and should be summarized in the issue or PR. If a request clearly fails the relevant reviewer role's acceptance lens, route it back for clarification instead of inventing missing content.
 
-The **Product Owner** persona (#7) is about backlog prioritization and has no role in the runtime pipeline; it is retained only as a record of the principles that shaped the original website build. (The former `BACKLOG.md` website-improvement loop is complete; the GitHub Project board is the backlog going forward.)
-
----
-
-## 1. Kelly Marcus — Booster Club Chair (Client Voice)
-*"Does this site represent everything we do, not just golf?"*
-
-- **What she cares about:** Vision statement visible, all programs acknowledged, accurate contact info, real sponsor logos (the people who wrote checks deserve recognition), board credibility, feels like the warm community she knows
-- **Pain points on current site:** Vision statement missing entirely, sponsor logos all placeholders, CJ Riggins' email missing from sponsorship contact, Facebook link is dead (`href="#"`)
-- **Definition of done:** She could send this URL to a community member today and not feel embarrassed
+These are reviewer roles, not fixed individuals. Avoid tying feedback to named volunteers unless the change is specifically about a public contact listing.
 
 ---
 
-## 2. First-Time Parent
-*"My kid just made the soccer team — what is this club and how do I join?"*
+## 1. Club President — Mission and Trust
+*"Does this represent the booster club's mission and make us look credible?"*
 
-- **What they care about:** Is my sport covered by the booster club? What does the club actually fund? How do I get involved beyond golf? Is there a calendar of events? Who do I contact?
-- **Pain points on current site:** No mention of which 20+ programs are supported, no "About" section explaining what boosters do, no general membership or volunteer path, merch store link is dead
-- **Definition of done:** Within 30 seconds of landing they understand the club funds all Centaurus athletics and know how to get involved
-
----
-
-## 3. Local Business Owner / Prospective Sponsor
-*"I'm writing a check — convince me this is worth it."*
-
-- **What they care about:** Clear sponsorship tiers with pricing, exactly what they get for their money, who else has already sponsored (social proof), 501(c)(3) status confirmation, professional appearance that reflects well on their brand
-- **Pain points on current site:** Sponsorship section has perks listed but no pricing tier table, no current sponsor logos shown (placeholders), 501(c)(3) is only mentioned in small footer text
-- **Definition of done:** They can see the tier options and pricing without filling out a form, and see existing sponsor logos as credibility
+- **Review focus:** Club mission, fundraising clarity, community trust, accurate public-facing claims, recognition of all Centaurus athletics, board/volunteer credibility.
+- **Looks for:** Clear explanation of how donations help students, respectful sponsor recognition, accurate nonprofit language, balanced focus across programs and events.
+- **Flags when:** The site over-focuses on one fundraiser, makes unsupported claims, buries the club purpose, or weakens trust with vague/outdated copy.
+- **Reviewer check:** A community member can understand what the club does, why it matters, and how to support it.
 
 ---
 
-## 4. Golf Tournament Registrant
-*"I clicked the email link — just tell me what I need and let me register fast."*
+## 2. First-Time Parent — Orientation
+*"My student joined a team. What is this club and what should I do next?"*
 
-- **What they care about:** Date/time/location visible immediately, price clear up front, what's included in the entry, can I pay online, is there a deadline, what are the add-ons
-- **Pain points on current site:** Good structure overall, but silent auction item list is vague ("themed baskets"), Skills Challenge detail ("on 8 of 18 holes") missing, no deadline/registration cutoff date shown
-- **Definition of done:** All event-day details are specific enough to answer "what am I signing up for"
-
----
-
-## 5. Social Media Manager (Booster Club Volunteer)
-*"I post updates on Facebook — does the website reflect what we're putting out there?"*
-
-- **What they care about:** Facebook link actually works, photos on the site match the energy of what's posted socially, site feels current and not stale, easy way to point people from Facebook to the site for registration
-- **Pain points on current site:** Facebook footer link is `href="#"` (dead), all photo slots are placeholders (site looks unfinished), no visual energy matching the FB page's photos of golfers and athletes
-- **Definition of done:** The Facebook link works, at least the hero and golf sections have real photos
+- **Review focus:** Plain-language orientation, supported programs, parent involvement paths, contact clarity, low-friction next steps.
+- **Looks for:** Obvious ways to donate, volunteer, sponsor, register, ask questions, and understand what booster funds support.
+- **Flags when:** The page assumes prior knowledge, hides contact paths, uses insider terms, or makes involvement feel limited to one event.
+- **Reviewer check:** Within 30 seconds, a new parent understands the club funds Centaurus athletics and knows the next useful action.
 
 ---
 
-## 6. UX / Conversion Critic
-*"Every extra click is a lost donor."*
+## 3. Prospective Sponsor — Fundraising Value
+*"If my business writes a check, is the value and community impact clear?"*
 
-- **What they care about:** Mobile navigation (currently no hamburger menu — nav breaks on small screens), page weight (3 Google Form iframes), registration CTA prominence, real payment flow vs. Google Form for $580 foursomes, color contrast/accessibility, no sticky donate/register CTA while scrolling
-- **Pain points on current site:** Nav completely unusable on mobile, three slow-loading Google Form iframes, merch link dead, no skip-to-content for accessibility
-- **Definition of done:** Site is usable on a phone, critical forms load, and a new visitor can register or donate without confusion
+- **Review focus:** Sponsorship value, social proof, audience reach, tier clarity, professional presentation, sponsor recognition.
+- **Looks for:** Clear benefits, pricing or inquiry path, current sponsor logos, nonprofit/trust signals, and copy that respects sponsor motivations.
+- **Flags when:** Sponsorship asks are vague, sponsor logos look broken or stale, benefits are hard to compare, or the path to inquire is unclear.
+- **Reviewer check:** A local business can understand why sponsorship is worthwhile and what to do next.
 
 ---
 
-## 7. Product Owner / Project Manager
-*"What ships today, what waits, and in what order?"*
+## 4. Event Participant — Registration Confidence
+*"Tell me what I need to know and let me register without friction."*
 
-- **Synthesizes feedback from all other personas** and translates it into a prioritized, shippable backlog
-- **Principles:**
-  - Site must be potentially shippable after every loop iteration (no half-finished sections)
-  - Text/content fixes before image fixes (never blocked on assets)
-  - High-trust signals (real logos, correct contacts, 501c3) before polish
-  - Static improvements before dynamic features (no CMS, no live social feed until static baseline is solid)
-  - Fix dead links before adding new sections
-- **Owns:** BACKLOG.md — reads all persona feedback, decides which item delivers the most value with least risk, marks it done after each loop
+- **Review focus:** Event date, time, location, pricing, inclusions, deadlines, add-ons, form/payment flow, day-of expectations.
+- **Looks for:** Specific event details, prominent CTAs, consistent pricing, clear form labels, and contact options for questions.
+- **Flags when:** Key event details are ambiguous, CTA labels are inconsistent, forms feel disconnected from the copy, or mobile registration is awkward.
+- **Reviewer check:** A visitor can confidently answer "what am I signing up for, what does it cost, and how do I register?"
+
+---
+
+## 5. Content Editor — Maintainability
+*"Can a nontechnical admin safely make the expected update?"*
+
+- **Review focus:** Decap editor experience, field labels, preview usefulness, content structure, media replacement, safe defaults.
+- **Looks for:** Clear field names, sensible grouping, helpful previews, editable content stored in predictable data files, and no need to touch layout code for routine updates.
+- **Flags when:** Editors must understand HTML/CSS/MDX syntax for routine updates, duplicate fields drift, previews mislead, or media paths are easy to break.
+- **Reviewer check:** A content admin can make the requested update, preview the result well enough to catch obvious mistakes, and submit it for review.
+
+---
+
+## 6. UX, Mobile, and Accessibility Reviewer
+*"Is this usable, readable, and accessible on the devices families actually use?"*
+
+- **Review focus:** Mobile usability, navigation, CTA clarity, keyboard access, color contrast, readable type, form ergonomics, reduced friction.
+- **Looks for:** Working mobile layout, tappable controls, no overlapping text, meaningful alt text, visible focus states, sensible heading order, and accessible contrast.
+- **Flags when:** A change works only on desktop, adds tiny/tightly packed controls, creates low-contrast text, hides key actions, or makes forms harder to complete.
+- **Reviewer check:** The critical path works on mobile and does not introduce obvious accessibility regressions.
+
+---
+
+## 7. SEO and Discoverability Reviewer
+*"Can people and search engines understand what this page is about?"*
+
+- **Review focus:** Search snippets, page titles/descriptions, semantic headings, local relevance, event discoverability, share previews.
+- **Looks for:** Accurate metadata, descriptive headings, crawlable text instead of image-only content, local keywords used naturally, and stable URLs/anchors.
+- **Flags when:** Important content is hidden in images, headings are decorative rather than meaningful, metadata is stale, or event/sponsor/donation pages are hard to share.
+- **Reviewer check:** A search result or shared link clearly communicates the club, location, event, and primary action.
+
+---
+
+## 8. Delivery Steward — Scope and Verification
+*"Is this change small, reviewable, and actually verified?"*
+
+- **Review focus:** Change scope, implementation risk, regression checks, deploy preview, PR readability, follow-up separation.
+- **Looks for:** Focused diffs, build/validation results, screenshots or deploy previews when visual changes matter, and clear notes for anything not verified.
+- **Flags when:** A change bundles unrelated refactors, lacks validation, changes content without reviewer context, or leaves future work hidden in the diff.
+- **Reviewer check:** The PR can be reviewed independently and includes enough evidence to decide whether to merge.
