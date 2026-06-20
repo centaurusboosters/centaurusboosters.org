@@ -37,39 +37,39 @@ Pass one prop per collection (`tinaTournament`, `tinaSite`, etc.) plus matching 
 - [x] `tina/config.ts` — `router: () => '/'` added to all 8 collections
 
 ### Foundation
-- [ ] **editable.js** — export `useTina` directly so client components can use the raw hook; also export a `makeSafeTina(key, fallback)` helper that builds a synthetic tina shape
+- [x] **editable.js** — export `useTina` directly so client components can use the raw hook; also export a `makeSafeTina(key, fallback)` helper that builds a synthetic tina shape
 
 ### Sections (single collection)
 
-- [ ] **GolfEvent** — `tournament` collection  
+- [x] **GolfEvent** — `tournament` collection  
   Fields: `section_headline`, `section_intro`, `format_label`, `inclusions`, `add_ons`, `auction_description`, `price_player`, `price_foursome`
 
-- [ ] **Course** — `tournament` collection  
+- [x] **Course** — `tournament` collection  
   Fields: `venue`, `course_description`, `address`
 
-- [ ] **Donate** — `site` collection  
+- [x] **Donate** — `site` collection  
   Fields: `site.donate.headline`, `site.donate.body`
 
-- [ ] **GetInvolved** — `get_involved` collection  
+- [x] **GetInvolved** — `get_involved` collection  
   Fields: per-item `title`, `description`, `link_label`
 
-- [ ] **SponsorStrip** — `sponsors` collection  
+- [x] **SponsorStrip** — `sponsors` collection  
   Fields: per-item `name`, `logo`, `alt`
 
 ### Sections (multiple collections)
 
-- [ ] **Register** — `tournament` + `contacts`  
+- [x] **Register** — `tournament` + `contacts`  
   Fields: `register_headline`, `register_intro`, `arrive_by`, `time`; `contacts.players.name`, `contacts.players.email`
 
-- [ ] **SponsorCTA** — `site` + `sponsor_benefits` + `contacts`  
+- [x] **SponsorCTA** — `site` + `sponsor_benefits` + `contacts`  
   Fields: `site.sponsor_cta.*`; `sponsor_benefits.items`; `contacts.sponsorship[*]`
 
-- [ ] **Footer** — `contacts` + `tournament` + `site`  
+- [x] **Footer** — `contacts` + `tournament` + `site`  
   Fields: `contacts.players.*`, `contacts.sponsorship[*]`, `tournament.venue`, `tournament.address`, `site.copyright`, `site.social.facebook`
 
 ### Complex (existing client component)
 
-- [ ] **Hero** — `tournament` + `site`  
+- [x] **Hero** — `tournament` + `site`  
   Currently `'use client'` with useState/useEffect carousel. Strategy:
   - Create `HeroWrapper.jsx` (new server component, fetches both tina docs)
   - Rename current `Hero.jsx` → `HeroClient.jsx`; add `tina` props + `useTina` calls

@@ -4,4 +4,5 @@ dist/
 .astro/
 .next/
 out/
-tina/__generated__/client.ts
+next-env.d.ts
+tina/__generated__/
