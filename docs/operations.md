@@ -39,7 +39,7 @@ Open a test PR (any file change against `main`). After a few minutes, a Netlify 
 
 ## P3 — Build and publish directory
 
-The site now builds with Next.js static export. Netlify runs `npm run build` and publishes `out/`. Static assets and the legacy Decap admin app still live under `public/`, and Next copies them into the exported site.
+The site now builds with Next.js static export. Netlify runs `npm run build` and publishes `out/`. Static assets and the TinaCMS admin app live under `public/`, and Next copies them into the exported site.
 
 Local verification:
 
@@ -53,42 +53,32 @@ Use `npm run dev` for local development (Next dev server on port 3000 by default
 
 ## CMS admin workflow
 
-The Decap CMS admin is available at `/admin/` on deployed builds. It manages structured data in `src/data/` (sponsors, tournament details, contacts) and prose content in `src/content/` (about, grants).
+The TinaCMS admin is available at `/admin/index.html`. It manages structured data in `src/data/` (sponsors, tournament details, contacts, site copy) and rich-text prose in `src/content/` (about, grants).
 
 ### Access model
 
-- Decap uses the GitHub backend, not Netlify Identity or Git Gateway.
-- Admins need GitHub accounts with write access to `kurtharriger/2026-boosters`.
-- Decap targets `main` in `public/admin/config.yml`.
-- Decap uses `gilded-genie-b2528a.netlify.app` as its Netlify OAuth site domain so local admin testing can route auth through the correct Netlify site.
-- `publish_mode: editorial_workflow` makes Decap create content branches and pull requests instead of committing directly to protected `main`.
-- Netlify builds deploy previews for CMS pull requests and rebuilds production after a PR is merged.
+- TinaCMS is configured in `tina/config.ts`.
+- Local editing runs through `npm run dev`, which starts Tina's local content API and the Next dev server together.
+- The current build uses Tina's local/self-hosted mode (`tinacms build --local --skip-cloud-checks`) and does not require TinaCloud credentials.
+- Production auth and Git write behavior will be finalized as part of the self-hosted Tina backend setup.
+- Netlify rebuilds production after content changes are committed and merged.
 
-### Netlify/GitHub OAuth setup
+### Local Tina setup
 
-1. In GitHub, go to **Settings → Developer settings → OAuth Apps → New OAuth App**.
-2. Fill in:
-   - **Application name:** `Centaurus Boosters CMS`
-   - **Homepage URL:** the production site URL, such as `https://YOUR-SITE.netlify.app`
-   - **Authorization callback URL:** the callback URL shown in Netlify's GitHub OAuth provider setup for this site.
-3. Create the app, then copy its **Client ID**.
-4. Generate and copy a **Client secret**.
-5. In Netlify, open the site and go to **Site configuration → Access & security → OAuth**.
-6. Add or install the **GitHub** authentication provider.
-7. Paste the GitHub OAuth App client ID and client secret, then save.
-8. Visit `/admin/` on the deployed Netlify URL, choose GitHub login, and confirm Decap can read the **Site Data → Sponsors** entry.
+1. Run `npm ci`.
+2. Run `npm run dev`.
+3. Open `http://localhost:3000/admin/index.html`.
+4. Confirm Tina can open the **Sponsors** collection and the **About / Mission** rich-text document.
 
-For local testing, run `npm run dev` and open `http://localhost:3000/admin/index.html`. In production, Netlify handles `/admin/` → `/admin/index.html` automatically. Do not open `public/admin/index.html` directly with a `file://` URL; Decap auth expects to run from an HTTP origin.
+If another Next dev server is already running, stop it before starting Tina. The Tina dev command needs to launch the Next dev server itself so the admin can talk to the local content API.
 
 ### Editing sponsors
 
-1. Open `/admin/`.
-2. Log in with GitHub.
-3. Open **Site Data → Sponsors**.
+1. Open `/admin/index.html`.
+2. Open **Sponsors**.
+3. Select `sponsors.json`.
 4. Add, remove, reorder, disable, rename, or replace sponsor logos.
-5. Save the draft in Decap.
-6. Move the draft through Decap's editorial workflow when ready; Decap will create or update a GitHub pull request against `main`.
-7. Review and merge the pull request in GitHub after required checks and approvals pass.
+5. Save changes and review the Git diff before committing.
 
 ---
 

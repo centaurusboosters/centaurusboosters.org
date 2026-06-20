@@ -12,7 +12,6 @@
     "validate": "npm run build && bash scripts/validate-site.sh out"
   },
   "devDependencies": {
-    "@11ty/eleventy": "^3.1.2",
     "@tinacms/cli": "^2.5.1",
     "@types/node": "26.0.0",
     "@types/react": "19.2.17",
