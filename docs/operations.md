@@ -59,16 +59,23 @@ The Decap CMS admin is available at `/admin/` on deployed builds. It currently m
 
 - Decap uses the GitHub backend, not Netlify Identity or Git Gateway.
 - Admins need GitHub accounts with write access to `kurtharriger/2026-boosters`.
-- Decap commits content changes to the configured branch (`cms` in `public/admin/config.yml`).
-- Netlify rebuilds the site from Git after content changes land on the deployed branch.
+- Decap targets `main` in `public/admin/config.yml`.
+- `publish_mode: editorial_workflow` makes Decap create content branches and pull requests instead of committing directly to protected `main`.
+- Netlify builds deploy previews for CMS pull requests and rebuilds production after a PR is merged.
 
 ### Netlify/GitHub OAuth setup
 
-1. In GitHub, create an OAuth App for the site.
-2. Set the OAuth callback URL to the callback endpoint shown in Netlify's GitHub OAuth provider settings for this site.
-3. Copy the GitHub OAuth App client ID and client secret.
-4. In Netlify, configure the GitHub OAuth provider with that client ID and secret.
-5. Visit `/admin/`, choose GitHub login, and confirm Decap can read the Sponsors collection.
+1. In GitHub, go to **Settings → Developer settings → OAuth Apps → New OAuth App**.
+2. Fill in:
+   - **Application name:** `Centaurus Boosters CMS`
+   - **Homepage URL:** the production site URL, such as `https://YOUR-SITE.netlify.app`
+   - **Authorization callback URL:** the callback URL shown in Netlify's GitHub OAuth provider setup for this site.
+3. Create the app, then copy its **Client ID**.
+4. Generate and copy a **Client secret**.
+5. In Netlify, open the site and go to **Site configuration → Access & security → OAuth**.
+6. Add or install the **GitHub** authentication provider.
+7. Paste the GitHub OAuth App client ID and client secret, then save.
+8. Visit `/admin/` on the deployed Netlify URL, choose GitHub login, and confirm Decap can read the **Site Data → Sponsors** entry.
 
 ### Editing sponsors
 
@@ -76,7 +83,9 @@ The Decap CMS admin is available at `/admin/` on deployed builds. It currently m
 2. Log in with GitHub.
 3. Open **Site Data → Sponsors**.
 4. Add, remove, reorder, disable, rename, or replace sponsor logos.
-5. Save and confirm the GitHub commit and Netlify deploy complete.
+5. Save the draft in Decap.
+6. Move the draft through Decap's editorial workflow when ready; Decap will create or update a GitHub pull request against `main`.
+7. Review and merge the pull request in GitHub after required checks and approvals pass.
 
 ---
 

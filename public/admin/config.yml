@@ -1,7 +1,10 @@
 backend:
   name: github
   repo: kurtharriger/2026-boosters
-  branch: cms
+  branch: main
+  squash_merges: true
+
+publish_mode: editorial_workflow
 
 media_folder: "public/assets"
 public_folder: "assets"
