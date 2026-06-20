@@ -1,7 +1,8 @@
-import getInvolved from '../../data/get-involved.json';
-import forms from '../../data/forms.json';
-import GetInvolvedSection from '../ui/GetInvolvedSection';
+import staticData from '../../data/get-involved.json';
+import { getTinaDocument } from '../../lib/tina-content';
+import GetInvolvedClient from './GetInvolvedClient';
 
-export default function GetInvolved() {
-  return <GetInvolvedSection items={getInvolved.items} formUrls={forms} />;
+export default async function GetInvolved() {
+  const tina = await getTinaDocument('get_involved', 'get-involved.json');
+  return <GetInvolvedClient tina={tina} staticData={staticData} />;
 }

@@ -1,11 +1,8 @@
-import sponsorData from '../../data/sponsors.json';
-import SponsorStripGrid from '../ui/SponsorStrip';
+import staticData from '../../data/sponsors.json';
+import { getTinaDocument } from '../../lib/tina-content';
+import SponsorStripClient from './SponsorStripClient';
 
-export default function SponsorStrip() {
-  return (
-    <section className="sponsor-strip-section">
-      <div className="sponsor-strip-label">PROUDLY SUPPORTED BY OUR SPONSORS</div>
-      <SponsorStripGrid sponsors={sponsorData.items} />
-    </section>
-  );
+export default async function SponsorStrip() {
+  const tina = await getTinaDocument('sponsors', 'sponsors.json');
+  return <SponsorStripClient tina={tina} staticData={staticData} />;
 }
