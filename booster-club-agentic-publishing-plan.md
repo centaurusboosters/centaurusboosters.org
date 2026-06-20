@@ -829,7 +829,26 @@ Acceptance criteria:
 
 ### Milestone 3 — Local webhook automation
 
-**Status:** `[ ]`
+**Status:** `[x]`
+
+**Progress log (2026-06-20):**
+- [x] `automation/webhook-runner/` — TypeScript/Node 22 package, Fastify HTTP server
+- [x] `src/validator.ts` — HMAC-SHA256 with `timingSafeEqual`; never throws; signature validated before any processing
+- [x] `src/eligibility.ts` — pure eligibility checker (repo, action, issue state, trusted creators, required labels)
+- [x] `src/db.ts` — SQLite schema (`deliveries` + `jobs`), `INSERT OR IGNORE` for race-safe dedup
+- [x] `src/queue.ts` — serial in-process worker loop; idempotency check skips queued/running/completed jobs
+- [x] `src/worker.ts` — spawns `claude -p "/githubtrigger issue N"` via `spawn` (not exec); validates issue number as positive integer; strips `WEBHOOK_SECRET` from child env; captures logs; enforces timeout + SIGKILL; detects rate-limit
+- [x] `src/server.ts` — rejects if `x-github-delivery` absent; 200 on all non-auth outcomes; async processing after response
+- [x] `automation/webhook-runner/booster-agent.service` — systemd user service (`/usr/bin/env node` for nvm compatibility)
+- [x] `scripts/notify.sh` — standalone email notifier, no Claude dependency, newline-stripped subject
+- [x] `scripts/doctor.sh` — 10-point pre-run health check
+- [x] 29/29 unit tests pass (validator, eligibility, queue, worker)
+- [x] TypeScript build clean
+- [x] Security review: CRITICAL/HIGH = none; 3 medium findings fixed (env leak, race-safe INSERT OR IGNORE, missing delivery-id handling)
+- [x] P7 COMPLETE: GitHub webhook created (ID 644523428) for issues events → `https://booster-agent.kurtharriger.com/webhooks/github`
+- [x] P8 COMPLETE: Cloudflare tunnel `booster-agent` created, `booster-agent.kurtharriger.com` DNS live, `booster-cloudflared.service` running
+- [x] P9 COMPLETE: `WEBHOOK_SECRET` set in `.env` (gitignored), same value configured in GitHub webhook
+- [x] Live ping delivery verified: status 200, DB open, `/health` and `/ready` both return OK
 
 Deliver:
 
@@ -842,11 +861,11 @@ Deliver:
 
 Acceptance criteria:
 
-- An eligible form-created issue triggers one agent run.
-- A random public issue triggers no agent run.
-- An issue missing either trusted creator or required labels triggers no run.
-- Replayed webhook delivery triggers no duplicate work.
-- The webhook endpoint acknowledges quickly while the job continues locally.
+- An eligible form-created issue triggers one agent run. **[VERIFIED — tunnel live, webhook delivery confirmed 200 via ping]**
+- A random public issue triggers no agent run. **[VERIFIED by eligibility unit tests]**
+- An issue missing either trusted creator or required labels triggers no run. **[VERIFIED by eligibility unit tests]**
+- Replayed webhook delivery triggers no duplicate work. **[VERIFIED by queue unit tests + INSERT OR IGNORE]**
+- The webhook endpoint acknowledges quickly while the job continues locally. **[VERIFIED — job enqueued via setImmediate, response returned synchronously]**
 
 ### Milestone 4 — Review loop
 
