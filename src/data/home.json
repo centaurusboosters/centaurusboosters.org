@@ -73,55 +73,55 @@
     "items": [
       {
         "name": "Westbound Realty",
-        "logo": "/assetsassets/logo-westbound.png",
+        "logo": "/assets/logo-westbound.png",
         "alt": "Westbound Realty",
         "enabled": true
       },
       {
         "name": "Auguste Escoffier School of Culinary Arts",
-        "logo": "/assetsassets/logo-escoffier.jpg",
+        "logo": "/assets/logo-escoffier.jpg",
         "alt": "Auguste Escoffier School of Culinary Arts",
         "enabled": true
       },
       {
         "name": "Kona Ice",
-        "logo": "/assetsassets/logo-kona-ice.jpg",
+        "logo": "/assets/logo-kona-ice.jpg",
         "alt": "Kona Ice",
         "enabled": true
       },
       {
         "name": "Alpine Valley Oral Surgery",
-        "logo": "/assetsassets/logo-alpine-valley.png",
+        "logo": "/assets/logo-alpine-valley.png",
         "alt": "Alpine Valley Oral Surgery",
         "enabled": true
       },
       {
         "name": "Mudrocks Tap & Tavern",
-        "logo": "/assetsassets/logo-mudrocks.jpg",
+        "logo": "/assets/logo-mudrocks.jpg",
         "alt": "Mudrocks Tap & Tavern",
         "enabled": true
       },
       {
         "name": "Boulder Wealth Advisors",
-        "logo": "/assetsassets/logo-boulder-wealth.png",
+        "logo": "/assets/logo-boulder-wealth.png",
         "alt": "Boulder Wealth Advisors",
         "enabled": true
       },
       {
         "name": "rockhop.ai",
-        "logo": "/assetsassets/logo-rockhop.png",
+        "logo": "/assets/logo-rockhop.png",
         "alt": "rockhop.ai",
         "enabled": true
       },
       {
         "name": "Pinnacle Product Sales",
-        "logo": "/assetsassets/logo-pps.png",
+        "logo": "/assets/logo-pps.png",
         "alt": "Pinnacle Product Sales",
         "enabled": true
       },
       {
         "name": "Lafayette Family Orthodontics",
-        "logo": "/assetsassets/logo-lfo.png",
+        "logo": "/assets/logo-lfo.png",
         "alt": "Lafayette Family Orthodontics",
         "enabled": true
       }
