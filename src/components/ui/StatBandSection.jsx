@@ -1,11 +1,11 @@
 export default function StatBandSection({ stats }) {
   return (
-    <div className="stat-band" style={{ display: 'grid', gridTemplateColumns: 'repeat(3,1fr)', background: '#d8242f' }}>
+    <div className="stat-band" style={{ display: 'grid', gridTemplateColumns: `repeat(${stats.length},1fr)`, background: '#d8242f' }}>
       {stats.map((stat, i) => (
         <div
           key={i}
           style={{
-            padding: i === 0 ? '30px 6vw' : '30px',
+            padding: i === 0 && stats.length > 1 ? '30px 6vw' : '30px',
             textAlign: 'center',
             borderRight: i < stats.length - 1 ? '1px solid rgba(255,255,255,.2)' : 'none',
           }}

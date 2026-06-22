@@ -1,6 +1,4 @@
-import programs from '../../data/programs.json';
-
-export default function Programs() {
+export default function Programs({ programs = [] }) {
   return (
     <div style={{ padding: '60px 6vw', background: '#0b1838' }}>
       <div style={{ textAlign: 'center', marginBottom: 28 }}>

@@ -2,7 +2,7 @@
 
 import { tinaField } from '../tina/editable';
 
-export default function FooterClient({ contacts, tournament, site }) {
+export default function FooterClient({ contacts, tournament, site, showTournament }) {
   const addressParts = tournament.address.split(', ');
 
   return (
@@ -17,11 +17,15 @@ export default function FooterClient({ contacts, tournament, site }) {
         </div>
         <div style={columnStyle}>
           <div style={columnTitleStyle}>CONTACT</div>
-          Players —{' '}
-          <span data-tina-field={tinaField(contacts?.players, 'name')}>{contacts.players.name}</span>
-          <br />
-          <a data-tina-field={tinaField(contacts?.players, 'email')} href={`mailto:${contacts.players.email}`} style={footerLinkStyle}>{contacts.players.email}</a>
-          <br />
+          {showTournament && (
+            <>
+              Players —{' '}
+              <span data-tina-field={tinaField(contacts?.players, 'name')}>{contacts.players.name}</span>
+              <br />
+              <a data-tina-field={tinaField(contacts?.players, 'email')} href={`mailto:${contacts.players.email}`} style={footerLinkStyle}>{contacts.players.email}</a>
+              <br />
+            </>
+          )}
           Sponsorship —{' '}
           <span data-tina-field={tinaField(contacts?.sponsorship?.[0], 'name')}>{contacts.sponsorship[0].name}</span>
           {' '}&amp;{' '}
@@ -31,16 +35,18 @@ export default function FooterClient({ contacts, tournament, site }) {
           {' · '}
           <a data-tina-field={tinaField(contacts?.sponsorship?.[1], 'email')} href={`mailto:${contacts.sponsorship[1].email}`} style={footerLinkStyle}>{contacts.sponsorship[1].email}</a>
         </div>
-        <div style={columnStyle}>
-          <div style={columnTitleStyle}>THE COURSE</div>
-          <span data-tina-field={tinaField(tournament, 'venue')}>{tournament.venue}</span>
-          <br />
-          <span data-tina-field={tinaField(tournament, 'address')}>
-            {addressParts.map((part, idx) => (
-              <span key={part}>{part}{idx < addressParts.length - 1 ? ', ' : ''}</span>
-            ))}
-          </span>
-        </div>
+        {showTournament && (
+          <div style={columnStyle}>
+            <div style={columnTitleStyle}>THE COURSE</div>
+            <span data-tina-field={tinaField(tournament, 'venue')}>{tournament.venue}</span>
+            <br />
+            <span data-tina-field={tinaField(tournament, 'address')}>
+              {addressParts.map((part, idx) => (
+                <span key={part}>{part}{idx < addressParts.length - 1 ? ', ' : ''}</span>
+              ))}
+            </span>
+          </div>
+        )}
         <div style={columnStyle}>
           <div style={columnTitleStyle}>CONNECT</div>
           <a data-tina-field={tinaField(site?.social, 'facebook')} href={site.social.facebook} target="_blank" rel="noopener noreferrer" style={{ color: '#7fa0ff', textDecoration: 'none' }}>Facebook</a>

@@ -1,5 +1,6 @@
 {
   "tournament": {
+    "enabled": true,
     "edition": "2nd Annual",
     "date": "Sun · Sept 20, 2026",
     "time": "9AM Shotgun Start",
@@ -125,6 +126,12 @@
         "alt": "Lafayette Family Orthodontics",
         "enabled": true
       }
+    ]
+  },
+  "programs": ["Football","Basketball","Baseball","Softball","Soccer","Swimming","Tennis","Golf","Cross Country","Track & Field","Volleyball","Wrestling","Lacrosse","Cheerleading"],
+  "stat_band": {
+    "items": [
+      { "value": "501(c)(3)", "label": "NON-PROFIT" }
     ]
   },
   "sponsor_benefits": {

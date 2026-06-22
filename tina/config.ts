@@ -42,6 +42,7 @@ export default defineConfig({
             name: 'tournament',
             label: 'Tournament',
             fields: [
+              { type: 'boolean', name: 'enabled', label: 'Show tournament section' },
               { type: 'string', name: 'edition', label: 'Edition', required: true },
               { type: 'string', name: 'date', label: 'Date', required: true },
               { type: 'string', name: 'time', label: 'Time', required: true },
@@ -151,6 +152,25 @@ export default defineConfig({
                   { type: 'image', name: 'logo', label: 'Logo', required: true },
                   { type: 'string', name: 'alt', label: 'Alt text', required: true },
                   { type: 'boolean', name: 'enabled', label: 'Enabled' },
+                ],
+              },
+            ],
+          },
+          { type: 'string', name: 'programs', label: 'Programs', list: true },
+          {
+            type: 'object',
+            name: 'stat_band',
+            label: 'Stat Band (off-season)',
+            fields: [
+              {
+                type: 'object',
+                name: 'items',
+                label: 'Stats',
+                list: true,
+                ui: { itemProps: (item) => ({ label: item?.label }) },
+                fields: [
+                  { type: 'string', name: 'value', label: 'Value' },
+                  { type: 'string', name: 'label', label: 'Label' },
                 ],
               },
             ],
