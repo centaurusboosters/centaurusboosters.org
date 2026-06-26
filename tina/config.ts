@@ -226,7 +226,7 @@ export default defineConfig({
                 fields: [
                   { type: 'string', name: 'audience', label: 'Audience label', required: true },
                   { type: 'string', name: 'title', label: 'Title', required: true },
-                  { type: 'rich-text', name: 'body', label: 'Body' },
+                  { type: 'string', name: 'body', label: 'Body', ui: { component: 'textarea' } },
                   { type: 'string', name: 'cta_label', label: 'CTA label', required: true },
                   { type: 'string', name: 'form', label: 'Form key', required: true },
                 ],

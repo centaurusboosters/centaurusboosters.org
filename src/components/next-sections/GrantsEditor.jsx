@@ -1,7 +1,7 @@
 'use client';
 
 import forms from '../../data/forms.json';
-import { EditableRichText, tinaField } from '../tina/editable';
+import { tinaField } from '../tina/editable';
 
 const GRANT_STYLES = [
   { background: '#0b1838', eyebrowColor: '#7fa0ff', bodyColor: '#aebbe0', buttonBackground: '#d8242f', buttonColor: '#fff', formTitle: 'TEAM GRANT APPLICATION' },
@@ -25,7 +25,7 @@ function GrantCard({ grant, background, eyebrowColor, bodyColor, buttonBackgroun
     <div style={{ background, borderRadius: 6, padding: 42, color: '#fff' }}>
       <div data-tina-field={tinaField(grant, 'audience')} style={{ color: eyebrowColor, fontWeight: 800, fontSize: 13, letterSpacing: '.16em' }}>{grant.audience.toUpperCase()}</div>
       <h3 data-tina-field={tinaField(grant, 'title')} style={{ fontFamily: "'Anton',sans-serif", fontSize: 38, margin: '10px 0 12px', textTransform: 'uppercase' }}>{grant.title}</h3>
-      <EditableRichText document={grant} style={{ color: bodyColor, fontSize: 15, lineHeight: 1.6, margin: '0 0 22px' }} />
+      <p data-tina-field={tinaField(grant, 'body')} style={{ color: bodyColor, fontSize: 15, lineHeight: 1.6, margin: '0 0 22px' }}>{grant.body}</p>
       <button className="form-trigger" data-form-src={forms[grant.form]} data-form-title={formTitle} style={{ background: buttonBackground, color: buttonColor, fontWeight: 800, fontSize: 14, padding: '13px 24px', borderRadius: 3, border: 'none', cursor: 'pointer', fontFamily: "'Archivo',sans-serif" }}>{grant.cta_label} →</button>
     </div>
   );

@@ -175,14 +175,14 @@
       {
         "audience": "For Coaches",
         "title": "Team Grants",
-        "body": "\\[object Object]\n",
+        "body": "Booster funds go directly to programs for equipment, travel, and the extras that make a season. Coaches can apply each year.",
         "cta_label": "Apply for a Grant",
         "form": "team_grant"
       },
       {
         "audience": "For Seniors",
         "title": "Senior Scholarships",
-        "body": "\\[object Object]\n",
+        "body": "We celebrate graduating Warrior athletes with scholarships that send them into their next chapter strong.",
         "cta_label": "Apply Now",
         "form": "scholarship"
       }

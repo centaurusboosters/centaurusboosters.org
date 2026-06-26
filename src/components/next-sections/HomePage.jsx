@@ -1,6 +1,7 @@
 'use client';
 
 import { makeSafeTina, useTina } from '../tina/editable';
+import Nav from './Nav';
 import HeroClient from './HeroClient';
 import AboutEditor from './AboutEditor';
 import StatBand from './StatBand';
@@ -22,6 +23,7 @@ export default function HomePage({ tina, staticData }) {
 
   return (
     <>
+      <Nav showTournament={showTournament} />
       <HeroClient tournament={page.tournament} site={page.site} showTournament={showTournament} />
       <AboutEditor about={page.about} />
       <StatBand tournament={page.tournament} statBand={page.stat_band} showTournament={showTournament} programs={page.programs} />
