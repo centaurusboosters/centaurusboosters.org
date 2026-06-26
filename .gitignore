@@ -6,3 +6,5 @@ dist/
 out/
 next-env.d.ts
 tina/__generated__/
+.vercel
+.env*.local

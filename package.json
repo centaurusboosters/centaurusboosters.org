@@ -28,6 +28,7 @@
     "sharp@0.34.5": true
   },
   "dependencies": {
+    "@vercel/analytics": "^2.0.1",
     "tinacms": "^3.9.3"
   }
 }

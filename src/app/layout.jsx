@@ -1,5 +1,6 @@
 import '../styles/global.css';
 import '../styles/components.css';
+import { Analytics } from '@vercel/analytics/next';
 
 export const metadata = {
   title: 'Centaurus Warriors Booster Club — Supporting CHS Athletics',
@@ -18,7 +19,10 @@ export default function RootLayout({ children }) {
           rel="stylesheet"
         />
       </head>
-      <body>{children}</body>
+      <body>
+        {children}
+        <Analytics />
+      </body>
     </html>
   );
 }
