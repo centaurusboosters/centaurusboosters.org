@@ -1,7 +1,7 @@
 {
   "tournament": {
     "enabled": true,
-    "edition": "2nd Annual",
+    "edition": "3nd Annual",
     "date": "Sun · Sept 20, 2026",
     "time": "9AM Shotgun Start",
     "venue": "Indian Peaks Golf Course",
@@ -128,10 +128,28 @@
       }
     ]
   },
-  "programs": ["Football","Basketball","Baseball","Softball","Soccer","Swimming","Tennis","Golf","Cross Country","Track & Field","Volleyball","Wrestling","Lacrosse","Cheerleading"],
+  "programs": [
+    "Football",
+    "Basketball",
+    "Baseball",
+    "Softball",
+    "Soccer",
+    "Swimming",
+    "Tennis",
+    "Golf",
+    "Cross Country",
+    "Track & Field",
+    "Volleyball",
+    "Wrestling",
+    "Lacrosse",
+    "Cheerleading"
+  ],
   "stat_band": {
     "items": [
-      { "value": "501(c)(3)", "label": "NON-PROFIT" }
+      {
+        "value": "501(c)(3)",
+        "label": "NON-PROFIT"
+      }
     ]
   },
   "sponsor_benefits": {
