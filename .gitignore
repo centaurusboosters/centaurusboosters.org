@@ -5,6 +5,7 @@ dist/
 .next/
 out/
 next-env.d.ts
+tsconfig.tsbuildinfo
 tina/__generated__/
 .vercel
 .env*.local
