@@ -1,5 +1,5 @@
 import { defineConfig } from 'tinacms';
-import { DefaultAuthJSProvider } from 'tinacms-authjs/dist/tinacms';
+import { GoogleAuthProvider } from '../src/lib/google-auth-provider';
 
 const branch =
   process.env.NEXT_PUBLIC_TINA_BRANCH ||
@@ -10,7 +10,7 @@ const branch =
 export default defineConfig({
   branch,
   contentApiUrlOverride: '/api/tina/gql',
-  authProvider: new DefaultAuthJSProvider({ name: 'google' }),
+  authProvider: new GoogleAuthProvider(),
   build: {
     publicFolder: 'public',
     outputFolder: 'admin',
