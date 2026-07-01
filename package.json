@@ -13,7 +13,7 @@
     "dev:next": "next dev"
   },
   "devDependencies": {
-    "@tinacms/cli": "^2.5.1",
+    "@tinacms/cli": "^2.5.2",
     "@types/node": "26.0.0",
     "@types/react": "19.2.17",
     "fs-extra": "^11.3.6",
@@ -34,7 +34,7 @@
     "next-auth": "^4.24.14",
     "slate": "^0.124.1",
     "slate-dom": "^0.124.1",
-    "tinacms": "^3.9.3",
+    "tinacms": "^3.9.4",
     "tinacms-gitprovider-github": "^4.1.12",
     "upstash-redis-level": "^1.1.1"
   }
