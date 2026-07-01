@@ -1,4 +1,6 @@
-export default function Programs({ programs = [] }) {
+import { tinaField } from '../tina/editable';
+
+export default function Programs({ page, programs = [] }) {
   return (
     <div style={{ padding: '60px 6vw', background: '#0b1838' }}>
       <div style={{ textAlign: 'center', marginBottom: 28 }}>
@@ -7,7 +9,7 @@ export default function Programs({ programs = [] }) {
         </div>
         <p style={{ color: '#aebbe0', fontSize: 16, margin: '10px 0 0', lineHeight: 1.5 }}>Every Centaurus team. Every season. We've got them covered.</p>
       </div>
-      <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: 10, maxWidth: 860, margin: '0 auto' }}>
+      <div data-tina-field={tinaField(page, 'programs')} style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: 10, maxWidth: 860, margin: '0 auto' }}>
         {programs.map((program) => (
           <span key={program} style={programStyle}>{program}</span>
         ))}

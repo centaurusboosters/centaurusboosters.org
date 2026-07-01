@@ -1,4 +1,5 @@
 import StatBandSection from '../ui/StatBandSection';
+import { tinaField } from '../tina/editable';
 
 export default function StatBand({ tournament, statBand, showTournament, programs = [] }) {
   const stats = showTournament
@@ -8,5 +9,9 @@ export default function StatBand({ tournament, statBand, showTournament, program
         { value: String(tournament.holes), label: `HOLES · ${tournament.format.toUpperCase()}` },
       ]
     : [{ value: `${programs.length}+`, label: 'PROGRAMS SUPPORTED' }, ...(statBand?.items ?? [])];
-  return <StatBandSection stats={stats} />;
+  return (
+    <div data-tina-field={!showTournament ? tinaField(statBand, 'items') : undefined}>
+      <StatBandSection stats={stats} />
+    </div>
+  );
 }
