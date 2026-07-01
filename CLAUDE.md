@@ -50,6 +50,23 @@ All editable content lives in `src/data/home.json`. TinaCMS reads/writes this fi
 
 Global CSS is in `src/styles/global.css`; component-specific utilities in `src/styles/components.css`. Tailwind CSS is **not** used — styles are plain CSS.
 
+### TinaCMS Admin Gotchas (tinacms 3.9.4)
+
+**`page` collection `allowedActions` interacts with visual editing routing.** `tina/config.ts` defines `page` as `global: true` with a custom `ui.router: () => '/'` (this is what powers live/visual editing) and `ui.allowedActions: { create: false, delete: false }`.
+
+TinaCMS's `GetCollection.tsx` auto-redirects into the live visual-editing overlay (`/~/...`) whenever a collection has *all* of: exactly one document, `create` **and** `delete` both disabled, and a `ui.router`. That's why clicking "Home Page" in the admin sidebar drops into visual-editing mode (live iframe, empty sidebar) instead of opening a plain form directly.
+
+- **`create: false` kept (current setting):** menu click → live-editing mode. Sidebar stays empty until you click a `data-tina-field`-wired element in the iframe — but clicking *any* wired field opens the full page form (every section, via collapsible groups) in the sidebar with the live preview still visible alongside.
+- **Removing `create: false`** flips this: menu click → plain full form opens immediately in the main panel, but with no live iframe while that form is open. (Safe to remove in isolation — `global` collections already block creating a second document via a separate check in `CollectionListPage.tsx`, so this doesn't actually enable multi-document creation.)
+
+These two modes are mutually exclusive in 3.9.4 for a `global + router` collection — there's no built-in way to get an auto-populated sidebar form *and* the live iframe simultaneously (verified: no hidden trigger button exists in the admin chrome). We keep `create: false` to preserve the live-preview workflow.
+
+Practical implication: any top-level `page` field needs `data-tina-field={tinaField(...)}` wiring in its rendering component to be reachable without first knowing to click something else in the live preview. `Programs.jsx` and `StatBand.jsx` had none and were effectively unreachable in the admin until wired.
+
+**Self-hosted media requires `media.tina.static: true`.** Without it, TinaCMS's media store builds a TinaCloud-style assets-CDN URL (`content`→`assets` domain swap + `clientId`) whenever the client isn't in `--local` dev mode — which is always true here (self-hosted `GoogleAuthProvider`, not `LocalAuthProvider`/`TinaCloudAuthProvider`). That URL doesn't exist for this deployment, so Media Manager 404s with a misleading "Bad Route: Cloudinary API route..." error (generic TinaCMS wording, unrelated to actually using Cloudinary). `static: true` switches it to browsing a pre-built manifest of `public/assets` instead — matches how media already works here (images committed to git). **Trade-off: `static: true` disables Upload and Delete in the Media Manager UI entirely** (`cms.media.store.isStatic` hides the upload button and forces `allowDelete: false` in TinaCMS source). New images must be committed to `public/assets` directly; the CMS can only browse/select existing ones.
+
+**Debugging tip:** the shipped admin bundle is minified, but TinaCMS publishes readable TS source per version tag on GitHub: `gh api repos/tinacms/tinacms/contents/<path>?ref=tinacms@X.Y.Z`. Routing lives in `packages/tinacms/src/admin/`; media in `packages/tinacms/src/toolkit/core/media*.ts`.
+
 ### Deployment
 
 The site deploys to Vercel as a static export (`out/` directory). The TinaCloud token must be set as `TINA_TOKEN` environment variable in Vercel. The TinaCMS admin UI is served at `/admin` (built into `public/admin`).
