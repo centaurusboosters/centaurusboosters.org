@@ -1,7 +1,7 @@
 import { upload } from '@vercel/blob/client';
 import type { Media, MediaList, MediaListOptions, MediaStore, MediaUploadOptions } from 'tinacms';
 
-import { MEDIA_PREFIX } from './tina-media-store-shared';
+import { MEDIA_PREFIX, normalizeDirectory } from './tina-media-store-shared';
 
 export class VercelBlobMediaStore implements MediaStore {
   accept = 'image/*';
@@ -10,7 +10,8 @@ export class VercelBlobMediaStore implements MediaStore {
   async persist(files: MediaUploadOptions[]): Promise<Media[]> {
     return Promise.all(
       files.map(async ({ directory, file }) => {
-        const pathname = `${MEDIA_PREFIX}${directory ? `${directory}/` : ''}${file.name}`;
+        const dir = normalizeDirectory(directory);
+        const pathname = `${MEDIA_PREFIX}${dir ? `${dir}/` : ''}${file.name}`;
         const blob = await upload(pathname, file, {
           access: 'public',
           handleUploadUrl: '/api/tina/media-upload',
@@ -19,7 +20,7 @@ export class VercelBlobMediaStore implements MediaStore {
           type: 'file',
           id: blob.pathname,
           filename: file.name,
-          directory: directory || '',
+          directory: dir,
           src: blob.url,
         };
       })
@@ -39,7 +40,8 @@ export class VercelBlobMediaStore implements MediaStore {
 
   async list(options: MediaListOptions = {}): Promise<MediaList> {
     const params = new URLSearchParams();
-    if (options.directory) params.set('directory', options.directory);
+    const directory = normalizeDirectory(options.directory);
+    if (directory) params.set('directory', directory);
     const res = await fetch(`/api/tina/media-list?${params.toString()}`);
     if (!res.ok) {
       throw new Error('Failed to list media');

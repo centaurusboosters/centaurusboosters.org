@@ -2,12 +2,12 @@ import type { NextApiRequest, NextApiResponse } from 'next';
 import { list } from '@vercel/blob';
 
 import { requireTinaSession } from '../../../lib/tina-media-auth';
-import { MEDIA_PREFIX } from '../../../lib/tina-media-store-shared';
+import { MEDIA_PREFIX, normalizeDirectory } from '../../../lib/tina-media-store-shared';
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   if (!(await requireTinaSession(req, res))) return;
 
-  const directory = typeof req.query.directory === 'string' ? req.query.directory : '';
+  const directory = normalizeDirectory(typeof req.query.directory === 'string' ? req.query.directory : '');
   const prefix = `${MEDIA_PREFIX}${directory ? `${directory}/` : ''}`;
 
   const { blobs, folders } = await list({ prefix, mode: 'folded' });
