@@ -31,6 +31,7 @@
   "dependencies": {
     "@tinacms/datalayer": "^2.0.25",
     "@vercel/analytics": "^2.0.1",
+    "@vercel/blob": "^2.5.0",
     "next-auth": "^4.24.14",
     "slate": "^0.124.1",
     "slate-dom": "^0.124.1",

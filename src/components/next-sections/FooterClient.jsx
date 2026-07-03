@@ -9,7 +9,7 @@ export default function FooterClient({ contacts, tournament, site, showTournamen
     <div style={{ padding: '54px 6vw', background: '#070f24', color: '#aebbe0' }}>
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', gap: 40, flexWrap: 'wrap' }}>
         <div style={{ display: 'flex', gap: 16, alignItems: 'center' }}>
-          <img src="/assets/warriors-logo.png" alt="Centaurus Warriors Booster Club" style={{ width: 52, height: 52, objectFit: 'contain' }} />
+          <img src="https://uciw2t8wwfuxzowq.public.blob.vercel-storage.com/tina-media/warriors-logo.png" alt="Centaurus Warriors Booster Club" style={{ width: 52, height: 52, objectFit: 'contain' }} />
           <div>
             <div style={{ fontFamily: "'Anton',sans-serif", color: '#fff', fontSize: 20 }}>CENTAURUS WARRIORS</div>
             <div style={{ fontSize: 12, letterSpacing: '.18em', color: '#7fa0ff', fontWeight: 700 }}>BOOSTER CLUB</div>

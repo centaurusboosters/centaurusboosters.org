@@ -9,3 +9,4 @@ tsconfig.tsbuildinfo
 tina/__generated__/
 .vercel
 .env*.local
+.DS_Store

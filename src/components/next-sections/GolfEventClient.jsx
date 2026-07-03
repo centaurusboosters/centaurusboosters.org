@@ -9,7 +9,7 @@ export default function GolfEventClient({ tournament }) {
       <h2 data-tina-field={tinaField(tournament, 'section_headline')} style={{ fontFamily: "'Anton',sans-serif", fontSize: 58, color: '#fff', margin: '14px 0 0', lineHeight: .98 }}>{tournament.section_headline}</h2>
       <p data-tina-field={tinaField(tournament, 'section_intro')} style={{ color: '#aebbe0', fontSize: 18, lineHeight: 1.6, maxWidth: 620, margin: '16px 0 0' }}>{tournament.section_intro}</p>
       <div className="event-grid" style={{ display: 'grid', gridTemplateColumns: '1.1fr .9fr', gap: 36, marginTop: 42, alignItems: 'stretch' }}>
-        <img id="event-photo" src="/assets/course-1.jpg" alt="Golfer swinging at Indian Peaks Golf Course during the Centaurus Warriors tournament" style={{ minHeight: 380, width: '100%', borderRadius: 6, objectFit: 'cover', objectPosition: 'center', display: 'block' }} />
+        <img id="event-photo" src="https://uciw2t8wwfuxzowq.public.blob.vercel-storage.com/tina-media/course-1.jpg" alt="Golfer swinging at Indian Peaks Golf Course during the Centaurus Warriors tournament" style={{ minHeight: 380, width: '100%', borderRadius: 6, objectFit: 'cover', objectPosition: 'center', display: 'block' }} />
         <div style={{ display: 'flex', flexDirection: 'column', gap: 14 }}>
           <div style={eventCardStyle}>
             <div data-tina-field={tinaField(tournament, 'format_label')} style={cardTitleStyle}>{tournament.format_label}</div>
