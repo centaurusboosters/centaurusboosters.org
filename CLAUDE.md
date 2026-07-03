@@ -47,7 +47,7 @@ All editable content lives in `src/data/home.json`. TinaCMS reads/writes this fi
 
 ### Styling
 
-Global CSS is in `src/styles/global.css`; component-specific utilities in `src/styles/components.css`. Tailwind CSS is **not** used — styles are plain CSS.
+Design tokens (colors, fonts, radius) live in `src/styles/global.css`; the section class vocabulary (`.section`, `.kicker`, `.section-title`, `.btn`, `.card`, per-section blocks, mobile rules) lives in `src/styles/components.css`. Tailwind CSS is **not** used — styles are plain CSS. Components must not contain hex colors or `style={{...}}` except for genuinely dynamic values (currently: the hero slide transform and the stat-band column count). See `docs/EDITING.md` for the editing guide (CMS tasks and the copy-a-section workflow).
 
 ### TinaCMS Admin Gotchas (tinacms 3.9.4)
 
