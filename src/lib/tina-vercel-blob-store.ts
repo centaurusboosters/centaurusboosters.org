@@ -1,7 +1,7 @@
 import { upload } from '@vercel/blob/client';
 import type { Media, MediaList, MediaListOptions, MediaStore, MediaUploadOptions } from 'tinacms';
 
-import { MEDIA_PREFIX, normalizeDirectory } from './tina-media-store-shared';
+import { MEDIA_PREFIX, buildThumbnails, normalizeDirectory } from './tina-media-store-shared';
 
 export class VercelBlobMediaStore implements MediaStore {
   accept = 'image/*';
@@ -22,6 +22,7 @@ export class VercelBlobMediaStore implements MediaStore {
           filename: file.name,
           directory: dir,
           src: blob.url,
+          thumbnails: buildThumbnails(blob.url),
         };
       })
     );

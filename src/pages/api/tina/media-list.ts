@@ -2,7 +2,7 @@ import type { NextApiRequest, NextApiResponse } from 'next';
 import { list } from '@vercel/blob';
 
 import { requireTinaSession } from '../../../lib/tina-media-auth';
-import { MEDIA_PREFIX, normalizeDirectory } from '../../../lib/tina-media-store-shared';
+import { MEDIA_PREFIX, buildThumbnails, normalizeDirectory } from '../../../lib/tina-media-store-shared';
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   if (!(await requireTinaSession(req, res))) return;
@@ -28,6 +28,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     filename: blob.pathname.slice(prefix.length),
     directory,
     src: blob.url,
+    thumbnails: buildThumbnails(blob.url),
   }));
 
   return res.status(200).json({ items: [...dirItems, ...fileItems] });
