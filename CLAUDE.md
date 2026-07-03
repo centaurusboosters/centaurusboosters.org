@@ -71,7 +71,11 @@ Practical implication: any top-level `page` field needs `data-tina-field={tinaFi
 
 **Debugging tip:** the shipped admin bundle is minified, but TinaCMS publishes readable TS source per version tag on GitHub: `gh api repos/tinacms/tinacms/contents/<path>?ref=tinacms@X.Y.Z`. Routing lives in `packages/tinacms/src/admin/`; media in `packages/tinacms/src/toolkit/core/media*.ts`.
 
-**Local auth bypass.** Set `TINA_LOCAL_AUTH_BYPASS=true` in `.env.local` to skip Google sign-in entirely when testing the admin/media routes locally without Google OAuth credentials configured. `isAuthBypassEnabled()` (`src/lib/tina-auth-bypass.ts`) gates every auth check — `requireTinaSession`, the Tina GraphQL backend's `authProvider.isAuthorized`, and which client-side `authProvider` `tina/config.ts` picks (`LocalAuthProvider` from `tinacms` instead of `GoogleAuthProvider`). It's hard-gated behind `NODE_ENV !== 'production'` so it can't activate in a deployed build even if the var is set by mistake.
+**Local auth bypass.** Set `TINA_LOCAL_AUTH_BYPASS=true` in `.env` to skip Google sign-in entirely when testing the admin/media routes locally without Google OAuth credentials configured. `isAuthBypassEnabled()` (`src/lib/tina-auth-bypass.ts`) gates every auth check — `requireTinaSession`, the Tina GraphQL backend's `authProvider.isAuthorized`, and which client-side `authProvider` `tina/config.ts` picks (`LocalAuthProvider` from `tinacms` instead of `GoogleAuthProvider`). It's hard-gated behind `NODE_ENV !== 'production'` so it can't activate in a deployed build even if the var is set by mistake.
+
+### Local environment variables
+
+Use **only `.env`** for local dev, populated via `vercel env pull .env --environment=development` — do not use `.env.local`. `@tinacms/cli` hardcodes reading `.env` (`dotenv.config({ path: '.env' })` in its source), not `.env.local`; `next build`/`next dev` read both, so `.env` alone is sufficient for everything in this project (`tinacms build`/`tinacms dev` *and* `next build`/`next dev`). Splitting into `.env` + `.env.local` looks like a shared/personal-override pattern but isn't one here — both files are gitignored, so nothing is actually shared via git; it was only duplicate, driftable copies of the same secrets. Set all dev env vars in the Vercel project's **Development** environment (`vercel env add <NAME> development`) so they survive re-pulls, rather than hand-editing `.env` (which gets overwritten on the next pull).
 
 ### Deployment
 
