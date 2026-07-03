@@ -19,7 +19,7 @@ export default function HeroClient({ tournament, site, showTournament }) {
     <div className="hero">
       {showTournament && (
         <div className="hero-img-panel">
-          <img id="hero-photo" src="https://uciw2t8wwfuxzowq.public.blob.vercel-storage.com/tina-media/course-2.jpg" alt="Golfer teeing off with Colorado mountain backdrop at Indian Peaks Golf Course" />
+          <img id="hero-photo" data-tina-field={tinaField(tournament?.photos, 'hero')} src={tournament.photos.hero} alt={tournament.photos.hero_alt} />
           <div className="hero-scrim"></div>
         </div>
       )}
@@ -28,7 +28,11 @@ export default function HeroClient({ tournament, site, showTournament }) {
       {showTournament && (
         <div id="spot-golf" className="spot" style={spotStyle(active === 0 ? 0 : -100, active === 0)}>
           <div data-tina-field={tinaField(tournament, 'edition')} className="hero-badge">NOW REGISTERING · {tournament.edition.toUpperCase()}</div>
-          <h1 className="hero-title">CENTAURUS<br />GOLF TOURNAMENT</h1>
+          <h1 className="hero-title">
+            <span data-tina-field={tinaField(tournament, 'hero_headline_line1')}>{tournament.hero_headline_line1}</span>
+            <br />
+            <span data-tina-field={tinaField(tournament, 'hero_headline_line2')}>{tournament.hero_headline_line2}</span>
+          </h1>
           <div className="hero-meta">
             <span data-tina-field={tinaField(tournament, 'date')}>{tournament.date.toUpperCase()}</span>
             <span className="hero-sep">|</span>
@@ -37,7 +41,7 @@ export default function HeroClient({ tournament, site, showTournament }) {
             <span data-tina-field={tinaField(tournament, 'venue')}>{tournament.venue.toUpperCase()}</span>
           </div>
           <div className="hero-cta">
-            <button className="btn btn--red btn--md form-trigger" data-form-src={forms.registration} data-form-title="TOURNAMENT REGISTRATION">REGISTER A FOURSOME →</button>
+            <button data-tina-field={tinaField(tournament, 'hero_cta_label')} className="btn btn--red btn--md form-trigger" data-form-src={forms.registration} data-form-title="TOURNAMENT REGISTRATION">{tournament.hero_cta_label} →</button>
           </div>
         </div>
       )}
@@ -53,8 +57,8 @@ export default function HeroClient({ tournament, site, showTournament }) {
         </h1>
         <p data-tina-field={tinaField(mission, 'body')} className="hero-body">{mission.body}</p>
         <div className="hero-cta">
-          <a href="#sponsor" className="btn btn--white btn--md">GET INVOLVED</a>
-          <a href="#donate" className="btn btn--ghost btn--md">DONATE</a>
+          <a data-tina-field={tinaField(mission, 'cta_primary')} href="#sponsor" className="btn btn--white btn--md">{mission.cta_primary}</a>
+          <a data-tina-field={tinaField(mission, 'cta_secondary')} href="#donate" className="btn btn--ghost btn--md">{mission.cta_secondary}</a>
         </div>
       </div>
 

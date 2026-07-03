@@ -38,8 +38,8 @@ export default function SponsorCTAClient({ site, sponsorBenefits, contacts }) {
           </p>
         </div>
         <div className="sponsor-form-box">
-          <button className="btn btn--navy form-trigger" data-form-src={forms.sponsorship} data-form-title="SPONSORSHIP INQUIRY">
-            BECOME A SPONSOR →
+          <button data-tina-field={tinaField(cta, 'cta_label')} className="btn btn--navy form-trigger" data-form-src={forms.sponsorship} data-form-title="SPONSORSHIP INQUIRY">
+            {cta.cta_label} →
           </button>
         </div>
       </div>

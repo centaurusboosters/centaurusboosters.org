@@ -1,7 +1,7 @@
 {
   "tournament": {
     "enabled": true,
-    "edition": "3nd Annual",
+    "edition": "3rd Annual",
     "date": "Sun · Sept 20, 2026",
     "time": "9AM Shotgun Start",
     "venue": "Indian Peaks Golf Course",
@@ -30,7 +30,22 @@
     "course_description": "A Hale Irwin Signature Design — championship golf with extraordinary Front Range views.",
     "register_headline": "CLAIM YOUR TEE TIME",
     "register_intro": "Sign up right here — register a full foursome or join as an individual and we'll build your team.",
-    "arrive_by": "8:00 AM"
+    "arrive_by": "8:00 AM",
+    "register_cta_label": "REGISTER NOW",
+    "hero_headline_line1": "CENTAURUS",
+    "hero_headline_line2": "GOLF TOURNAMENT",
+    "hero_cta_label": "REGISTER A FOURSOME",
+    "map_embed_url": "https://maps-api-ssl.google.com/maps?hl=en-US&ll=40.002572,-105.123782&output=embed&q=2300+Indian+Peaks+Trail,+Lafayette,+CO+80026,+United+States+(Indian+Peaks+Golf+Course)&z=15",
+    "photos": {
+      "hero": "https://uciw2t8wwfuxzowq.public.blob.vercel-storage.com/tina-media/course-2.jpg",
+      "hero_alt": "Golfer teeing off with Colorado mountain backdrop at Indian Peaks Golf Course",
+      "event": "https://uciw2t8wwfuxzowq.public.blob.vercel-storage.com/tina-media/course-1.jpg",
+      "event_alt": "Golfer swinging at Indian Peaks Golf Course during the Centaurus Warriors tournament",
+      "course_1": "https://uciw2t8wwfuxzowq.public.blob.vercel-storage.com/tina-media/img-2017.jpg",
+      "course_1_alt": "Golfer on the fairway at Indian Peaks Golf Course",
+      "course_2": "https://uciw2t8wwfuxzowq.public.blob.vercel-storage.com/tina-media/course-2.jpg",
+      "course_2_alt": "Golfer teeing off with Colorado mountain backdrop at Indian Peaks Golf Course"
+    }
   },
   "site": {
     "copyright": "© 2026 Centaurus Warriors Booster Club · 501(c)(3) nonprofit",
@@ -42,16 +57,20 @@
       "headline_line1": "EVERY WARRIOR.",
       "headline_line2": "EVERY",
       "headline_accent": "TEAM.",
-      "body": "We fund the gear, travel, and grants that let Centaurus athletes compete and grow. Join the club that backs every program."
+      "body": "We fund the gear, travel, and grants that let Centaurus athletes compete and grow. Join the club that backs every program.",
+      "cta_primary": "GET INVOLVED",
+      "cta_secondary": "DONATE"
     },
     "donate": {
       "headline": "FUEL THE PROGRAMS",
-      "body": "Your gift funds gear, travel, grants & scholarships for every Centaurus athlete. Give any amount right here."
+      "body": "Your gift funds gear, travel, grants & scholarships for every Centaurus athlete. Give any amount right here.",
+      "cta_label": "DONATE NOW"
     },
     "sponsor_cta": {
       "headline_line1": "PUT YOUR BRAND",
       "headline_line2": "BEHIND THE WARRIORS",
-      "intro": "Annual and sport-specific options that reach families across every Centaurus program and the golf tournament."
+      "intro": "Annual and sport-specific options that reach families across every Centaurus program and the golf tournament.",
+      "cta_label": "BECOME A SPONSOR"
     }
   },
   "contacts": {
@@ -71,6 +90,7 @@
     ]
   },
   "sponsors": {
+    "label": "PROUDLY SUPPORTED BY OUR SPONSORS",
     "items": [
       {
         "name": "Westbound Realty",
@@ -128,22 +148,26 @@
       }
     ]
   },
-  "programs": [
-    "Football",
-    "Basketball",
-    "Baseball",
-    "Softball",
-    "Soccer",
-    "Swimming",
-    "Tennis",
-    "Golf",
-    "Cross Country",
-    "Track & Field",
-    "Volleyball",
-    "Wrestling",
-    "Lacrosse",
-    "Cheerleading"
-  ],
+  "programs": {
+    "kicker": "PROGRAMS WE SUPPORT",
+    "intro": "Every Centaurus team. Every season. We've got them covered.",
+    "items": [
+      "Football",
+      "Basketball",
+      "Baseball",
+      "Softball",
+      "Soccer",
+      "Swimming",
+      "Tennis",
+      "Golf",
+      "Cross Country",
+      "Track & Field",
+      "Volleyball",
+      "Wrestling",
+      "Lacrosse",
+      "Cheerleading"
+    ]
+  },
   "stat_band": {
     "items": [
       {
@@ -162,6 +186,8 @@
     ]
   },
   "get_involved": {
+    "kicker": "GET INVOLVED",
+    "headline": "WAYS TO BACK THE WARRIORS",
     "items": [
       {
         "title": "SPONSOR",

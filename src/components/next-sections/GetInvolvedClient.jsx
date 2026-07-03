@@ -9,8 +9,8 @@ export default function GetInvolvedClient({ getInvolved }) {
   return (
     <div id="getinvolved" className="section">
       <div className="section-head">
-        <div className="kicker kicker--center">GET INVOLVED</div>
-        <h2 className="section-title">WAYS TO BACK THE WARRIORS</h2>
+        <div data-tina-field={tinaField(getInvolved, 'kicker')} className="kicker kicker--center">{getInvolved.kicker}</div>
+        <h2 data-tina-field={tinaField(getInvolved, 'headline')} className="section-title">{getInvolved.headline}</h2>
       </div>
       <div className="ways-grid">
         {items.map((item, i) =>

@@ -9,7 +9,7 @@ export default function GolfEventClient({ tournament }) {
       <h2 data-tina-field={tinaField(tournament, 'section_headline')} className="section-title">{tournament.section_headline}</h2>
       <p data-tina-field={tinaField(tournament, 'section_intro')} className="section-intro">{tournament.section_intro}</p>
       <div className="event-grid">
-        <img id="event-photo" className="event-photo" src="https://uciw2t8wwfuxzowq.public.blob.vercel-storage.com/tina-media/course-1.jpg" alt="Golfer swinging at Indian Peaks Golf Course during the Centaurus Warriors tournament" />
+        <img id="event-photo" className="event-photo" data-tina-field={tinaField(tournament?.photos, 'event')} src={tournament.photos.event} alt={tournament.photos.event_alt} />
         <div className="event-cards">
           <div className="event-card">
             <div data-tina-field={tinaField(tournament, 'format_label')} className="event-card-title">{tournament.format_label}</div>

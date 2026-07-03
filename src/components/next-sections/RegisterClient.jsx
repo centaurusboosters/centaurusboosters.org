@@ -25,7 +25,7 @@ export default function RegisterClient({ tournament, contacts }) {
         <span className="detail-item">👥 REGISTER UP TO 4 PLAYERS</span>
       </div>
       <div className="section-cta">
-        <button className="btn btn--red form-trigger" data-form-src={forms.registration} data-form-title="TOURNAMENT REGISTRATION">REGISTER NOW →</button>
+        <button data-tina-field={tinaField(tournament, 'register_cta_label')} className="btn btn--red form-trigger" data-form-src={forms.registration} data-form-title="TOURNAMENT REGISTRATION">{tournament.register_cta_label} →</button>
       </div>
     </div>
   );

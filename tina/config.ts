@@ -64,6 +64,26 @@ export default defineConfig({
               { type: 'string', name: 'register_headline', label: 'Register headline', required: true },
               { type: 'string', name: 'register_intro', label: 'Register intro', ui: { component: 'textarea' } },
               { type: 'string', name: 'arrive_by', label: 'Arrive by', required: true },
+              { type: 'string', name: 'register_cta_label', label: 'Register button label' },
+              { type: 'string', name: 'hero_headline_line1', label: 'Hero headline line 1' },
+              { type: 'string', name: 'hero_headline_line2', label: 'Hero headline line 2' },
+              { type: 'string', name: 'hero_cta_label', label: 'Hero button label' },
+              { type: 'string', name: 'map_embed_url', label: 'Map embed URL', ui: { component: 'textarea' } },
+              {
+                type: 'object',
+                name: 'photos',
+                label: 'Photos',
+                fields: [
+                  { type: 'image', name: 'hero', label: 'Hero photo' },
+                  { type: 'string', name: 'hero_alt', label: 'Hero photo description (alt text)' },
+                  { type: 'image', name: 'event', label: 'Main event photo' },
+                  { type: 'string', name: 'event_alt', label: 'Main event photo description (alt text)' },
+                  { type: 'image', name: 'course_1', label: 'Course photo 1' },
+                  { type: 'string', name: 'course_1_alt', label: 'Course photo 1 description (alt text)' },
+                  { type: 'image', name: 'course_2', label: 'Course photo 2' },
+                  { type: 'string', name: 'course_2_alt', label: 'Course photo 2 description (alt text)' },
+                ],
+              },
             ],
           },
           {
@@ -88,6 +108,8 @@ export default defineConfig({
                   { type: 'string', name: 'headline_line2', label: 'Headline line 2 (before accent)' },
                   { type: 'string', name: 'headline_accent', label: 'Headline accent word (red)' },
                   { type: 'string', name: 'body', label: 'Body', ui: { component: 'textarea' } },
+                  { type: 'string', name: 'cta_primary', label: 'Primary button label' },
+                  { type: 'string', name: 'cta_secondary', label: 'Secondary button label' },
                 ],
               },
               {
@@ -97,6 +119,7 @@ export default defineConfig({
                 fields: [
                   { type: 'string', name: 'headline', label: 'Headline' },
                   { type: 'string', name: 'body', label: 'Body', ui: { component: 'textarea' } },
+                  { type: 'string', name: 'cta_label', label: 'Button label' },
                 ],
               },
               {
@@ -107,6 +130,7 @@ export default defineConfig({
                   { type: 'string', name: 'headline_line1', label: 'Headline line 1' },
                   { type: 'string', name: 'headline_line2', label: 'Headline line 2' },
                   { type: 'string', name: 'intro', label: 'Intro', ui: { component: 'textarea' } },
+                  { type: 'string', name: 'cta_label', label: 'Button label' },
                 ],
               },
             ],
@@ -143,6 +167,7 @@ export default defineConfig({
             name: 'sponsors',
             label: 'Sponsors',
             fields: [
+              { type: 'string', name: 'label', label: 'Strip heading' },
               {
                 type: 'object',
                 name: 'items',
@@ -158,7 +183,16 @@ export default defineConfig({
               },
             ],
           },
-          { type: 'string', name: 'programs', label: 'Programs', list: true },
+          {
+            type: 'object',
+            name: 'programs',
+            label: 'Programs',
+            fields: [
+              { type: 'string', name: 'kicker', label: 'Section label' },
+              { type: 'string', name: 'intro', label: 'Intro line' },
+              { type: 'string', name: 'items', label: 'Programs', list: true },
+            ],
+          },
           {
             type: 'object',
             name: 'stat_band',
@@ -188,6 +222,8 @@ export default defineConfig({
             name: 'get_involved',
             label: 'Get Involved Cards',
             fields: [
+              { type: 'string', name: 'kicker', label: 'Section label' },
+              { type: 'string', name: 'headline', label: 'Headline' },
               {
                 type: 'object',
                 name: 'items',
