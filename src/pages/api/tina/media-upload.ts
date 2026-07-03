@@ -19,7 +19,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         }
         return {
           allowedContentTypes: ['image/*'],
-          addRandomSuffix: true,
+          addRandomSuffix: false,
         };
       },
     });
