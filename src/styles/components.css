@@ -50,6 +50,8 @@
 
 .section-cta { text-align: center; margin-top: 8px; }
 
+.text-red { color: var(--color-red); }
+
 /* ---------- Buttons ---------- */
 .btn {
   display: inline-block; font-family: var(--font-body); font-weight: 800;
