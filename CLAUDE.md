@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-This is the **Centaurus Boosters** website — a Next.js static site for a high school athletics booster club. Content is managed via TinaCMS (cloud-backed headless CMS). The site deploys to Netlify as a fully static export (`output: 'export'`).
+This is the **Centaurus Boosters** website — a Next.js static site for a high school athletics booster club. Content is managed via TinaCMS (cloud-backed headless CMS). The site deploys to Vercel as a fully static export (`output: 'export'`).
 
 ## Commands
 
@@ -42,8 +42,7 @@ All editable content lives in `src/data/home.json`. TinaCMS reads/writes this fi
 
 ### Component Structure
 
-- `src/components/next-sections/` — page section components (one per homepage section). These receive slices of the `page` data object as props.
-- `src/components/ui/` — reusable presentational components used inside the section components.
+- `src/components/next-sections/` — page section components, one file per homepage section. These receive slices of the `page` data object as props.
 - `src/components/tina/editable.js` — re-exports TinaCMS hooks and provides `makeSafeTina` and `EditableRichText` utilities.
 
 ### Styling
