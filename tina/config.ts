@@ -1,5 +1,6 @@
-import { defineConfig } from 'tinacms';
+import { defineConfig, LocalAuthProvider } from 'tinacms';
 import { GoogleAuthProvider } from '../src/lib/google-auth-provider';
+import { isAuthBypassEnabled } from '../src/lib/tina-auth-bypass';
 
 const branch =
   process.env.NEXT_PUBLIC_TINA_BRANCH ||
@@ -10,7 +11,7 @@ const branch =
 export default defineConfig({
   branch,
   contentApiUrlOverride: '/api/tina/gql',
-  authProvider: new GoogleAuthProvider(),
+  authProvider: isAuthBypassEnabled() ? new LocalAuthProvider() : new GoogleAuthProvider(),
   build: {
     publicFolder: 'public',
     outputFolder: 'admin',

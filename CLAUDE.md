@@ -71,6 +71,8 @@ Practical implication: any top-level `page` field needs `data-tina-field={tinaFi
 
 **Debugging tip:** the shipped admin bundle is minified, but TinaCMS publishes readable TS source per version tag on GitHub: `gh api repos/tinacms/tinacms/contents/<path>?ref=tinacms@X.Y.Z`. Routing lives in `packages/tinacms/src/admin/`; media in `packages/tinacms/src/toolkit/core/media*.ts`.
 
+**Local auth bypass.** Set `TINA_LOCAL_AUTH_BYPASS=true` in `.env.local` to skip Google sign-in entirely when testing the admin/media routes locally without Google OAuth credentials configured. `isAuthBypassEnabled()` (`src/lib/tina-auth-bypass.ts`) gates every auth check — `requireTinaSession`, the Tina GraphQL backend's `authProvider.isAuthorized`, and which client-side `authProvider` `tina/config.ts` picks (`LocalAuthProvider` from `tinacms` instead of `GoogleAuthProvider`). It's hard-gated behind `NODE_ENV !== 'production'` so it can't activate in a deployed build even if the var is set by mistake.
+
 ### Deployment
 
 The site deploys to Vercel as a static export (`out/` directory). The TinaCloud token must be set as `TINA_TOKEN` environment variable in Vercel. The TinaCMS admin UI is served at `/admin` (built into `public/admin`).
