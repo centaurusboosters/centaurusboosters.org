@@ -10,22 +10,12 @@ export default function StatBand({ tournament, statBand, showTournament, program
     : [{ value: `${programs.length}+`, label: 'PROGRAMS SUPPORTED' }, ...(statBand?.items ?? [])];
   return (
     <div data-tina-field={!showTournament ? tinaField(statBand, 'items') : undefined}>
-      <div className="stat-band" style={{ display: 'grid', gridTemplateColumns: `repeat(${stats.length},1fr)`, background: '#d8242f' }}>
+      {/* Column count depends on how many stats render, so it stays inline. */}
+      <div className="stat-band" style={{ gridTemplateColumns: `repeat(${stats.length},1fr)` }}>
         {stats.map((stat, i) => (
-          <div
-            key={i}
-            style={{
-              padding: i === 0 && stats.length > 1 ? '30px 6vw' : '30px',
-              textAlign: 'center',
-              borderRight: i < stats.length - 1 ? '1px solid rgba(255,255,255,.2)' : 'none',
-            }}
-          >
-            <div style={{ fontFamily: "'Anton',sans-serif", fontSize: '46px', color: '#fff', lineHeight: 1 }}>
-              {stat.value}
-            </div>
-            <div style={{ color: '#ffd9db', fontWeight: 700, fontSize: '13px', letterSpacing: '.12em', marginTop: '8px' }}>
-              {stat.label}
-            </div>
+          <div key={i} className="stat-cell">
+            <div className="stat-value">{stat.value}</div>
+            <div className="stat-label">{stat.label}</div>
           </div>
         ))}
       </div>

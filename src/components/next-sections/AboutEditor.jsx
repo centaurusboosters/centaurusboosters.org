@@ -4,19 +4,11 @@ import { EditableRichText } from '../tina/editable';
 
 export default function AboutEditor({ about }) {
   return (
-    <div style={{ padding: '56px 6vw', background: '#0e1f47', textAlign: 'center' }}>
-      <div style={{ maxWidth: 760, margin: '0 auto' }}>
-        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 12, color: '#7fa0ff', fontWeight: 800, fontSize: 13, letterSpacing: '.18em', marginBottom: 18 }}>
-          <span style={ruleStyle}></span>ABOUT US<span style={ruleStyle}></span>
-        </div>
-        <EditableRichText document={about} style={{ color: '#cdd6ee', fontSize: 19, lineHeight: 1.65, margin: 0, fontWeight: 500 }} />
+    <div className="section section--mid section--compact section--center about">
+      <div className="about-inner">
+        <div className="kicker kicker--rules kicker--center">ABOUT US</div>
+        <EditableRichText document={about} className="about-body" />
       </div>
     </div>
   );
 }
-
-const ruleStyle = {
-  width: 30,
-  height: 2,
-  background: '#d8242f',
-};
