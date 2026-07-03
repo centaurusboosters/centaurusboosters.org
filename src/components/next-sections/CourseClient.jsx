@@ -19,8 +19,8 @@ export default function CourseClient({ tournament }) {
           </div>
         </div>
         <div className="course-photos" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 16, height: 520 }}>
-          <img id="course-photo-1" src="/assets/img-2017.jpg" alt="Golfer on the fairway at Indian Peaks Golf Course" style={courseImageStyle} />
-          <img id="course-photo-2" src="/assets/course-2.jpg" alt="Golfer teeing off with Colorado mountain backdrop at Indian Peaks Golf Course" style={{ ...courseImageStyle, objectPosition: 'center' }} />
+          <img id="course-photo-1" src="https://uciw2t8wwfuxzowq.public.blob.vercel-storage.com/tina-media/img-2017.jpg" alt="Golfer on the fairway at Indian Peaks Golf Course" style={courseImageStyle} />
+          <img id="course-photo-2" src="https://uciw2t8wwfuxzowq.public.blob.vercel-storage.com/tina-media/course-2.jpg" alt="Golfer teeing off with Colorado mountain backdrop at Indian Peaks Golf Course" style={{ ...courseImageStyle, objectPosition: 'center' }} />
         </div>
       </div>
     </div>

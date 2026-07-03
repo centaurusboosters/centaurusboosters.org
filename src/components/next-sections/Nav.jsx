@@ -9,7 +9,7 @@ export default function Nav({ showTournament }) {
   return (
     <div style={{ position: 'sticky', top: 0, zIndex: 50, display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '14px 6vw', background: 'rgba(8,18,44,.94)', backdropFilter: 'blur(10px)', borderBottom: '1px solid rgba(255,255,255,.09)' }}>
       <a href="#top" style={{ display: 'flex', alignItems: 'center', gap: 14, textDecoration: 'none' }} onClick={closeMenu}>
-        <img src="/assets/warriors-logo.png" alt="Centaurus Warriors" style={{ width: 46, height: 46, objectFit: 'contain' }} />
+        <img src="https://uciw2t8wwfuxzowq.public.blob.vercel-storage.com/tina-media/warriors-logo.png" alt="Centaurus Warriors" style={{ width: 46, height: 46, objectFit: 'contain' }} />
         <div style={{ lineHeight: 1 }}>
           <div style={{ fontFamily: "'Anton',sans-serif", fontSize: 18, letterSpacing: '.02em', color: '#fff' }}>CENTAURUS WARRIORS</div>
           <div style={{ fontSize: 10.5, letterSpacing: '.22em', color: '#7fa0ff', fontWeight: 700, marginTop: 3 }}>BOOSTER CLUB</div>

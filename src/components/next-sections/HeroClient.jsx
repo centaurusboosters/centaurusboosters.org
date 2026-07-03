@@ -19,7 +19,7 @@ export default function HeroClient({ tournament, site, showTournament }) {
     <div style={{ position: 'relative', height: 680, overflow: 'hidden', background: 'linear-gradient(125deg,#0b1838 0%,#14275e 55%,#0b1838 100%)' }}>
       {showTournament && (
         <div className="hero-img-panel" style={{ position: 'absolute', right: 0, top: 0, bottom: 0, width: '50%', zIndex: 1 }}>
-          <img id="hero-photo" src="/assets/course-2.jpg" alt="Golfer teeing off with Colorado mountain backdrop at Indian Peaks Golf Course" style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center' }} />
+          <img id="hero-photo" src="https://uciw2t8wwfuxzowq.public.blob.vercel-storage.com/tina-media/course-2.jpg" alt="Golfer teeing off with Colorado mountain backdrop at Indian Peaks Golf Course" style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center' }} />
           <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(90deg,#0b1838 0%, rgba(11,24,56,.65) 35%, rgba(11,24,56,.15) 100%)', pointerEvents: 'none' }}></div>
         </div>
       )}
