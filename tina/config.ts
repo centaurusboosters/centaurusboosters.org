@@ -16,10 +16,9 @@ export default defineConfig({
     outputFolder: 'admin',
   },
   media: {
-    tina: {
-      publicFolder: 'public',
-      mediaRoot: 'assets',
-      static: true,
+    loadCustomStore: async () => {
+      const { VercelBlobMediaStore } = await import('../src/lib/tina-vercel-blob-store');
+      return VercelBlobMediaStore;
     },
   },
   schema: {
