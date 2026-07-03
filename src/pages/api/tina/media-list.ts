@@ -10,9 +10,19 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   const directory = typeof req.query.directory === 'string' ? req.query.directory : '';
   const prefix = `${MEDIA_PREFIX}${directory ? `${directory}/` : ''}`;
 
-  const { blobs } = await list({ prefix });
+  const { blobs, folders } = await list({ prefix, mode: 'folded' });
 
-  const items = blobs.map((blob) => ({
+  const dirItems = (folders || []).map((folder) => {
+    const trimmed = folder.endsWith('/') ? folder.slice(0, -1) : folder;
+    return {
+      type: 'dir' as const,
+      id: trimmed,
+      filename: trimmed.slice(prefix.length),
+      directory,
+    };
+  });
+
+  const fileItems = blobs.map((blob) => ({
     type: 'file' as const,
     id: blob.pathname,
     filename: blob.pathname.slice(prefix.length),
@@ -20,5 +30,5 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     src: blob.url,
   }));
 
-  return res.status(200).json({ items });
+  return res.status(200).json({ items: [...dirItems, ...fileItems] });
 }
