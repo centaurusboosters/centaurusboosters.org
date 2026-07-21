@@ -1,9 +1,8 @@
 'use client';
 
-import forms from '../../data/forms.json';
 import { tinaField } from '../tina/editable';
 
-export default function SponsorCTAClient({ site, sponsorBenefits, contacts }) {
+export default function SponsorCTAClient({ site, sponsorBenefits, contacts, forms }) {
   const cta = site.sponsor_cta;
   const benefits = sponsorBenefits.items;
   const sponsorship = contacts.sponsorship;

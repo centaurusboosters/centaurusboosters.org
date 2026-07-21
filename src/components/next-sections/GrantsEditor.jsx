@@ -1,6 +1,5 @@
 'use client';
 
-import forms from '../../data/forms.json';
 import { tinaField } from '../tina/editable';
 
 const GRANT_VARIANTS = [
@@ -8,19 +7,19 @@ const GRANT_VARIANTS = [
   { cardClass: 'grant-card grant-card--red', buttonClass: 'btn btn--sm btn--white form-trigger', formTitle: 'SENIOR SCHOLARSHIP APPLICATION' },
 ];
 
-export default function GrantsEditor({ grants }) {
+export default function GrantsEditor({ grants, forms }) {
   return (
     <div id="grants" className="section section--white">
       <div className="grants-grid">
         {grants.items.map((grant, i) => (
-          <GrantCard key={i} grant={grant} {...GRANT_VARIANTS[i % GRANT_VARIANTS.length]} />
+          <GrantCard key={i} grant={grant} forms={forms} {...GRANT_VARIANTS[i % GRANT_VARIANTS.length]} />
         ))}
       </div>
     </div>
   );
 }
 
-function GrantCard({ grant, cardClass, buttonClass, formTitle }) {
+function GrantCard({ grant, forms, cardClass, buttonClass, formTitle }) {
   return (
     <div className={cardClass}>
       <div data-tina-field={tinaField(grant, 'audience')} className="kicker">{grant.audience.toUpperCase()}</div>

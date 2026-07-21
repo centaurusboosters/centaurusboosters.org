@@ -273,6 +273,52 @@ export default defineConfig({
           },
         ],
       },
+      {
+        name: 'forms',
+        label: 'Forms',
+        path: 'src/data',
+        format: 'json',
+        match: { include: 'forms' },
+        ui: {
+          global: true,
+          allowedActions: {
+            create: false,
+            delete: false,
+          },
+        },
+        fields: [
+          {
+            type: 'string',
+            name: 'registration',
+            label: 'Tournament registration form URL',
+            ui: { component: 'textarea' },
+          },
+          {
+            type: 'string',
+            name: 'sponsorship',
+            label: 'Sponsorship inquiry form URL',
+            ui: { component: 'textarea' },
+          },
+          {
+            type: 'string',
+            name: 'donate',
+            label: 'Donate form URL',
+            ui: { component: 'textarea' },
+          },
+          {
+            type: 'string',
+            name: 'team_grant',
+            label: 'Team grant form URL',
+            ui: { component: 'textarea' },
+          },
+          {
+            type: 'string',
+            name: 'scholarship',
+            label: 'Scholarship form URL',
+            ui: { component: 'textarea' },
+          },
+        ],
+      },
     ],
   },
 });

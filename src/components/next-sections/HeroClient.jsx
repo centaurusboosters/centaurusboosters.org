@@ -1,10 +1,9 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import forms from '../../data/forms.json';
 import { tinaField } from '../tina/editable';
 
-export default function HeroClient({ tournament, site, showTournament }) {
+export default function HeroClient({ tournament, site, showTournament, forms }) {
   const mission = site.hero_mission;
 
   const [active, setActive] = useState(0);

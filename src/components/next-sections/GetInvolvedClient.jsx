@@ -1,9 +1,8 @@
 'use client';
 
-import forms from '../../data/forms.json';
 import { tinaField } from '../tina/editable';
 
-export default function GetInvolvedClient({ getInvolved }) {
+export default function GetInvolvedClient({ getInvolved, forms }) {
   const items = getInvolved.items;
 
   return (

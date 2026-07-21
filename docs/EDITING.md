@@ -24,6 +24,7 @@ Go to **`yoursite.com/admin`** and sign in with your Google account. Click any t
 | Change the list of supported programs | Form → **Programs** |
 | Edit grant / scholarship cards | Form → **Grants** |
 | Change contact names/emails | Form → **Contacts** |
+| Change a Google Form link (donate, registration, grants…) | Admin sidebar → **Forms** |
 
 ### Things to know
 

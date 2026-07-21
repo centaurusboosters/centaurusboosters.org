@@ -1,9 +1,8 @@
 'use client';
 
-import forms from '../../data/forms.json';
 import { tinaField } from '../tina/editable';
 
-export default function RegisterClient({ tournament, contacts }) {
+export default function RegisterClient({ tournament, contacts, forms }) {
   return (
     <div id="register" className="section section--light">
       <div className="section-head">

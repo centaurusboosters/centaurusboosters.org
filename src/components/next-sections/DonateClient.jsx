@@ -1,9 +1,8 @@
 'use client';
 
-import forms from '../../data/forms.json';
 import { tinaField } from '../tina/editable';
 
-export default function DonateClient({ site }) {
+export default function DonateClient({ site, forms }) {
   return (
     <div id="donate" className="section">
       <div className="section-head">
