@@ -13,9 +13,9 @@ export function makeSafeTina(documentKey, fallback) {
   };
 }
 
-export function EditableRichText({ document, field = 'body', style }) {
+export function EditableRichText({ document, field = 'body', className, style }) {
   return (
-    <div data-tina-field={tinaField(document, field)} style={style}>
+    <div data-tina-field={tinaField(document, field)} className={className} style={style}>
       <TinaMarkdown content={document?.[field]} />
     </div>
   );

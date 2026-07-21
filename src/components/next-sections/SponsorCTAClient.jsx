@@ -9,24 +9,24 @@ export default function SponsorCTAClient({ site, sponsorBenefits, contacts }) {
   const sponsorship = contacts.sponsorship;
 
   return (
-    <div id="sponsor" style={{ padding: '84px 6vw', background: '#f3f5fb', scrollMarginTop: '72px' }}>
-      <div className="sponsor-layout" style={{ display: 'grid', gridTemplateColumns: '.85fr 1.15fr', gap: '48px', alignItems: 'start' }}>
-        <div className="sponsor-sticky" style={{ position: 'sticky', top: '90px' }}>
-          <div style={{ color: '#1c3fb0', fontWeight: 800, fontSize: '13px', letterSpacing: '.18em' }}>BECOME A SPONSOR</div>
-          <h2 style={{ fontFamily: "'Anton',sans-serif", fontSize: '48px', color: '#0b1838', margin: '12px 0 16px', lineHeight: 1 }}>
+    <div id="sponsor" className="section section--light">
+      <div className="sponsor-layout">
+        <div className="sponsor-sticky">
+          <div className="kicker">BECOME A SPONSOR</div>
+          <h2 className="section-title">
             <span data-tina-field={tinaField(cta, 'headline_line1')}>{cta.headline_line1}</span>
             <br />
             <span data-tina-field={tinaField(cta, 'headline_line2')}>{cta.headline_line2}</span>
           </h2>
-          <p data-tina-field={tinaField(cta, 'intro')} style={{ color: '#55585f', fontSize: '16px', lineHeight: 1.6, margin: '0 0 22px' }}>{cta.intro}</p>
-          <div data-tina-field={tinaField(sponsorBenefits, 'items')} style={{ display: 'flex', flexDirection: 'column', gap: '11px' }}>
+          <p data-tina-field={tinaField(cta, 'intro')} className="section-intro">{cta.intro}</p>
+          <div data-tina-field={tinaField(sponsorBenefits, 'items')} className="benefit-list">
             {benefits.map((benefit, i) => (
-              <div key={i} style={{ display: 'flex', gap: '11px', alignItems: 'flex-start', color: '#2c2f36', fontSize: '15px' }}>
-                <span style={{ color: '#d8242f', fontWeight: 900 }}>✓</span>{benefit}
+              <div key={i} className="benefit-item">
+                <span className="check">✓</span>{benefit}
               </div>
             ))}
           </div>
-          <p style={{ color: '#797c83', fontSize: '14px', marginTop: '24px', lineHeight: 1.6 }}>
+          <p className="sponsor-note">
             Questions? Contact{' '}
             <span data-tina-field={tinaField(sponsorship?.[0], 'name')}>{sponsorship[0].name}</span>
             {' '}&amp;{' '}
@@ -37,9 +37,9 @@ export default function SponsorCTAClient({ site, sponsorBenefits, contacts }) {
             <a data-tina-field={tinaField(sponsorship?.[1], 'email')} href={`mailto:${sponsorship[1].email}`}>{sponsorship[1].email}</a>
           </p>
         </div>
-        <div style={{ background: '#f3f5fb', borderRadius: '6px', padding: '48px 36px', border: '1px solid #dde3f0', display: 'flex', alignItems: 'center', justifyContent: 'center', minHeight: '200px' }}>
-          <button className="form-trigger" data-form-src={forms.sponsorship} data-form-title="SPONSORSHIP INQUIRY" style={{ background: '#0b1838', color: '#fff', fontFamily: "'Archivo',sans-serif", fontWeight: 800, fontSize: '17px', letterSpacing: '.06em', padding: '18px 52px', borderRadius: '3px', border: 'none', cursor: 'pointer' }}>
-            BECOME A SPONSOR →
+        <div className="sponsor-form-box">
+          <button data-tina-field={tinaField(cta, 'cta_label')} className="btn btn--navy form-trigger" data-form-src={forms.sponsorship} data-form-title="SPONSORSHIP INQUIRY">
+            {cta.cta_label} →
           </button>
         </div>
       </div>

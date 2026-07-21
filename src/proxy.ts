@@ -1,5 +1,6 @@
 import { getToken } from 'next-auth/jwt';
 import { NextResponse, type NextRequest } from 'next/server';
+import { isAuthBypassEnabled } from './lib/tina-auth-bypass';
 
 // /admin is served as static files (public/admin/index.html, the Tina
 // admin shell). Tina's own auth gate only kicks in once you click "Enter
@@ -7,6 +8,10 @@ import { NextResponse, type NextRequest } from 'next/server';
 // Require a valid NextAuth session before the static admin shell is ever
 // served.
 export async function proxy(req: NextRequest) {
+  if (isAuthBypassEnabled()) {
+    return NextResponse.next();
+  }
+
   const token = await getToken({ req, secret: process.env.NEXTAUTH_SECRET });
   if (token) {
     return NextResponse.next();

@@ -26,8 +26,8 @@ export default function HomePage({ tina, staticData }) {
       <Nav showTournament={showTournament} />
       <HeroClient tournament={page.tournament} site={page.site} showTournament={showTournament} />
       <AboutEditor about={page.about} />
-      <StatBand tournament={page.tournament} statBand={page.stat_band} showTournament={showTournament} programs={page.programs} />
-      <Programs page={page} programs={page.programs} />
+      <StatBand tournament={page.tournament} statBand={page.stat_band} showTournament={showTournament} programs={page.programs?.items} />
+      <Programs programs={page.programs} />
       {showTournament && <GolfEventClient tournament={page.tournament} />}
       {showTournament && <CourseClient tournament={page.tournament} />}
       {showTournament && <RegisterClient tournament={page.tournament} contacts={page.contacts} />}

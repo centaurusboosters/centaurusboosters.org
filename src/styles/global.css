@@ -1,14 +1,32 @@
+/*
+ * Design tokens — the single place colors, fonts, and shared sizes are defined.
+ * Rule of thumb: never type a hex color in a component or in components.css
+ * unless it is truly one-of-a-kind; use a token.
+ */
 :root {
-  --color-navy: #0b1838;
-  --color-navy-dark: #070f24;
-  --color-navy-mid: #0e1f47;
-  --color-navy-light: #13265a;
+  /* Backgrounds (dark to light) */
+  --color-navy: #0b1838;        /* main dark section background */
+  --color-navy-dark: #070f24;   /* footer */
+  --color-navy-mid: #0e1f47;    /* alternate dark section (About, Course) */
+  --color-navy-light: #13265a;  /* cards & chips on dark sections */
+  --color-bg-light: #f3f5fb;    /* light section background */
+
+  /* Brand accents */
   --color-red: #d8242f;
-  --color-blue-muted: #7fa0ff;
-  --color-text-dim: #aebbe0;
-  --color-text-nav: #cdd6ee;
+  --color-blue-muted: #7fa0ff;  /* kicker labels on dark backgrounds */
+  --color-kicker-light: #1c3fb0; /* kicker labels on light backgrounds */
+
+  /* Text */
+  --color-text-dim: #aebbe0;    /* body text on dark backgrounds */
+  --color-text-nav: #cdd6ee;    /* brighter text on dark (nav links, hero body) */
+  --color-text-light: #55585f;  /* body text on light backgrounds */
+
+  /* Type */
   --font-display: 'Anton', sans-serif;
   --font-body: 'Archivo', sans-serif;
+
+  /* Shared sizes */
+  --radius: 3px;
 }
 
 * { box-sizing: border-box; }
@@ -17,6 +35,6 @@ body {
   margin: 0;
   width: 100%;
   overflow-x: hidden;
-  background: #0b1838;
+  background: var(--color-navy);
   font-family: var(--font-body);
 }

@@ -14,7 +14,8 @@ Review the Centaurus Boosters site from two angles: technical code quality and p
 Before forming opinions, read:
 
 - `CLAUDE.md` — project architecture summary
-- `agent/PERSONAS.md` — the eight reviewer personas (load in full; they define the review lens)
+- `agent/PERSONAS.md` — the twelve reviewer personas (load in full; they define the review lens)
+- `docs/EDITING.md` — the editing contract the code must keep honoring
 - `src/app/page.jsx` — server entry point and data fetch
 - `src/lib/tina-content.js` — TinaCloud client wrapper
 - `tina/config.ts` — CMS schema (source of truth for editable fields)
@@ -27,16 +28,22 @@ Before forming opinions, read:
 
 Apply the personas from `agent/PERSONAS.md` as an advisory quality gate. For each persona, ask whether the current code and content would pass their acceptance lens, then flag any failures.
 
-Unless the user asks to focus on specific personas, run all eight:
+Unless the user asks to focus on specific personas, run all twelve:
 
 1. **Club President** — Does the site clearly represent the mission and build community trust?
 2. **First-Time Parent** — Can a new parent understand the club and find the next step within 30 seconds?
 3. **Prospective Sponsor** — Is the sponsorship value and inquiry path clear and professional?
 4. **Event Participant** — Can someone answer "what am I signing up for, what does it cost, how do I register?"
 5. **Content Editor** — Can a nontechnical admin make expected updates without touching layout code?
-6. **UX / Mobile / Accessibility** — Does the critical path work on mobile with no obvious accessibility regressions?
+6. **UX / Mobile** — Does the critical path work on mobile without new friction?
 7. **SEO and Discoverability** — Can people and search engines understand the page and find key actions?
 8. **Delivery Steward** — Is the current state of the codebase small, reviewable, and verified?
+9. **Senior Developer** — Is this the smallest correct change, with no dead code or duplicate patterns?
+10. **Copy-Paste Volunteer** — Could a semi-technical volunteer duplicate a section and tweak it successfully?
+11. **Designer / Brand Steward** — Does everything stay on the tokens and class vocabulary (no new magic values)?
+12. **Accessibility Specialist** — Are the register/donate/sponsor flows operable by keyboard and screen reader?
+
+Personas 1–8 review the site as users experience it; personas 9–12 review the code itself and apply to any code change. Persona 10's reviewer check is the acceptance gate for changes touching `src/components/next-sections/` or `src/styles/` — a change that reintroduces static inline styles or raw hex values in components fails review.
 
 For each persona finding, note which persona it comes from and whether the site passes or fails their reviewer check.
 

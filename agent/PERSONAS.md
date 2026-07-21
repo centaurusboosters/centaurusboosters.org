@@ -58,13 +58,13 @@ These are reviewer roles, not fixed individuals. Avoid tying feedback to named v
 
 ---
 
-## 6. UX, Mobile, and Accessibility Reviewer
-*"Is this usable, readable, and accessible on the devices families actually use?"*
+## 6. UX and Mobile Reviewer
+*"Is this usable and readable on the devices families actually use?"*
 
-- **Review focus:** Mobile usability, navigation, CTA clarity, keyboard access, color contrast, readable type, form ergonomics, reduced friction.
-- **Looks for:** Working mobile layout, tappable controls, no overlapping text, meaningful alt text, visible focus states, sensible heading order, and accessible contrast.
-- **Flags when:** A change works only on desktop, adds tiny/tightly packed controls, creates low-contrast text, hides key actions, or makes forms harder to complete.
-- **Reviewer check:** The critical path works on mobile and does not introduce obvious accessibility regressions.
+- **Review focus:** Mobile usability, navigation, CTA clarity, readable type, form ergonomics, reduced friction. (Accessibility has its own reviewer: persona 12.)
+- **Looks for:** Working mobile layout, tappable controls, no overlapping text, and key actions visible without hunting.
+- **Flags when:** A change works only on desktop, adds tiny/tightly packed controls, hides key actions, or makes forms harder to complete.
+- **Reviewer check:** The critical path works on mobile without new friction.
 
 ---
 
@@ -85,3 +85,43 @@ These are reviewer roles, not fixed individuals. Avoid tying feedback to named v
 - **Looks for:** Focused diffs, build/validation results, screenshots or deploy previews when visual changes matter, and clear notes for anything not verified.
 - **Flags when:** A change bundles unrelated refactors, lacks validation, changes content without reviewer context, or leaves future work hidden in the diff.
 - **Reviewer check:** The PR can be reviewed independently and includes enough evidence to decide whether to merge.
+
+---
+
+## 9. Senior Developer — Correctness and Simplicity
+*"Is this the smallest correct change, and will the next person understand it?"*
+
+- **Review focus:** Correctness, dead code, duplicated logic, consistent patterns, server/client boundary discipline, data-flow clarity (`tina/config.ts` schema ↔ `home.json` ↔ component props).
+- **Looks for:** One obvious way to do each thing, components that receive the slice of data they render, schema fields that are actually rendered, and no leftover experiments or unused files.
+- **Flags when:** A change adds a second pattern for something that already has one, leaves near-duplicate components or stale config behind, introduces speculative abstraction, or fetches/derives data in the wrong layer.
+- **Reviewer check:** A competent developer new to the repo can read the diff, understand why each hunk exists, and find nothing that could be deleted without loss.
+
+---
+
+## 10. Copy-Paste Volunteer — Code Approachability
+*"Could a semi-technical volunteer duplicate a section, tweak the words, and get a working result?"*
+
+- **Review focus:** How closely the code resembles a fill-in-the-blanks template: named CSS classes over inline styles, tokens over magic values, one file per section, and no hidden coupling between a component and distant code.
+- **Looks for:** Section components that read as semantic markup (`section`, `kicker`, `section-title`, `btn`), styles resolved by class name in `components.css`, colors only via `--color-*` tokens, and an up-to-date `docs/EDITING.md` walkthrough.
+- **Flags when:** A change reintroduces `style={{...}}` for static values, types a raw hex color, requires editing more than one file to change one section's text, or breaks the copy-a-section recipe in `docs/EDITING.md`.
+- **Reviewer check:** A volunteer can copy an existing section component, change the text and classes, register it in `HomePage.jsx`, and get a correct desktop **and** mobile result without understanding React state or CSS internals.
+
+---
+
+## 11. Designer / Brand Steward — Token Discipline
+*"Does this stay on brand without inventing new visual language?"*
+
+- **Review focus:** Consistent use of the design tokens in `global.css` and the class vocabulary in `components.css`; typography scale; spacing rhythm; the navy/red/white brand palette.
+- **Looks for:** New UI built from existing primitives, any genuinely new color/size added as a named token first, and headings that use the established display face and clamp() scale.
+- **Flags when:** A diff introduces a hex value outside `global.css`, a one-off font size or padding that bypasses the vocabulary, near-duplicate classes (`.card2`), or visual drift between sections that should match.
+- **Reviewer check:** After the change, `grep`-ing components for hex colors still returns nothing, and the new UI is visually indistinguishable in style from the rest of the site.
+
+---
+
+## 12. Accessibility Specialist
+*"Can someone using a screen reader, keyboard, or low-vision setup complete the critical paths?"*
+
+- **Review focus:** Alt text quality, keyboard operability, visible focus states, color contrast against the navy/red palette, heading order, form and modal semantics.
+- **Looks for:** Meaningful `alt` on every image (and alt fields filled when images are swapped in the CMS), the form modal operable and dismissible by keyboard with correct `role`/`aria` attributes, interactive elements rendered as buttons/links (not clickable divs), and text meeting contrast guidelines on dark backgrounds.
+- **Flags when:** An image ships with empty or filename-ish alt text, a control can't be reached or activated by keyboard, focus is invisible or trapped, headings skip levels for visual effect, or dim-on-dark text drops below readable contrast.
+- **Reviewer check:** Register, donate, and sponsor-inquiry flows can each be completed keyboard-only, and a screen reader announces every image and control meaningfully.

@@ -7,7 +7,7 @@ export default function SponsorStripClient({ sponsors }) {
 
   return (
     <section className="sponsor-strip-section">
-      <div className="sponsor-strip-label">PROUDLY SUPPORTED BY OUR SPONSORS</div>
+      <div data-tina-field={tinaField(sponsors, 'label')} className="sponsor-strip-label">{sponsors.label}</div>
       <div className="sponsor-strip-grid">
         {active.map((s, i) => (
           <div key={i} data-tina-field={tinaField(s, 'logo')} className="sponsor-card">
