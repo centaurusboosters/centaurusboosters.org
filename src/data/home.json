@@ -164,10 +164,11 @@
         "enabled": true
       },
       {
-        "name": "Lafayette Music Fest",
+        "name": "Dog House Music Studios",
         "logo": "https://uciw2t8wwfuxzowq.public.blob.vercel-storage.com/tina-media/IMG_7003.png",
-        "alt": "Lafayette Music Fest",
-        "url": "https://www.doghousemusic.com/"
+        "alt": "Dog House Music Studios",
+        "url": "https://www.doghousemusic.com/",
+        "enabled": true
       }
     ]
   },
