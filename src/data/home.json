@@ -162,6 +162,12 @@
         "alt": "Coal Creek Plastic Surgery",
         "url": "https://www.coalcreekplasticsurgery.com/",
         "enabled": true
+      },
+      {
+        "name": "Lafayette Music Fest",
+        "logo": "https://uciw2t8wwfuxzowq.public.blob.vercel-storage.com/tina-media/IMG_7003.png",
+        "alt": "Lafayette Music Fest",
+        "url": "https://www.doghousemusic.com/"
       }
     ]
   },
