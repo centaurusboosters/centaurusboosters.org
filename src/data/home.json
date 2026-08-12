@@ -96,54 +96,63 @@
         "name": "Westbound Realty",
         "logo": "https://uciw2t8wwfuxzowq.public.blob.vercel-storage.com/tina-media/logo-westbound.png",
         "alt": "Westbound Realty",
+        "url": "https://www.benmaloneco.com/",
         "enabled": true
       },
       {
         "name": "Auguste Escoffier School of Culinary Arts",
         "logo": "https://uciw2t8wwfuxzowq.public.blob.vercel-storage.com/tina-media/logo-escoffier.jpg",
         "alt": "Auguste Escoffier School of Culinary Arts",
+        "url": "https://www.escoffier.edu/",
         "enabled": true
       },
       {
         "name": "Kona Ice",
         "logo": "https://uciw2t8wwfuxzowq.public.blob.vercel-storage.com/tina-media/logo-kona-ice.jpg",
         "alt": "Kona Ice",
+        "url": "https://www.kona-ice.com/local-site/kona-ice-of-lafayette-erie/",
         "enabled": true
       },
       {
         "name": "Alpine Valley Oral Surgery",
         "logo": "https://uciw2t8wwfuxzowq.public.blob.vercel-storage.com/tina-media/logo-alpine-valley.png",
         "alt": "Alpine Valley Oral Surgery",
+        "url": "https://www.alpinevalleyos.com/",
         "enabled": true
       },
       {
         "name": "Mudrocks Tap & Tavern",
         "logo": "https://uciw2t8wwfuxzowq.public.blob.vercel-storage.com/tina-media/logo-mudrocks.jpg",
         "alt": "Mudrocks Tap & Tavern",
+        "url": "https://mudrockstapandtavern.com/",
         "enabled": true
       },
       {
         "name": "Boulder Wealth Advisors",
         "logo": "https://uciw2t8wwfuxzowq.public.blob.vercel-storage.com/tina-media/logo-boulder-wealth.png",
         "alt": "Boulder Wealth Advisors",
+        "url": "https://www.boulderwealthadvisors.com/",
         "enabled": true
       },
       {
         "name": "rockhop.ai",
         "logo": "https://uciw2t8wwfuxzowq.public.blob.vercel-storage.com/tina-media/logo-rockhop.png",
         "alt": "rockhop.ai",
+        "url": "https://rockhop.ai/",
         "enabled": true
       },
       {
         "name": "Pinnacle Product Sales",
         "logo": "https://uciw2t8wwfuxzowq.public.blob.vercel-storage.com/tina-media/logo-pps.png",
         "alt": "Pinnacle Product Sales",
+        "url": "https://www.pinnacleproductsales.com/",
         "enabled": true
       },
       {
         "name": "Lafayette Family Orthodontics",
         "logo": "https://uciw2t8wwfuxzowq.public.blob.vercel-storage.com/tina-media/logo-lfo.png",
         "alt": "Lafayette Family Orthodontics",
+        "url": "https://www.lafayettefamilyorthodontics.com/",
         "enabled": true
       },
       {

@@ -178,6 +178,7 @@ export default defineConfig({
                   { type: 'string', name: 'name', label: 'Name', required: true },
                   { type: 'image', name: 'logo', label: 'Logo', required: true },
                   { type: 'string', name: 'alt', label: 'Alt text', required: true },
+                  { type: 'string', name: 'url', label: 'Website URL' },
                   { type: 'boolean', name: 'enabled', label: 'Enabled' },
                 ],
               },
