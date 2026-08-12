@@ -82,3 +82,7 @@ Use **only `.env`** for local dev, populated via `vercel env pull .env --environ
 ### Deployment
 
 The site deploys to Vercel as a static export (`out/` directory). The TinaCloud token must be set as `TINA_TOKEN` environment variable in Vercel. The TinaCMS admin UI is served at `/admin` (built into `public/admin`).
+
+### Git workflow
+
+**Always `git pull` (or `git fetch` + check `git status` against `origin/main`) before starting a new task**, not just before committing. The site owner edits content directly through the TinaCMS admin UI in production, which commits straight to `main` (`src/data/home.json`, `tina/tina-lock.json`) outside of any Claude Code session — so `main` can drift ahead between one task and the next even within the same conversation. Starting from a stale base risks clobbering those edits or hitting an avoidable rebase when it's time to push.
