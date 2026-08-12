@@ -96,7 +96,10 @@ export default defineConfig({
                 type: 'object',
                 name: 'social',
                 label: 'Social links',
-                fields: [{ type: 'string', name: 'facebook', label: 'Facebook URL' }],
+                fields: [
+                  { type: 'string', name: 'facebook', label: 'Facebook URL' },
+                  { type: 'string', name: 'instagram', label: 'Instagram URL' },
+                ],
               },
               {
                 type: 'object',
