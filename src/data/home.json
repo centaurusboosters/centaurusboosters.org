@@ -176,6 +176,13 @@
         "alt": "Dog House Music Studios",
         "url": "https://www.doghousemusic.com/",
         "enabled": true
+      },
+      {
+        "name": "Rush Bowls Lafayette",
+        "logo": "https://uciw2t8wwfuxzowq.public.blob.vercel-storage.com/tina-media/Rush%20Bowls%20Logo%20Small.png",
+        "alt": "Rush Bowls Lafayette",
+        "url": "https://rushbowls.com/lafayette",
+        "enabled": true
       }
     ]
   },
