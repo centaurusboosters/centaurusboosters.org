@@ -52,7 +52,7 @@ export default function FooterClient({ contacts, tournament, site, showTournamen
           <a data-tina-field={tinaField(site?.social, 'facebook')} className="footer-social" href={site.social.facebook} target="_blank" rel="noopener noreferrer">Facebook</a>
           {site?.social?.instagram && (
             <>
-              {' · '}
+              <br />
               <a data-tina-field={tinaField(site?.social, 'instagram')} className="footer-social" href={site.social.instagram} target="_blank" rel="noopener noreferrer">Instagram</a>
             </>
           )}
