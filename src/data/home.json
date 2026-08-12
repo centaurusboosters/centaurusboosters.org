@@ -145,6 +145,12 @@
         "logo": "https://uciw2t8wwfuxzowq.public.blob.vercel-storage.com/tina-media/logo-lfo.png",
         "alt": "Lafayette Family Orthodontics",
         "enabled": true
+      },
+      {
+        "name": "Coal Creek Plastic Surgery",
+        "logo": "https://uciw2t8wwfuxzowq.public.blob.vercel-storage.com/tina-media/cropped-CoalCreekFinal_sm_wide.png",
+        "alt": "Coal Creek Plastic Surgery",
+        "enabled": false
       }
     ]
   },
