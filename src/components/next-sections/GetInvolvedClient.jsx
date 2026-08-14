@@ -19,6 +19,12 @@ export default function GetInvolvedClient({ getInvolved, forms }) {
               <p data-tina-field={tinaField(item, 'description')} className="card-body">{item.description}</p>
               <span className="badge-soon">COMING SOON</span>
             </div>
+          ) : item.url ? (
+            <a key={i} href={item.url} target="_blank" rel="noopener noreferrer" className="card">
+              <div data-tina-field={tinaField(item, 'title')} className="card-title">{item.title}</div>
+              <p data-tina-field={tinaField(item, 'description')} className="card-body">{item.description}</p>
+              <span data-tina-field={tinaField(item, 'link_label')} className="card-link">{item.link_label}</span>
+            </a>
           ) : (
             <button key={i} className="card form-trigger" data-form-src={forms[item.form]} data-form-title={item.form_title}>
               <div data-tina-field={tinaField(item, 'title')} className="card-title">{item.title}</div>

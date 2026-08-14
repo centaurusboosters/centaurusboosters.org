@@ -240,6 +240,7 @@ export default defineConfig({
                   { type: 'string', name: 'link_label', label: 'Link label' },
                   { type: 'string', name: 'form', label: 'Form key' },
                   { type: 'string', name: 'form_title', label: 'Form title' },
+                  { type: 'string', name: 'url', label: 'External link URL' },
                   { type: 'boolean', name: 'coming_soon', label: 'Coming soon' },
                 ],
               },

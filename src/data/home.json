@@ -244,7 +244,8 @@
       {
         "title": "SHOP MERCH",
         "description": "Rep the Warriors. Proceeds go straight back to the programs.",
-        "coming_soon": true
+        "link_label": "Shop the store →",
+        "url": "https://www.custommisports.com/centaurus_hs_apparel/shop/home"
       }
     ]
   },
