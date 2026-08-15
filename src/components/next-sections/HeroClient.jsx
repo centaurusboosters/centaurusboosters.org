@@ -40,7 +40,7 @@ export default function HeroClient({ tournament, site, showTournament, showRegis
           {showRegisterCta ? (
             <div className="hero-cta">
               <button data-tina-field={tinaField(tournament, 'hero_cta_label')} className="btn btn--red btn--md form-trigger" data-form-src={forms.registration} data-form-title="TOURNAMENT REGISTRATION">{tournament.hero_cta_label} →</button>
-              <button data-tina-field={tinaField(site.sponsor_cta, 'cta_label')} className="btn btn--navy btn--md form-trigger" data-form-src={forms.sponsorship} data-form-title="SPONSORSHIP INQUIRY">{site.sponsor_cta.cta_label} →</button>
+              <button data-tina-field={tinaField(site.sponsor_cta, 'cta_label')} className="btn btn--ghost btn--md form-trigger" data-form-src={forms.sponsorship} data-form-title="SPONSORSHIP INQUIRY">{site.sponsor_cta.cta_label} →</button>
             </div>
           ) : (
             <p data-tina-field={tinaField(tournament, 'registration_closed_message')} className="deadline-note">{tournament.registration_closed_message}</p>
@@ -86,7 +86,7 @@ export default function HeroClient({ tournament, site, showTournament, showRegis
         </h1>
         <p data-tina-field={tinaField(mission, 'body')} className="hero-body">{mission.body}</p>
         <div className="hero-cta">
-          <a data-tina-field={tinaField(mission, 'cta_primary')} href="#sponsor" className="btn btn--white btn--md">{mission.cta_primary}</a>
+          <a data-tina-field={tinaField(mission, 'cta_primary')} href="#sponsor" className="btn btn--red btn--md">{mission.cta_primary}</a>
           <a data-tina-field={tinaField(mission, 'cta_secondary')} href="#donate" className="btn btn--ghost btn--md">{mission.cta_secondary}</a>
         </div>
       </>
