@@ -76,7 +76,7 @@ export default function HeroClient({ tournament, site, showTournament, showRegis
     label: 'Our mission',
     node: (
       <>
-        <div data-tina-field={tinaField(mission, 'badge')} className="hero-badge hero-badge--soft">{mission.badge.toUpperCase()}</div>
+        <div data-tina-field={tinaField(mission, 'badge')} className="hero-badge">{mission.badge.toUpperCase()}</div>
         <h1 className="hero-title">
           <span data-tina-field={tinaField(mission, 'headline_line1')}>{mission.headline_line1}</span>
           <br />

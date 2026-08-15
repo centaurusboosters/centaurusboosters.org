@@ -132,7 +132,6 @@ a.navlink:hover { color: #fff; }
   background: var(--color-red); color: #fff; font-weight: 800; font-size: 13px;
   letter-spacing: .16em; padding: 8px 16px; border-radius: var(--radius); width: max-content;
 }
-.hero-badge--soft { background: rgba(255,255,255,.14); }
 .hero-badge-count { background: rgba(255,255,255,.25); border-radius: var(--radius); padding: 2px 8px; font-size: 11px; letter-spacing: .1em; }
 .hero-title {
   font-family: var(--font-display); font-weight: 400;
