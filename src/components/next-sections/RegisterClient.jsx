@@ -1,8 +1,10 @@
 'use client';
 
 import { tinaField } from '../tina/editable';
+import { golfDeadlineSentence } from '../../lib/schedule';
 
-export default function RegisterClient({ tournament, contacts, forms }) {
+export default function RegisterClient({ tournament, contacts, forms, golfDaysLeft }) {
+  const golfNote = golfDeadlineSentence(golfDaysLeft);
   return (
     <div id="register" className="section section--light">
       <div className="section-head">
@@ -15,6 +17,7 @@ export default function RegisterClient({ tournament, contacts, forms }) {
           {' '}at{' '}
           <a data-tina-field={tinaField(contacts?.players, 'email')} href={`mailto:${contacts.players.email}`}>{contacts.players.email}</a>.
         </p>
+        {golfNote && <p data-tina-field={tinaField(tournament, 'registration_closes')} className="deadline-note">{golfNote}</p>}
       </div>
       <div className="register-details">
         <span data-tina-field={tinaField(tournament, 'arrive_by')} className="detail-item">⏰ ARRIVE BY {tournament.arrive_by}</span>

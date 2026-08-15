@@ -64,6 +64,10 @@ export default defineConfig({
               { type: 'string', name: 'register_headline', label: 'Register headline', required: true },
               { type: 'string', name: 'register_intro', label: 'Register intro', ui: { component: 'textarea' } },
               { type: 'string', name: 'arrive_by', label: 'Arrive by', required: true },
+              // required: false is deliberate — Tina's datetime picker defaults an
+              // empty required-unset field to "today", so leaving this off would
+              // silently write today's date the first time the form is opened.
+              { type: 'datetime', name: 'registration_closes', label: 'Registration closes (optional)', required: false, ui: { timeFormat: false } },
               { type: 'string', name: 'register_cta_label', label: 'Register button label' },
               { type: 'string', name: 'hero_headline_line1', label: 'Hero headline line 1' },
               { type: 'string', name: 'hero_headline_line2', label: 'Hero headline line 2' },
@@ -195,6 +199,35 @@ export default defineConfig({
               { type: 'string', name: 'kicker', label: 'Section label' },
               { type: 'string', name: 'intro', label: 'Intro line' },
               { type: 'string', name: 'items', label: 'Programs', list: true },
+            ],
+          },
+          {
+            type: 'object',
+            name: 'store',
+            label: 'Apparel Store Promo',
+            fields: [
+              { type: 'boolean', name: 'enabled', label: 'Show store promotion' },
+              { type: 'string', name: 'url', label: 'Store URL', required: true },
+              // required: false on both dates — see the note on
+              // tournament.registration_closes above for why this matters.
+              // Blank open_date = already open; blank close_date = no deadline.
+              { type: 'datetime', name: 'open_date', label: 'Store opens (optional)', required: false, ui: { timeFormat: false } },
+              { type: 'datetime', name: 'close_date', label: 'Store closes (last day to order)', required: false, ui: { timeFormat: false } },
+              { type: 'string', name: 'announcement', label: 'Announcement bar text' },
+              { type: 'string', name: 'headline', label: 'Section headline' },
+              { type: 'string', name: 'body', label: 'Section body', ui: { component: 'textarea' } },
+              { type: 'string', name: 'cta_label', label: 'Button label' },
+              {
+                type: 'object',
+                name: 'products',
+                label: 'Product photos',
+                list: true,
+                ui: { itemProps: (item) => ({ label: item?.alt }) },
+                fields: [
+                  { type: 'image', name: 'image', label: 'Photo', required: true },
+                  { type: 'string', name: 'alt', label: 'Alt text', required: true },
+                ],
+              },
             ],
           },
           {

@@ -45,7 +45,8 @@
       "course_1_alt": "Golfer on the fairway at Indian Peaks Golf Course",
       "course_2": "https://uciw2t8wwfuxzowq.public.blob.vercel-storage.com/tina-media/course-2.jpg",
       "course_2_alt": "Golfer teeing off with Colorado mountain backdrop at Indian Peaks Golf Course"
-    }
+    },
+    "registration_closes": ""
   },
   "site": {
     "copyright": "© 2026 Centaurus Warriors Booster Club · 501(c)(3) nonprofit",
@@ -206,6 +207,34 @@
       "Cheerleading"
     ]
   },
+  "store": {
+    "enabled": true,
+    "url": "https://www.custommisports.com/centaurus_hs_apparel/shop/home",
+    "open_date": "",
+    "close_date": "2026-08-31T05:59:00.000Z",
+    "announcement": "Warrior apparel store is open",
+    "headline": "SHOW YOUR WARRIOR PRIDE",
+    "body": "Custom Centaurus gear for players, parents, and fans. The store opens for a short window each season — proceeds go straight back to the programs.",
+    "cta_label": "SHOP THE STORE",
+    "products": [
+      {
+        "image": "https://uciw2t8wwfuxzowq.public.blob.vercel-storage.com/tina-media/store-tshirt-full.png",
+        "alt": "Centaurus Warriors cotton t-shirt"
+      },
+      {
+        "image": "https://uciw2t8wwfuxzowq.public.blob.vercel-storage.com/tina-media/store-hoodie.png",
+        "alt": "Centaurus Warriors text logo hoodie"
+      },
+      {
+        "image": "https://uciw2t8wwfuxzowq.public.blob.vercel-storage.com/tina-media/store-cap.png",
+        "alt": "Centaurus Warriors trucker cap"
+      },
+      {
+        "image": "https://uciw2t8wwfuxzowq.public.blob.vercel-storage.com/tina-media/store-joggers.png",
+        "alt": "Centaurus Warriors jogger pants"
+      }
+    ]
+  },
   "stat_band": {
     "items": [
       {
@@ -243,7 +272,7 @@
       },
       {
         "title": "SHOP MERCH",
-        "description": "Rep the Warriors. Proceeds go straight back to the programs.",
+        "description": "Show your Warrior pride. Proceeds go straight back to the programs.",
         "link_label": "Shop the store →",
         "url": "https://www.custommisports.com/centaurus_hs_apparel/shop/home"
       }

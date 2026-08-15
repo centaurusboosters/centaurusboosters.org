@@ -2,8 +2,11 @@
 
 import { tinaField } from '../tina/editable';
 
-export default function GetInvolvedClient({ getInvolved, forms }) {
-  const items = getInvolved.items;
+export default function GetInvolvedClient({ getInvolved, forms, showStore }) {
+  // The only card with a raw `url` field today is the store link — hide it
+  // once the store's own schedule takes it down, so this grid never links
+  // to an already-closed store.
+  const items = getInvolved.items.filter((item) => !item.url || showStore);
 
   return (
     <div id="getinvolved" className="section">

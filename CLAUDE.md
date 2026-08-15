@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-This is the **Centaurus Boosters** website — a Next.js static site for a high school athletics booster club. Content is managed via TinaCMS (cloud-backed headless CMS). The site deploys to Vercel as a fully static export (`output: 'export'`).
+This is the **Centaurus Boosters** website — a Next.js site for a high school athletics booster club. Content is managed via TinaCMS (self-hosted backend, not TinaCloud). The homepage (`src/app/page.jsx`) is `force-dynamic` — it renders per request rather than at build time, because `getTinaDocument()` hits GitHub + Redis live and can't run inside the `next build` step. There is no `output: 'export'`; the site is a normal Vercel deployment with server routes for the Tina GraphQL backend, NextAuth, and the media API.
 
 ## Commands
 
@@ -39,6 +39,16 @@ All editable content lives in `src/data/home.json`. TinaCMS reads/writes this fi
 ### Tournament Toggle
 
 `page.tournament.enabled` (boolean in `home.json`, toggled via TinaCMS) controls whether the golf tournament sections render. When `false`, tournament sections (`GolfEventClient`, `CourseClient`, `RegisterClient`, related footer content, stat band) are hidden entirely. This is the off-season mode.
+
+### Time-limited promotions (store, registration countdown)
+
+`src/lib/schedule.js` is the shared date-window helper used by both the apparel store promotion and the quiet golf-registration countdown. All date math happens in `HomePage.jsx` off a single `nowIso` value stamped once per request in `src/app/page.jsx` and threaded down as a prop — never call `new Date()` inside a section component, since every section is a client component that also renders during hydration and a locally-computed date would disagree between the server and client pass.
+
+- `page.store` (`enabled`, `url`, `open_date`/`close_date`, copy, `products`) drives three surfaces — an announcement bar above the nav, a third hero slide, and a dedicated `#store` section — all gated on the same `resolveSchedule()` call in `HomePage.jsx`. If `store` is absent from `home.json` entirely, all three surfaces are hidden (this is the backward-compat path for a code deploy landing before the content is added).
+- `page.tournament.registration_closes` (optional datetime) drives a single quiet `.deadline-note` line (hero + Register section) via `golfDeadlineSentence()`, shown only within `GOLF_COUNTDOWN_WINDOW_DAYS` (45) of the deadline. It does **not** gate `showTournament` — a passed registration deadline hides the countdown line but never removes the tournament sections; that stays the manual `enabled` toggle above.
+- Countdown day counts roll over at Colorado (`America/Denver`) midnight, not UTC midnight, computed via calendar-day subtraction rather than a raw 24h division.
+- New `datetime` Tina fields must set `required: false` explicitly — Tina's date picker silently writes today's date into an empty field otherwise.
+- `?now=<date>` on the homepage overrides the stamped `now` for local testing (hard-gated to non-production).
 
 ### Component Structure
 
@@ -81,7 +91,7 @@ Use **only `.env`** for local dev, populated via `vercel env pull .env --environ
 
 ### Deployment
 
-The site deploys to Vercel as a static export (`out/` directory). The TinaCloud token must be set as `TINA_TOKEN` environment variable in Vercel. The TinaCMS admin UI is served at `/admin` (built into `public/admin`).
+The site deploys to Vercel as a standard server-rendered Next.js app (per-request rendering via `force-dynamic` on the homepage — see Project Overview). The TinaCMS admin UI is served at `/admin` (built into `public/admin`), backed by the self-hosted Tina GraphQL backend and NextAuth (Google OAuth) rather than TinaCloud.
 
 ### Git workflow
 

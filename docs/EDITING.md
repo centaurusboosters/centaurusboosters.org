@@ -25,10 +25,14 @@ Go to **`yoursite.com/admin`** and sign in with your Google account. Click any t
 | Edit grant / scholarship cards | Form → **Grants** |
 | Change contact names/emails | Form → **Contacts** |
 | Change a Google Form link (donate, registration, grants…) | Admin sidebar → **Forms** |
+| Turn the store promotion on/off, change its dates, copy, or product photos | Form → **Apparel Store Promo** |
+| Set when golf registration closes (shows a quiet "closes in N days" note near the deadline) | Form → **Tournament** → **"Registration closes"** |
 
 ### Things to know
 
 - **Off-season mode**: the "Show tournament section" toggle hides the golf hero slide, event, course, and register sections, plus tournament footer content — all at once. Nothing is deleted; toggle it back in season.
+- **Store promotion auto-expires**: the store's announcement bar, hero slide, and dedicated section all disappear automatically the day after "Store closes" — no need to manually turn it off when the vendor's window ends. Leave "Store closes" blank for no deadline; leave the whole section's "Show store promotion" off to hide it regardless of dates. Dates are inclusive through the end of that day (Colorado time) — "Aug 30" stays visible all day on the 30th and disappears on the 31st.
+- **"Registration closes"** on the tournament only controls the small text hint near the deadline — it never hides the tournament itself. Leave it blank if there's no firm cutoff.
 - **Images** live in a media library (Vercel Blob). Uploading a file with the same name replaces the old one everywhere it's used.
 - **The Media Manager grid crops previews square** — switch to List view to see full images.
 - If a change doesn't show up on the live site after ~5 minutes, ask a maintainer to check the deploy logs.
