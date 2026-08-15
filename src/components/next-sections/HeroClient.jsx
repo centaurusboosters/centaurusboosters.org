@@ -1,10 +1,10 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { tinaField, useEditState } from '../tina/editable';
 import { countdownLabel, golfDeadlineSentence } from '../../lib/schedule';
 
-export default function HeroClient({ tournament, site, showTournament, forms, store, showStore, storeDaysLeft, golfDaysLeft }) {
+export default function HeroClient({ tournament, site, showTournament, showRegisterCta, forms, store, showStore, storeDaysLeft, golfDaysLeft }) {
   const { edit } = useEditState();
   const mission = site.hero_mission;
   const golfNote = golfDeadlineSentence(golfDaysLeft);
@@ -21,7 +21,7 @@ export default function HeroClient({ tournament, site, showTournament, forms, st
       label: 'Golf tournament',
       node: (
         <>
-          <div data-tina-field={tinaField(tournament, 'edition')} className="hero-badge">NOW REGISTERING · {tournament.edition.toUpperCase()}</div>
+          <div data-tina-field={tinaField(tournament, 'edition')} className="hero-badge">{showRegisterCta ? `NOW REGISTERING · ${tournament.edition.toUpperCase()}` : tournament.edition.toUpperCase()}</div>
           <h1 className="hero-title">
             <span data-tina-field={tinaField(tournament, 'hero_headline_line1')}>{tournament.hero_headline_line1}</span>
             <br />
@@ -37,9 +37,15 @@ export default function HeroClient({ tournament, site, showTournament, forms, st
           {golfNote && (
             <p data-tina-field={tinaField(tournament, 'registration_closes')} className="deadline-note">{golfNote}</p>
           )}
-          <div className="hero-cta">
-            <button data-tina-field={tinaField(tournament, 'hero_cta_label')} className="btn btn--red btn--md form-trigger" data-form-src={forms.registration} data-form-title="TOURNAMENT REGISTRATION">{tournament.hero_cta_label} →</button>
-          </div>
+          {showRegisterCta ? (
+            <div className="hero-cta">
+              <button data-tina-field={tinaField(tournament, 'hero_cta_label')} className="btn btn--red btn--md form-trigger" data-form-src={forms.registration} data-form-title="TOURNAMENT REGISTRATION">{tournament.hero_cta_label} →</button>
+              <button data-tina-field={tinaField(site.sponsor_cta, 'cta_label')} className="btn btn--navy btn--md form-trigger" data-form-src={forms.sponsorship} data-form-title="SPONSORSHIP INQUIRY">{site.sponsor_cta.cta_label} →</button>
+            </div>
+          ) : (
+            <p data-tina-field={tinaField(tournament, 'registration_closed_message')} className="deadline-note">{tournament.registration_closed_message}</p>
+          )}
+          <a href="#golf" className="hero-cta-learn-more">Learn more</a>
         </>
       ),
     });

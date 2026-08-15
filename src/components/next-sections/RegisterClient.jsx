@@ -3,7 +3,7 @@
 import { tinaField } from '../tina/editable';
 import { golfDeadlineSentence } from '../../lib/schedule';
 
-export default function RegisterClient({ tournament, contacts, forms, golfDaysLeft }) {
+export default function RegisterClient({ tournament, contacts, forms, golfDaysLeft, showRegisterCta }) {
   const golfNote = golfDeadlineSentence(golfDaysLeft);
   return (
     <div id="register" className="section section--light">
@@ -26,9 +26,15 @@ export default function RegisterClient({ tournament, contacts, forms, golfDaysLe
         <span className="detail-sep">|</span>
         <span className="detail-item">👥 REGISTER UP TO 4 PLAYERS</span>
       </div>
-      <div className="section-cta">
-        <button data-tina-field={tinaField(tournament, 'register_cta_label')} className="btn btn--red form-trigger" data-form-src={forms.registration} data-form-title="TOURNAMENT REGISTRATION">{tournament.register_cta_label} →</button>
-      </div>
+      {showRegisterCta ? (
+        <div className="section-cta">
+          <button data-tina-field={tinaField(tournament, 'register_cta_label')} className="btn btn--red form-trigger" data-form-src={forms.registration} data-form-title="TOURNAMENT REGISTRATION">{tournament.register_cta_label} →</button>
+        </div>
+      ) : (
+        <div className="section-cta">
+          <p data-tina-field={tinaField(tournament, 'registration_closed_message')} className="deadline-note">{tournament.registration_closed_message}</p>
+        </div>
+      )}
     </div>
   );
 }

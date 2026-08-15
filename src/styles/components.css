@@ -13,6 +13,7 @@
  *   .card             navy gradient card with red top bar (Get Involved)
  *   .announce-bar     slim promo strip that sits above the sticky nav
  *   .deadline-note    quiet one-line "closes in N days" copy
+ *   .hero-cta-learn-more  small underlined link below hero CTAs
  *
  * Per-section rules (font-size tweaks, grids) live in the blocks further down,
  * keyed by the section's id or class. Mobile behavior is at the bottom.
@@ -143,6 +144,7 @@ a.navlink:hover { color: #fff; }
 .hero-sep { color: #5e74b3; }
 .hero-body { color: var(--color-text-nav); font-size: 19px; line-height: 1.5; max-width: 540px; margin: 24px 0 0; font-weight: 500; }
 .hero-cta { display: flex; gap: 14px; margin-top: 34px; }
+.hero-cta-learn-more { display: inline-block; margin-top: 14px; color: var(--color-text-nav); font-size: 13px; font-weight: 700; letter-spacing: .04em; text-decoration: underline; text-underline-offset: 3px; }
 .hero-dots { position: absolute; bottom: 26px; left: 6vw; display: flex; gap: 9px; z-index: 5; }
 .hero-dot { width: 34px; height: 5px; border-radius: 3px; background: rgba(255,255,255,.3); transition: background .5s; cursor: pointer; border: none; padding: 0; }
 .hero-dot.active { background: var(--color-red); }

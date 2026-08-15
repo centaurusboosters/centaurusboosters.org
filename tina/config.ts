@@ -64,10 +64,17 @@ export default defineConfig({
               { type: 'string', name: 'register_headline', label: 'Register headline', required: true },
               { type: 'string', name: 'register_intro', label: 'Register intro', ui: { component: 'textarea' } },
               { type: 'string', name: 'arrive_by', label: 'Arrive by', required: true },
-              // required: false is deliberate — Tina's datetime picker defaults an
-              // empty required-unset field to "today", so leaving this off would
-              // silently write today's date the first time the form is opened.
+              // required: false is deliberate on both datetime fields below —
+              // Tina's datetime picker defaults an empty required-unset field
+              // to "today", so leaving this off would silently write today's
+              // date the first time the form is opened.
               { type: 'datetime', name: 'registration_closes', label: 'Registration closes (optional)', required: false, ui: { timeFormat: false } },
+              // Gates the whole tournament section (course info, pricing, footer,
+              // nav links) — separate from registration_closes above, which only
+              // gates the register CTA. Deliberately not reusing the free-text
+              // `date` field below to avoid migrating it.
+              { type: 'datetime', name: 'event_date', label: 'Tournament date (for auto-hide, optional)', required: false, ui: { timeFormat: false } },
+              { type: 'string', name: 'registration_closed_message', label: 'Registration closed message' },
               { type: 'string', name: 'register_cta_label', label: 'Register button label' },
               { type: 'string', name: 'hero_headline_line1', label: 'Hero headline line 1' },
               { type: 'string', name: 'hero_headline_line2', label: 'Hero headline line 2' },
