@@ -8,7 +8,7 @@ export default function RegisterClient({ tournament, contacts, forms, golfDaysLe
   return (
     <div id="register" className="section section--light">
       <div className="section-head">
-        <div className="kicker kicker--center">REGISTER NOW</div>
+        <div className="kicker kicker--rules kicker--center">REGISTER NOW</div>
         <h2 data-tina-field={tinaField(tournament, 'register_headline')} className="section-title">{tournament.register_headline}</h2>
         <p className="section-intro">
           <span data-tina-field={tinaField(tournament, 'register_intro')}>{tournament.register_intro}</span>

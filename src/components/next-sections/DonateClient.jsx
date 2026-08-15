@@ -6,7 +6,7 @@ export default function DonateClient({ site, forms }) {
   return (
     <div id="donate" className="section">
       <div className="section-head">
-        <div className="kicker kicker--center">DONATE</div>
+        <div className="kicker kicker--rules kicker--center">DONATE</div>
         <h2 data-tina-field={tinaField(site?.donate, 'headline')} className="section-title">{site.donate.headline}</h2>
         <p data-tina-field={tinaField(site?.donate, 'body')} className="section-intro">{site.donate.body}</p>
       </div>

@@ -11,7 +11,7 @@ export default function SponsorCTAClient({ site, sponsorBenefits, contacts, form
     <div id="sponsor" className="section section--light">
       <div className="sponsor-layout">
         <div className="sponsor-sticky">
-          <div className="kicker">BECOME A SPONSOR</div>
+          <div className="kicker kicker--rule">BECOME A SPONSOR</div>
           <h2 className="section-title">
             <span data-tina-field={tinaField(cta, 'headline_line1')}>{cta.headline_line1}</span>
             <br />

@@ -11,7 +11,7 @@ export default function GetInvolvedClient({ getInvolved, forms, showStore }) {
   return (
     <div id="getinvolved" className="section">
       <div className="section-head">
-        <div data-tina-field={tinaField(getInvolved, 'kicker')} className="kicker kicker--center">{getInvolved.kicker}</div>
+        <div data-tina-field={tinaField(getInvolved, 'kicker')} className="kicker kicker--rules kicker--center">{getInvolved.kicker}</div>
         <h2 data-tina-field={tinaField(getInvolved, 'headline')} className="section-title">{getInvolved.headline}</h2>
       </div>
       <div className="ways-grid">

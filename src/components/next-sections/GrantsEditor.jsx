@@ -9,9 +9,9 @@ const GRANT_VARIANTS = [
 
 export default function GrantsEditor({ grants, forms }) {
   return (
-    <div id="grants" className="section section--white">
+    <div id="grants" className="section section--light">
       <div className="section-head">
-        <div data-tina-field={tinaField(grants, 'kicker')} className="kicker kicker--center">{grants.kicker}</div>
+        <div data-tina-field={tinaField(grants, 'kicker')} className="kicker kicker--rules kicker--center">{grants.kicker}</div>
         <h2 data-tina-field={tinaField(grants, 'headline')} className="section-title">{grants.headline}</h2>
       </div>
       <div className="grants-grid">
