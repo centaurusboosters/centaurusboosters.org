@@ -24,10 +24,17 @@ export default async function Home({ searchParams }) {
   // both sides.
   //
   // Dev-only override (?now=2026-08-30) lets the store/registration windows
-  // be checked at any simulated date without waiting or editing content.
+  // be checked at any simulated date without waiting or editing content. A
+  // bare "YYYY-MM-DD" is anchored to noon UTC rather than parsed as UTC
+  // midnight, so it lands on that same calendar day in Colorado regardless
+  // of DST — plain `new Date('2026-09-20')` is UTC midnight, which is still
+  // "Sept 19 evening" in America/Denver and reads a day early everywhere
+  // this value feeds the Colorado calendar-day math in schedule.js.
   // Hard-gated to non-production so it can never be used against the live site.
   const params = process.env.NODE_ENV === 'production' ? null : await searchParams;
-  const overrideDate = params?.now ? new Date(params.now) : null;
+  const rawNow = params?.now;
+  const bareDate = typeof rawNow === 'string' && /^\d{4}-\d{2}-\d{2}$/.test(rawNow);
+  const overrideDate = rawNow ? new Date(bareDate ? `${rawNow}T12:00:00Z` : rawNow) : null;
   const nowIso = overrideDate && !Number.isNaN(overrideDate.getTime()) ? overrideDate.toISOString() : new Date().toISOString();
 
   return (

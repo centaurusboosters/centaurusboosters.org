@@ -22,7 +22,6 @@ import FooterClient from './FooterClient';
 export default function HomePage({ tina, staticData, forms, nowIso }) {
   const { data } = useTina(tina ?? makeSafeTina('page', staticData));
   const page = data.page;
-  const showTournament = page.tournament?.enabled !== false;
 
   // Store: needs a URL to be worth showing at all, then the enabled flag and
   // open/close dates decide whether it's currently "in season".
@@ -33,14 +32,17 @@ export default function HomePage({ tina, staticData, forms, nowIso }) {
   const showStore = Boolean(page.store?.url) && storeSchedule.active;
   const storeDaysLeft = storeSchedule.daysRemaining;
 
-  // Golf registration: the same schedule mechanism, but it only ever gates the
-  // quiet countdown line, not `showTournament` itself — a passed deadline
-  // should never make the whole tournament vanish from the live site.
+  // Golf registration: the same schedule mechanism, and here it does gate
+  // `showTournament` — once registration_closes has passed, the whole
+  // tournament section drops off the live site (same as the manual `enabled`
+  // toggle). No registration_closes set means the deadline never arrives, so
+  // `enabled` stays the only switch.
   const golfSchedule = resolveSchedule(
     { enabled: page.tournament?.enabled, end: page.tournament?.registration_closes },
     nowIso
   );
-  const showGolfCountdown = showTournament && golfSchedule.active && isCountingDown(golfSchedule.daysRemaining, GOLF_COUNTDOWN_WINDOW_DAYS);
+  const showTournament = golfSchedule.active;
+  const showGolfCountdown = showTournament && isCountingDown(golfSchedule.daysRemaining, GOLF_COUNTDOWN_WINDOW_DAYS);
   const golfDaysLeft = showGolfCountdown ? golfSchedule.daysRemaining : null;
 
   return (
