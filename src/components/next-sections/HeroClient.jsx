@@ -98,14 +98,28 @@ export default function HeroClient({ tournament, site, showTournament, showRegis
   // during Tina live editing (toggling the tournament or the store off).
   const current = active % slides.length;
 
+  // With 3+ slides, wrapping between two slides that are themselves mutual
+  // neighbors (e.g. last -> first in a 3-slide ring) forces every other
+  // slide to flip which side it's parked on — a purely positional fact, not
+  // an animation we want to see. Only the outgoing and incoming slide should
+  // visibly transition; tracking the previous `current` lets spotStyle snap
+  // everything else into place instantly instead of sweeping across screen.
+  const prevCurrentRef = useRef(current);
+  useEffect(() => {
+    prevCurrentRef.current = current;
+  }, [current]);
+
   useEffect(() => {
     // Auto-advance fights with clicking into fields to edit them, so leave
     // slide changes to the dots while inside Tina's live-editing view.
     if (slides.length < 2 || edit) return;
+    // Depending on `active` restarts this 7s window on every change, manual
+    // dot clicks included — otherwise a click right before the tick fires
+    // gets immediately overridden by the pre-existing auto-advance.
     const timer = setInterval(() => setActive((value) => (value + 1) % slides.length), 7000);
     return () => clearInterval(timer);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [slides.length, edit]);
+  }, [slides.length, edit, active]);
 
   return (
     <div className="hero">
@@ -118,7 +132,7 @@ export default function HeroClient({ tournament, site, showTournament, showRegis
       <div className="hero-glow"></div>
 
       {slides.map((slide, index) => (
-        <div key={slide.key} className="spot" style={spotStyle(index, current)}>
+        <div key={slide.key} className="spot" style={spotStyle(index, current, slides.length, prevCurrentRef.current)}>
           {slide.node}
         </div>
       ))}
@@ -142,9 +156,20 @@ export default function HeroClient({ tournament, site, showTournament, showRegis
 }
 
 // Slide position is dynamic (which spotlight is showing), so it stays inline.
-function spotStyle(index, current) {
+// Wraps the shorter way around the loop (e.g. last slide -> first slide moves
+// forward one step, not backward through every slide in between) so the
+// rotation always reads as continuing forward, never rewinding. Only the
+// outgoing (prevCurrent) and incoming (current) slide transition — any other
+// slide snaps instantly, since with 3+ slides a wrap can force an unrelated
+// slide to flip sides and it shouldn't visibly sweep across the screen doing so.
+function spotStyle(index, current, length, prevCurrent) {
+  let diff = index - current;
+  if (diff > length / 2) diff -= length;
+  if (diff < -length / 2) diff += length;
+  const isTransitioning = index === current || index === prevCurrent;
   return {
-    transform: `translateX(${(index - current) * 100}%)`,
+    transform: `translateX(${diff * 100}%)`,
+    transition: isTransitioning ? undefined : 'none',
     pointerEvents: index === current ? undefined : 'none',
   };
 }
