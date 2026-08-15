@@ -285,12 +285,14 @@
     "body": "The Centaurus Booster Club is devoted to enriching the experience of students engaged in Centaurus Programs. Our vision is to cultivate a positive and supportive environment, promoting teamwork, sportsmanship, and personal growth.\n"
   },
   "grants": {
+    "kicker": "SUPPORT FOR ATHLETES",
+    "headline": "Grants & Scholarships",
     "items": [
       {
         "audience": "For Coaches",
         "title": "Team Grants",
         "body": "Booster funds go directly to programs for equipment, travel, and the extras that make a season. Coaches can apply each year.",
-        "cta_label": "Apply for a Grant",
+        "cta_label": "Apply Now",
         "form": "team_grant"
       },
       {

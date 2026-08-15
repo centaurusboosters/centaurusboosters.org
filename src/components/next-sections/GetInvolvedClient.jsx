@@ -23,17 +23,17 @@ export default function GetInvolvedClient({ getInvolved, forms, showStore }) {
               <span className="badge-soon">COMING SOON</span>
             </div>
           ) : item.url ? (
-            <a key={i} href={item.url} target="_blank" rel="noopener noreferrer" className="card">
+            <div key={i} className="card">
               <div data-tina-field={tinaField(item, 'title')} className="card-title">{item.title}</div>
               <p data-tina-field={tinaField(item, 'description')} className="card-body">{item.description}</p>
-              <span data-tina-field={tinaField(item, 'link_label')} className="card-link">{item.link_label}</span>
-            </a>
+              <a data-tina-field={tinaField(item, 'link_label')} href={item.url} target="_blank" rel="noopener noreferrer" className="btn btn--sm btn--red">{item.link_label}</a>
+            </div>
           ) : (
-            <button key={i} className="card form-trigger" data-form-src={forms[item.form]} data-form-title={item.form_title}>
+            <div key={i} className="card">
               <div data-tina-field={tinaField(item, 'title')} className="card-title">{item.title}</div>
               <p data-tina-field={tinaField(item, 'description')} className="card-body">{item.description}</p>
-              <span data-tina-field={tinaField(item, 'link_label')} className="card-link">{item.link_label}</span>
-            </button>
+              <button data-tina-field={tinaField(item, 'link_label')} className="btn btn--sm btn--red form-trigger" data-form-src={forms[item.form]} data-form-title={item.form_title}>{item.link_label}</button>
+            </div>
           )
         )}
       </div>

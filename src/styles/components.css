@@ -229,14 +229,13 @@ a.navlink:hover { color: #fff; }
 .ways-grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; }
 .card {
   text-align: left; background: linear-gradient(160deg, #16285c, #0e1d45);
-  border-radius: 5px; padding: 34px; display: block;
+  border-radius: 5px; padding: 34px;
   border: none; border-top: 4px solid var(--color-red); font-family: var(--font-body);
   flex: 1 1 300px; max-width: 360px;
+  display: flex; flex-direction: column; align-items: flex-start;
 }
-button.card { cursor: pointer; }
 .card-title { color: #fff; font-family: var(--font-display); font-weight: 400; font-size: 28px; }
-.card-body { color: var(--color-text-dim); font-size: 15px; line-height: 1.55; }
-.card-link { color: var(--color-blue-muted); font-weight: 800; font-size: 14px; }
+.card-body { color: var(--color-text-dim); font-size: 15px; line-height: 1.55; margin: 0 0 22px; flex: 1 0 auto; }
 .badge-soon {
   display: inline-block; color: var(--color-blue-muted); font-weight: 800; font-size: 13px;
   letter-spacing: .06em; border: 1px solid rgba(127,160,255,.35); padding: 5px 12px; border-radius: var(--radius);
@@ -262,15 +261,15 @@ button.card { cursor: pointer; }
 
 /* ---------- Grants ---------- */
 .grants-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
-.grant-card { border-radius: 6px; padding: 42px; color: #fff; }
-.grant-card--navy { background: var(--color-navy); }
-.grant-card--red { background: var(--color-red); }
+.grant-card {
+  background: linear-gradient(160deg, #16285c, #0e1d45);
+  border-radius: 5px; padding: 42px; color: #fff;
+  border-top: 4px solid var(--color-red); font-family: var(--font-body);
+  display: flex; flex-direction: column; align-items: flex-start;
+}
 .grant-card .kicker { letter-spacing: .16em; }
-.grant-card--red .kicker { color: #ffd0d3; }
 .grant-title { font-family: var(--font-display); font-weight: 400; font-size: clamp(28px, 5vw, 38px); margin: 10px 0 12px; text-transform: uppercase; }
-.grant-body { color: var(--color-text-dim); font-size: 15px; line-height: 1.6; margin: 0 0 22px; }
-.grant-card--red .grant-body { color: #ffe0e2; }
-.grant-card--red .btn--white { color: var(--color-red); }
+.grant-body { color: var(--color-text-dim); font-size: 15px; line-height: 1.6; margin: 0 0 22px; flex: 1 0 auto; }
 
 /* ---------- Sponsor strip ---------- */
 .sponsor-strip-section { padding: 54px 6vw; background: var(--color-bg-light); }

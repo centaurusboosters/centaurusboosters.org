@@ -300,6 +300,8 @@ export default defineConfig({
             name: 'grants',
             label: 'Grants',
             fields: [
+              { type: 'string', name: 'kicker', label: 'Section label' },
+              { type: 'string', name: 'headline', label: 'Headline' },
               {
                 type: 'object',
                 name: 'items',
