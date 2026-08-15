@@ -30,8 +30,13 @@ export default async function Home({ searchParams }) {
   // of DST — plain `new Date('2026-09-20')` is UTC midnight, which is still
   // "Sept 19 evening" in America/Denver and reads a day early everywhere
   // this value feeds the Colorado calendar-day math in schedule.js.
-  // Hard-gated to non-production so it can never be used against the live site.
-  const params = process.env.NODE_ENV === 'production' ? null : await searchParams;
+  // Gated on VERCEL_ENV, not NODE_ENV — every Vercel deployment (preview
+  // included) runs a `next build`, so NODE_ENV is 'production' there too;
+  // VERCEL_ENV is what actually distinguishes the preview deployment (where
+  // this is allowed, for browser-testing schedule changes) from the real
+  // production site (where it's blocked). Unset locally, so local dev is
+  // unaffected either way.
+  const params = process.env.VERCEL_ENV === 'production' ? null : await searchParams;
   const rawNow = params?.now;
   const bareDate = typeof rawNow === 'string' && /^\d{4}-\d{2}-\d{2}$/.test(rawNow);
   const overrideDate = rawNow ? new Date(bareDate ? `${rawNow}T12:00:00Z` : rawNow) : null;

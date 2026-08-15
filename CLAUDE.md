@@ -48,7 +48,7 @@ All editable content lives in `src/data/home.json`. TinaCMS reads/writes this fi
 - `page.tournament.registration_closes` (optional datetime) drives a single quiet `.deadline-note` line (hero + Register section) via `golfDeadlineSentence()`, shown only within `GOLF_COUNTDOWN_WINDOW_DAYS` (45) of the deadline. It also gates `showTournament` — once the deadline passes, the whole tournament section (`GolfEventClient`, `CourseClient`, `RegisterClient`, related footer content, stat band) auto-hides, same as the manual `enabled` toggle. Leaving `registration_closes` blank means the deadline never arrives, so `enabled` stays the only switch.
 - Countdown day counts roll over at Colorado (`America/Denver`) midnight, not UTC midnight, computed via calendar-day subtraction rather than a raw 24h division.
 - New `datetime` Tina fields must set `required: false` explicitly — Tina's date picker silently writes today's date into an empty field otherwise.
-- `?now=<date>` on the homepage overrides the stamped `now` for local testing (hard-gated to non-production).
+- `?now=<date>` on the homepage overrides the stamped `now` for testing store/registration windows. Gated on `VERCEL_ENV !== 'production'` (not `NODE_ENV`, since every Vercel deployment including preview runs a production build) — works locally and on the `preview` deployment, hard-blocked on the real production site.
 
 ### Component Structure
 
