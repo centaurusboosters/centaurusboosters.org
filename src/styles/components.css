@@ -11,7 +11,9 @@
  *   .btn              call-to-action button/link; color: .btn--red / --navy /
  *                     --white / --ghost; size: default (large) / .btn--md / --sm
  *   .card             navy gradient card with red top bar (Get Involved)
- *   .announce-bar     slim promo strip that sits above the sticky nav
+ *   .site-header      sticky wrapper around .announce-bar + .nav so the promo
+ *                     strip stays pinned above the nav on scroll, not just the nav
+ *   .announce-bar     slim promo strip that sits above the nav inside .site-header
  *   .deadline-note    quiet one-line note (e.g. a registration-closed message)
  *   .countdown-pill   solid red "N DAYS LEFT" badge (store + golf countdowns)
  *   .hero-cta-learn-more  small underlined link below hero CTAs
@@ -80,6 +82,9 @@
 .btn--md { font-size: 16px; letter-spacing: .04em; padding: 16px 30px; }
 .btn--sm { font-size: 14px; letter-spacing: normal; padding: 13px 24px; }
 
+/* ---------- Site header (announcement bar + nav stick together) ---------- */
+.site-header { position: sticky; top: 0; z-index: 50; }
+
 /* ---------- Announcement bar ---------- */
 .announce-bar {
   display: flex; align-items: center; justify-content: center;
@@ -96,7 +101,6 @@
 
 /* ---------- Nav ---------- */
 .nav {
-  position: sticky; top: 0; z-index: 50;
   display: flex; align-items: center; justify-content: space-between;
   padding: 14px 6vw; background: rgba(8,18,44,.94);
   backdrop-filter: blur(10px); border-bottom: 1px solid rgba(255,255,255,.09);

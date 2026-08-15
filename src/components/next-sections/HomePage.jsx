@@ -57,8 +57,10 @@ export default function HomePage({ tina, staticData, forms, nowIso }) {
 
   return (
     <>
-      {showStore && <AnnouncementBar store={page.store} daysLeft={storeDaysLeft} />}
-      <Nav showTournament={showTournament} />
+      <div className="site-header">
+        {showStore && <AnnouncementBar store={page.store} daysLeft={storeDaysLeft} />}
+        <Nav showTournament={showTournament} />
+      </div>
       <HeroClient
         tournament={page.tournament}
         site={page.site}
