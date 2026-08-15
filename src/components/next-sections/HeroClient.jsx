@@ -88,7 +88,7 @@ export default function HeroClient({ tournament, site, showTournament, showRegis
         </h1>
         <p data-tina-field={tinaField(mission, 'body')} className="hero-body">{mission.body}</p>
         <div className="hero-cta">
-          <a data-tina-field={tinaField(mission, 'cta_primary')} href="#sponsor" className="btn btn--red btn--md">{mission.cta_primary}</a>
+          <a data-tina-field={tinaField(mission, 'cta_primary')} href="#getinvolved" className="btn btn--red btn--md">{mission.cta_primary}</a>
           <a data-tina-field={tinaField(mission, 'cta_secondary')} href="#donate" className="btn btn--ghost btn--md">{mission.cta_secondary}</a>
         </div>
       </>
