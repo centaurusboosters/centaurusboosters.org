@@ -304,6 +304,10 @@ button.card { cursor: pointer; }
   .nav-burger { display: flex; }
 
   .store-grid { grid-template-columns: 1fr; gap: 28px; }
+  .store-copy { text-align: center; }
+  .store-copy .kicker { justify-content: center; }
+  .store-copy .section-intro { margin-left: auto; margin-right: auto; }
+  .store-cta { display: flex; justify-content: center; }
 
   #form-modal-box { width: 100%; height: 100dvh; max-height: 100dvh; border-radius: 0; }
   #form-modal-iframe { min-height: unset; }

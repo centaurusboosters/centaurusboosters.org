@@ -58,7 +58,6 @@ export default function HeroClient({ tournament, site, showTournament, forms, st
           <p data-tina-field={tinaField(store, 'body')} className="hero-body">{store.body}</p>
           <div className="hero-cta">
             <a data-tina-field={tinaField(store, 'cta_label')} href={store.url} target="_blank" rel="noopener noreferrer" className="btn btn--red btn--md">{store.cta_label} →</a>
-            <a href="#store" className="btn btn--ghost btn--md">SEE THE GEAR</a>
           </div>
         </>
       ),
