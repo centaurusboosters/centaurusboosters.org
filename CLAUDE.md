@@ -101,3 +101,13 @@ The site deploys to Vercel as a standard server-rendered Next.js app (per-reques
 **Always `git pull` (or `git fetch` + check `git status` against `origin/main`) before starting a new task**, not just before committing. The site owner edits content directly through the TinaCMS admin UI in production, which commits straight to `main` (`src/data/home.json`, `tina/tina-lock.json`) outside of any Claude Code session — so `main` can drift ahead between one task and the next even within the same conversation. Starting from a stale base risks clobbering those edits or hitting an avoidable rebase when it's time to push.
 
 **Push work-in-progress to the `preview` branch, not an arbitrary feature branch, if it needs to be checked in a browser.** Google OAuth (used for both the site owner's `/admin` login and the `TINA_LOCAL_AUTH_BYPASS`-free auth flow) only has redirect URIs configured for the `main` and `preview` Vercel deployments — a deploy of any other branch has no working login, so `/admin` and anything behind auth is unreachable there. Feature/topic branches are fine for local work and for a PR into `main`, but if the goal is "let me click around the deployed result," it has to land on `preview`.
+
+<!-- BEGIN:nextjs-agent-rules -->
+
+# This is NOT the Next.js you know
+
+This version has breaking changes — APIs, conventions, and file structure may all differ from your training data. Read the relevant guide in `node_modules/next/dist/docs/` (resolved from this file's directory; in monorepos the `next` package may not be visible from the repo root) before writing any code. Heed deprecation notices.
+
+This block is written and re-added by `next dev` — verify at `node_modules/next/dist/server/lib/generate-agent-files.js`. Removing it from a diff only re-creates the uncommitted change; committing it with your work keeps the tree clean.
+
+<!-- END:nextjs-agent-rules -->

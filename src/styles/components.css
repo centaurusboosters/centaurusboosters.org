@@ -341,6 +341,10 @@ a.navlink:hover { color: #fff; }
   .hero-cta .btn { text-align: center; font-size: 15px; padding: 14px 20px; }
   .hero-sep { display: none; }
 
+  .hero-badge { flex-wrap: wrap; row-gap: 6px; max-width: 100%; font-size: 12px; padding: 7px 12px; }
+  .hero-title { font-size: clamp(32px, 10vw, 96px); max-width: 100%; overflow-wrap: break-word; }
+  .hero-body { font-size: 17px; }
+
   /* !important beats the dynamic inline grid-template-columns */
   .stat-band { grid-template-columns: 1fr !important; }
   .stat-cell:not(:last-child) { border-right: none; border-bottom: 1px solid rgba(255,255,255,.2); }
