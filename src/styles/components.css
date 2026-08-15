@@ -279,7 +279,10 @@ a.navlink:hover { color: #fff; }
   border-top: 4px solid var(--color-red); font-family: var(--font-body);
   display: flex; flex-direction: column; align-items: flex-start;
 }
-.grant-card .kicker { letter-spacing: .16em; }
+/* The card itself is always dark regardless of the section's own background,
+   so pin its kicker to the dark-background color rather than letting
+   .section--light's override cascade in and wash it out. */
+.grant-card .kicker { letter-spacing: .16em; color: var(--color-blue-muted); }
 .grant-title { font-family: var(--font-display); font-weight: 400; font-size: clamp(28px, 5vw, 38px); margin: 10px 0 12px; text-transform: uppercase; }
 .grant-body { color: var(--color-text-dim); font-size: 15px; line-height: 1.6; margin: 0 0 22px; flex: 1 0 auto; }
 
