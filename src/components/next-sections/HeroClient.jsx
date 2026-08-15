@@ -1,10 +1,11 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { tinaField } from '../tina/editable';
+import { tinaField, useEditState } from '../tina/editable';
 import { countdownLabel, golfDeadlineSentence } from '../../lib/schedule';
 
 export default function HeroClient({ tournament, site, showTournament, forms, store, showStore, storeDaysLeft, golfDaysLeft }) {
+  const { edit } = useEditState();
   const mission = site.hero_mission;
   const golfNote = golfDeadlineSentence(golfDaysLeft);
   const storeNote = countdownLabel(storeDaysLeft);
@@ -92,11 +93,13 @@ export default function HeroClient({ tournament, site, showTournament, forms, st
   const current = active % slides.length;
 
   useEffect(() => {
-    if (slides.length < 2) return;
+    // Auto-advance fights with clicking into fields to edit them, so leave
+    // slide changes to the dots while inside Tina's live-editing view.
+    if (slides.length < 2 || edit) return;
     const timer = setInterval(() => setActive((value) => (value + 1) % slides.length), 7000);
     return () => clearInterval(timer);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [slides.length]);
+  }, [slides.length, edit]);
 
   return (
     <div className="hero">
