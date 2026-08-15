@@ -29,7 +29,7 @@ function GrantCard({ grant, forms, formTitle }) {
       <div data-tina-field={tinaField(grant, 'audience')} className="kicker">{grant.audience.toUpperCase()}</div>
       <h3 data-tina-field={tinaField(grant, 'title')} className="grant-title">{grant.title}</h3>
       <p data-tina-field={tinaField(grant, 'body')} className="grant-body">{grant.body}</p>
-      <button className="btn btn--sm btn--red form-trigger" data-form-src={forms[grant.form]} data-form-title={formTitle}>{grant.cta_label} →</button>
+      <button className="btn btn--sm btn--red form-trigger" data-form-src={forms[grant.form]} data-form-title={formTitle}>{grant.cta_label}</button>
     </div>
   );
 }

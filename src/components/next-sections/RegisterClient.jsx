@@ -28,7 +28,7 @@ export default function RegisterClient({ tournament, contacts, forms, golfDaysLe
       </div>
       {showRegisterCta ? (
         <div className="section-cta">
-          <button data-tina-field={tinaField(tournament, 'register_cta_label')} className="btn btn--red form-trigger" data-form-src={forms.registration} data-form-title="TOURNAMENT REGISTRATION">{tournament.register_cta_label} →</button>
+          <button data-tina-field={tinaField(tournament, 'register_cta_label')} className="btn btn--red form-trigger" data-form-src={forms.registration} data-form-title="TOURNAMENT REGISTRATION">{tournament.register_cta_label}</button>
         </div>
       ) : (
         <div className="section-cta">

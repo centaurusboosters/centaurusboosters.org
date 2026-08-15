@@ -9,7 +9,11 @@
  *   .section-title    Anton display heading; color adapts on light sections
  *   .section-intro    body paragraph under a title
  *   .btn              call-to-action button/link; color: .btn--red / --navy /
- *                     --white / --ghost; size: default (large) / .btn--md / --sm
+ *                     --white / --ghost; size: default (large) / .btn--md / --sm.
+ *                     Trailing "→" in the label is reserved for links that leave
+ *                     the page (external URL, target="_blank") — a same-page
+ *                     popup form trigger has no arrow, and a same-page anchor
+ *                     jump (#id) adds .btn--jump (underline) instead of an arrow.
  *   .card             navy gradient card with red top bar (Get Involved)
  *   .site-header      sticky wrapper around .announce-bar + .nav so the promo
  *                     strip stays pinned above the nav on scroll, not just the nav
@@ -81,6 +85,10 @@
 .btn--ghost { background: rgba(255,255,255,.06); color: #fff; border: 2px solid rgba(255,255,255,.35); }
 .btn--md { font-size: 16px; letter-spacing: .04em; padding: 16px 30px; }
 .btn--sm { font-size: 14px; letter-spacing: normal; padding: 13px 24px; }
+/* Anchor-jump buttons (same-page scroll, not a popup or external link) keep
+   the box for primary-action weight but underline the label so it doesn't
+   read as opening a form like the other solid buttons. */
+.btn--jump { text-decoration: underline; text-underline-offset: 3px; }
 
 /* ---------- Site header (announcement bar + nav stick together) ---------- */
 .site-header { position: sticky; top: 0; z-index: 50; }

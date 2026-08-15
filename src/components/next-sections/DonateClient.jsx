@@ -11,7 +11,7 @@ export default function DonateClient({ site, forms }) {
         <p data-tina-field={tinaField(site?.donate, 'body')} className="section-intro">{site.donate.body}</p>
       </div>
       <div className="section-cta">
-        <button data-tina-field={tinaField(site?.donate, 'cta_label')} className="btn btn--red form-trigger" data-form-src={forms.donate} data-form-title="DONATE">{site.donate.cta_label} →</button>
+        <button data-tina-field={tinaField(site?.donate, 'cta_label')} className="btn btn--red form-trigger" data-form-src={forms.donate} data-form-title="DONATE">{site.donate.cta_label}</button>
       </div>
     </div>
   );
