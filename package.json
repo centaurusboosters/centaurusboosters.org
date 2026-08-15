@@ -35,7 +35,7 @@
     "next-auth": "^4.24.14",
     "slate": "^0.124.1",
     "slate-dom": "^0.124.1",
-    "tinacms": "^3.9.4",
+    "tinacms": "^3.11.0",
     "tinacms-gitprovider-github": "^4.1.12",
     "upstash-redis-level": "^1.1.1"
   }
