@@ -13,7 +13,7 @@ export default function StoreClient({ store, daysLeft }) {
         <div className="store-copy">
           <div className="kicker kicker--rule">TEAM STORE</div>
           <h2 data-tina-field={tinaField(store, 'headline')} className="section-title">{store.headline}</h2>
-          {count && <div data-tina-field={tinaField(store, 'close_date')} className="store-countdown">{count} TO ORDER</div>}
+          {count && <div data-tina-field={tinaField(store, 'close_date')} className="countdown-pill">{count} TO ORDER</div>}
           <p data-tina-field={tinaField(store, 'body')} className="section-intro">{store.body}</p>
           <div className="store-cta">
             <a data-tina-field={tinaField(store, 'cta_label')} href={store.url} target="_blank" rel="noopener noreferrer" className="btn btn--red">{store.cta_label} →</a>

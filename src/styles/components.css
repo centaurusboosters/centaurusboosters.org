@@ -12,7 +12,8 @@
  *                     --white / --ghost; size: default (large) / .btn--md / --sm
  *   .card             navy gradient card with red top bar (Get Involved)
  *   .announce-bar     slim promo strip that sits above the sticky nav
- *   .deadline-note    quiet one-line "closes in N days" copy
+ *   .deadline-note    quiet one-line note (e.g. a registration-closed message)
+ *   .countdown-pill   solid red "N DAYS LEFT" badge (store + golf countdowns)
  *   .hero-cta-learn-more  small underlined link below hero CTAs
  *
  * Per-section rules (font-size tweaks, grids) live in the blocks further down,
@@ -57,6 +58,13 @@
 
 .deadline-note { color: var(--color-blue-muted); font-size: 14px; font-weight: 700; letter-spacing: .04em; margin: 18px 0 0; }
 .section--light .deadline-note { color: var(--color-kicker-light); }
+
+.countdown-pill {
+  display: inline-block; align-self: flex-start; margin-top: 14px;
+  background: var(--color-red); color: #fff;
+  font-weight: 800; font-size: 13px; letter-spacing: .14em;
+  padding: 7px 14px; border-radius: var(--radius);
+}
 
 /* ---------- Buttons ---------- */
 .btn {
@@ -169,12 +177,6 @@ a.navlink:hover { color: #fff; }
 /* ---------- Store ---------- */
 #store .section-title { font-size: clamp(32px, 6vw, 50px); margin: 12px 0 0; }
 .store-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 44px; align-items: center; }
-.store-countdown {
-  display: inline-block; margin-top: 14px;
-  background: var(--color-red); color: #fff;
-  font-weight: 800; font-size: 13px; letter-spacing: .14em;
-  padding: 7px 14px; border-radius: var(--radius);
-}
 .store-copy .section-intro { margin-top: 16px; max-width: 520px; }
 .store-cta { margin-top: 26px; }
 .store-shots { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; max-width: 340px; margin: 0 auto; }

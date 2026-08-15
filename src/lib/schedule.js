@@ -91,11 +91,3 @@ export function countdownLabel(daysRemaining) {
   if (daysRemaining === 1) return '1 DAY LEFT';
   return `${daysRemaining} DAYS LEFT`;
 }
-
-/** "Registration closes today" / "Registration closes in N days". Null when
- *  there's nothing to say (no deadline, or outside the countdown window). */
-export function golfDeadlineSentence(daysLeft) {
-  if (daysLeft === null || daysLeft === undefined) return null;
-  const closes = daysLeft === 0 ? 'Registration closes today' : `Registration closes in ${daysLeft} day${daysLeft === 1 ? '' : 's'}`;
-  return `${closes} — claim your tee time.`;
-}

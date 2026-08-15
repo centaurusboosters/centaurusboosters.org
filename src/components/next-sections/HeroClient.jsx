@@ -2,12 +2,12 @@
 
 import { useEffect, useRef, useState } from 'react';
 import { tinaField, useEditState } from '../tina/editable';
-import { countdownLabel, golfDeadlineSentence } from '../../lib/schedule';
+import { countdownLabel } from '../../lib/schedule';
 
 export default function HeroClient({ tournament, site, showTournament, showRegisterCta, forms, store, showStore, storeDaysLeft, golfDaysLeft }) {
   const { edit } = useEditState();
   const mission = site.hero_mission;
-  const golfNote = golfDeadlineSentence(golfDaysLeft);
+  const golfCount = countdownLabel(golfDaysLeft);
   const storeNote = countdownLabel(storeDaysLeft);
 
   // Slides are assembled into a list so rotation, dots, and slide position all
@@ -21,7 +21,12 @@ export default function HeroClient({ tournament, site, showTournament, showRegis
       label: 'Golf tournament',
       node: (
         <>
-          <div data-tina-field={tinaField(tournament, 'edition')} className="hero-badge">{showRegisterCta ? `NOW REGISTERING · ${tournament.edition.toUpperCase()}` : tournament.edition.toUpperCase()}</div>
+          <div data-tina-field={tinaField(tournament, 'edition')} className="hero-badge">
+            {showRegisterCta ? `NOW REGISTERING · ${tournament.edition.toUpperCase()}` : tournament.edition.toUpperCase()}
+            {showRegisterCta && golfCount && (
+              <span data-tina-field={tinaField(tournament, 'registration_closes')} className="hero-badge-count">{golfCount}</span>
+            )}
+          </div>
           <h1 className="hero-title">
             <span data-tina-field={tinaField(tournament, 'hero_headline_line1')}>{tournament.hero_headline_line1}</span>
             <br />
@@ -34,9 +39,6 @@ export default function HeroClient({ tournament, site, showTournament, showRegis
             <span className="hero-sep">|</span>
             <span data-tina-field={tinaField(tournament, 'venue')}>{tournament.venue.toUpperCase()}</span>
           </div>
-          {golfNote && (
-            <p data-tina-field={tinaField(tournament, 'registration_closes')} className="deadline-note">{golfNote}</p>
-          )}
           {showRegisterCta ? (
             <div className="hero-cta">
               <button data-tina-field={tinaField(tournament, 'hero_cta_label')} className="btn btn--red btn--md form-trigger" data-form-src={forms.registration} data-form-title="TOURNAMENT REGISTRATION">{tournament.hero_cta_label} →</button>
