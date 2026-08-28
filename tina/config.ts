@@ -281,6 +281,7 @@ export default defineConfig({
                   { type: 'string', name: 'form', label: 'Form key' },
                   { type: 'string', name: 'form_title', label: 'Form title' },
                   { type: 'string', name: 'url', label: 'External link URL' },
+                  { type: 'boolean', name: 'store_link', label: 'Hide with store schedule' },
                   { type: 'boolean', name: 'coming_soon', label: 'Coming soon' },
                 ],
               },

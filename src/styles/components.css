@@ -124,6 +124,7 @@ a.navlink:hover { color: #fff; }
   background: var(--color-red); color: #fff; text-decoration: none;
   font-weight: 800; font-size: 13px; letter-spacing: .06em;
   padding: 11px 22px; border-radius: var(--radius);
+  border: none; cursor: pointer; font-family: inherit;
 }
 
 .nav-burger { display: none; flex-direction: column; justify-content: space-between; width: 26px; height: 20px; background: none; border: none; padding: 0; cursor: pointer; }
@@ -131,7 +132,7 @@ a.navlink:hover { color: #fff; }
 
 #nav-mobile { display: none; position: absolute; left: 0; right: 0; top: 100%; background: rgba(8,18,44,.97); border-top: 1px solid rgba(255,255,255,.1); padding: 8px 6vw 20px; flex-direction: column; z-index: 49; }
 #nav-mobile a { display: block; color: var(--color-text-nav); text-decoration: none; font-weight: 700; font-size: 15px; letter-spacing: .06em; padding: 14px 0; border-bottom: 1px solid rgba(255,255,255,.07); }
-#nav-mobile a.mobile-donate { color: #fff; background: var(--color-red); text-align: center; padding: 14px; border-radius: var(--radius); margin-top: 10px; border: none; }
+#nav-mobile .mobile-donate { display: block; width: 100%; color: #fff; background: var(--color-red); text-align: center; font: inherit; font-weight: 700; font-size: 15px; letter-spacing: .06em; padding: 14px; border-radius: var(--radius); margin-top: 10px; border: none; cursor: pointer; }
 #nav-mobile.open { display: flex; }
 
 /* ---------- Hero ---------- */
@@ -270,6 +271,15 @@ a.navlink:hover { color: #fff; }
 /* ---------- Donate ---------- */
 #donate .section-title { margin: 12px 0 8px; }
 #donate .section-intro { margin: 0; }
+.paypal-donate { display: flex; flex-direction: column; align-items: center; gap: 16px; margin-top: 32px; }
+.paypal-donate-info {
+  display: inline-flex; align-items: center; gap: 10px;
+  padding: 10px 20px;
+  background: #fff; border-radius: var(--radius);
+}
+.paypal-donate-cards { height: 22px; }
+.paypal-donate-powered { font-size: 12px; color: var(--color-navy); margin: 0; }
+.paypal-wordmark { height: 14px; vertical-align: middle; }
 
 /* ---------- Grants ---------- */
 .grants-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }

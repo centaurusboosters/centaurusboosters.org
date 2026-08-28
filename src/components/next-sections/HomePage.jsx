@@ -81,7 +81,7 @@ export default function HomePage({ tina, staticData, forms, nowIso }) {
       {showTournament && <RegisterClient tournament={page.tournament} contacts={page.contacts} forms={forms} golfDaysLeft={golfDaysLeft} showRegisterCta={showRegisterCta} />}
       <GetInvolvedClient getInvolved={page.get_involved} forms={forms} showStore={showStore} />
       <SponsorCTAClient site={page.site} sponsorBenefits={page.sponsor_benefits} contacts={page.contacts} forms={forms} />
-      <DonateClient site={page.site} forms={forms} />
+      <DonateClient site={page.site} />
       <GrantsEditor grants={page.grants} forms={forms} />
       <SponsorStripClient sponsors={page.sponsors} />
       <FooterClient contacts={page.contacts} tournament={page.tournament} site={page.site} showTournament={showTournament} />

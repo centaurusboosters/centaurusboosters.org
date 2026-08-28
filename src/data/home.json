@@ -68,7 +68,7 @@
     "donate": {
       "headline": "FUEL THE PROGRAMS",
       "body": "Your gift funds gear, travel, grants & scholarships for every Centaurus athlete. Give any amount right here.",
-      "cta_label": "DONATE NOW"
+      "cta_label": "DONATE WITH PAYPAL"
     },
     "sponsor_cta": {
       "headline_line1": "PUT YOUR BRAND",
@@ -268,15 +268,15 @@
       {
         "title": "DONATE",
         "description": "Every dollar funds gear, travel, grants & scholarships for Centaurus athletes.",
-        "link_label": "Give now",
-        "form": "donate",
-        "form_title": "DONATE"
+        "link_label": "Give now →",
+        "url": "https://www.paypal.com/ncp/payment/MBXG99R6K3G6E"
       },
       {
         "title": "SHOP MERCH",
         "description": "Show your Warrior pride. Proceeds go straight back to the programs.",
         "link_label": "Shop the store →",
-        "url": "https://www.custommisports.com/centaurus_hs_apparel/shop/home"
+        "url": "https://www.custommisports.com/centaurus_hs_apparel/shop/home",
+        "store_link": true
       }
     ]
   },
