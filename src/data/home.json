@@ -186,6 +186,13 @@
         "alt": "Rush Bowls Lafayette",
         "url": "https://rushbowls.com/lafayette",
         "enabled": true
+      },
+      {
+        "name": "Chick-fil-A",
+        "logo": "https://uciw2t8wwfuxzowq.public.blob.vercel-storage.com/tina-media/Chick-fil-A-header-logo.svg",
+        "alt": "Chick-fil-A",
+        "url": "https://www.chick-fil-a.com/",
+        "enabled": true
       }
     ]
   },
