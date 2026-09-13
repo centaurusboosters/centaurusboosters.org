@@ -26,6 +26,7 @@ Go to **`yoursite.com/admin`** and sign in with your Google account. Click any t
 | Change contact names/emails | Form → **Contacts** |
 | Change a Google Form link (donate, registration, grants…) | Admin sidebar → **Forms** |
 | Turn the store promotion on/off, change its dates, copy, or product photos | Form → **Apparel Store Promo** |
+| Set the silent auction link, dates, or banner text (banner stays hidden while the link is blank) | Form → **Silent Auction Promo** |
 | Set when golf registration closes (shows a quiet "closes in N days" note near the deadline) | Form → **Tournament** → **"Registration closes"** |
 
 ### Things to know

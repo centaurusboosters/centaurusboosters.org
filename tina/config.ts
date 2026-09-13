@@ -239,6 +239,21 @@ export default defineConfig({
           },
           {
             type: 'object',
+            name: 'auction',
+            label: 'Silent Auction Promo',
+            fields: [
+              { type: 'boolean', name: 'enabled', label: 'Show auction banner' },
+              // Not required: a blank URL is the "not ready yet" state and hides the banner.
+              { type: 'string', name: 'url', label: 'Auction URL (banner hidden while blank)' },
+              // required: false on both dates — see tournament.registration_closes.
+              { type: 'datetime', name: 'open_date', label: 'Auction opens (optional)', required: false, ui: { timeFormat: false } },
+              { type: 'datetime', name: 'close_date', label: 'Auction closes (last day to bid)', required: false, ui: { timeFormat: false } },
+              { type: 'string', name: 'announcement', label: 'Announcement bar text' },
+              { type: 'string', name: 'cta_label', label: 'Link label' },
+            ],
+          },
+          {
+            type: 'object',
             name: 'stat_band',
             label: 'Stat Band (off-season)',
             fields: [

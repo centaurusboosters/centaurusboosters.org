@@ -216,6 +216,14 @@
       "Cheerleading"
     ]
   },
+  "auction": {
+    "enabled": true,
+    "url": "",
+    "open_date": "2026-09-20T06:00:00.000Z",
+    "close_date": "2026-10-03T06:00:00.000Z",
+    "announcement": "Silent auction is open",
+    "cta_label": "BID NOW"
+  },
   "store": {
     "enabled": true,
     "url": "https://www.custommisports.com/centaurus_hs_apparel/shop/home",

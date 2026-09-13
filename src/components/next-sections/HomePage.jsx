@@ -33,6 +33,14 @@ export default function HomePage({ tina, staticData, forms, nowIso }) {
   const showStore = Boolean(page.store?.url) && storeSchedule.active;
   const storeDaysLeft = storeSchedule.daysRemaining;
 
+  // Silent auction: banner-only promo, same shape as the store. A blank URL
+  // hides it, so the dates can be set before the auction link exists.
+  const auctionSchedule = resolveSchedule(
+    { enabled: page.auction?.enabled, start: page.auction?.open_date, end: page.auction?.close_date },
+    nowIso
+  );
+  const showAuction = Boolean(page.auction?.url) && auctionSchedule.active;
+
   // Tournament section visibility: keyed off the event date itself (one day
   // after the tournament, via resolveSchedule's inclusive-end-day semantics)
   // so course/venue/pricing info stays up through the event even after
@@ -59,8 +67,9 @@ export default function HomePage({ tina, staticData, forms, nowIso }) {
   return (
     <>
       <div className="site-header">
-        {showStore && <AnnouncementBar store={page.store} daysLeft={storeDaysLeft} />}
-        {!showStore && showGolfCountdown && <GolfAnnouncementBar tournament={page.tournament} daysLeft={golfDaysLeft} forms={forms} />}
+        {showStore && <AnnouncementBar promo={page.store} daysLeft={storeDaysLeft} />}
+        {!showStore && showAuction && <AnnouncementBar promo={page.auction} daysLeft={auctionSchedule.daysRemaining} />}
+        {!showStore && !showAuction && showGolfCountdown && <GolfAnnouncementBar tournament={page.tournament} daysLeft={golfDaysLeft} forms={forms} />}
         <Nav showTournament={showTournament} />
       </div>
       <HeroClient
