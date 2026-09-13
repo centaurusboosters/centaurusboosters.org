@@ -3,6 +3,7 @@
 import { makeSafeTina, useTina } from '../tina/editable';
 import { resolveSchedule, isCountingDown, GOLF_COUNTDOWN_WINDOW_DAYS } from '../../lib/schedule';
 import AnnouncementBar from './AnnouncementBar';
+import GolfAnnouncementBar from './GolfAnnouncementBar';
 import Nav from './Nav';
 import HeroClient from './HeroClient';
 import AboutEditor from './AboutEditor';
@@ -59,6 +60,7 @@ export default function HomePage({ tina, staticData, forms, nowIso }) {
     <>
       <div className="site-header">
         {showStore && <AnnouncementBar store={page.store} daysLeft={storeDaysLeft} />}
+        {!showStore && showGolfCountdown && <GolfAnnouncementBar tournament={page.tournament} daysLeft={golfDaysLeft} forms={forms} />}
         <Nav showTournament={showTournament} />
       </div>
       <HeroClient
