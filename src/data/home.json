@@ -31,7 +31,7 @@
     "register_headline": "CLAIM YOUR TEE TIME",
     "register_intro": "Sign up right here — register a full foursome or join as an individual and we'll build your team.",
     "arrive_by": "8:00 AM",
-    "registration_closes": "2026-09-16T06:00:00.000Z",
+    "registration_closes": "2026-09-17T06:00:00.000Z",
     "event_date": "2026-09-20T06:00:00.000Z",
     "registration_closed_message": "Registration is closed — follow us on social media for updates on next year's tournament.",
     "register_cta_label": "REGISTER NOW",
@@ -216,14 +216,6 @@
       "Cheerleading"
     ]
   },
-  "auction": {
-    "enabled": true,
-    "url": "",
-    "open_date": "2026-09-20T06:00:00.000Z",
-    "close_date": "2026-10-03T06:00:00.000Z",
-    "announcement": "Silent auction is open",
-    "cta_label": "BID NOW"
-  },
   "store": {
     "enabled": true,
     "url": "https://www.custommisports.com/centaurus_hs_apparel/shop/home",
@@ -251,6 +243,14 @@
         "alt": "Centaurus Warriors jogger pants"
       }
     ]
+  },
+  "auction": {
+    "enabled": true,
+    "url": "",
+    "open_date": "2026-09-20T06:00:00.000Z",
+    "close_date": "2026-10-03T06:00:00.000Z",
+    "announcement": "Silent auction is open",
+    "cta_label": "BID NOW"
   },
   "stat_band": {
     "items": [
