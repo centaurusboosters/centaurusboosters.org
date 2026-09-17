@@ -200,6 +200,13 @@
         "alt": "Elevations Credit Union",
         "url": "https://www.elevationscu.com/",
         "enabled": true
+      },
+      {
+        "name": "Dillinger's Bar & Grill",
+        "logo": "https://uciw2t8wwfuxzowq.public.blob.vercel-storage.com/tina-media/dillingers.jpg",
+        "alt": "Dillinger's Bar & Grill",
+        "url": "https://dillingersfoodandspirits.com/",
+        "enabled": true
       }
     ]
   },
