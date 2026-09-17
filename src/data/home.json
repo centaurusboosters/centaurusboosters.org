@@ -207,6 +207,13 @@
         "alt": "Dillinger's Bar & Grill",
         "url": "https://dillingersfoodandspirits.com/",
         "enabled": true
+      },
+      {
+        "name": "Corwin Toyota",
+        "logo": "https://uciw2t8wwfuxzowq.public.blob.vercel-storage.com/tina-media/corwintoyoda.avif",
+        "alt": "Corwin Toyota",
+        "url": "https://www.corwintoyotaboulder.com/",
+        "enabled": true
       }
     ]
   },
