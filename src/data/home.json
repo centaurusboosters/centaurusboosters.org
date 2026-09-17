@@ -193,6 +193,13 @@
         "alt": "Chick-fil-A",
         "url": "https://www.chick-fil-a.com/",
         "enabled": true
+      },
+      {
+        "name": "Elevations Credit Union",
+        "logo": "https://uciw2t8wwfuxzowq.public.blob.vercel-storage.com/tina-media/ECU_LogoHoriz_Color_RGB.svg",
+        "alt": "Elevations Credit Union",
+        "url": "https://www.elevationscu.com/",
+        "enabled": true
       }
     ]
   },
