@@ -122,7 +122,7 @@
         "logo": "https://uciw2t8wwfuxzowq.public.blob.vercel-storage.com/tina-media/logo-alpine-valley.png",
         "alt": "Alpine Valley Oral Surgery",
         "url": "https://www.alpinevalleyos.com/",
-        "enabled": true
+        "enabled": false
       },
       {
         "name": "Mudrocks Tap & Tavern",
@@ -136,7 +136,7 @@
         "logo": "https://uciw2t8wwfuxzowq.public.blob.vercel-storage.com/tina-media/logo-boulder-wealth.png",
         "alt": "Boulder Wealth Advisors",
         "url": "https://www.boulderwealthadvisors.com/",
-        "enabled": true
+        "enabled": false
       },
       {
         "name": "rockhop.ai",
@@ -150,14 +150,14 @@
         "logo": "https://uciw2t8wwfuxzowq.public.blob.vercel-storage.com/tina-media/logo-pps.png",
         "alt": "Pinnacle Product Sales",
         "url": "https://www.pinnacleproductsales.com/",
-        "enabled": true
+        "enabled": false
       },
       {
         "name": "Lafayette Family Orthodontics",
         "logo": "https://uciw2t8wwfuxzowq.public.blob.vercel-storage.com/tina-media/logo-lfo.png",
         "alt": "Lafayette Family Orthodontics",
         "url": "https://www.lafayettefamilyorthodontics.com/",
-        "enabled": true
+        "enabled": false
       },
       {
         "name": "Coal Creek Plastic Surgery",
