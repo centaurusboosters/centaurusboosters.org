@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 
-export default function Nav({ showTournament }) {
+export default function Nav({ showTournament, showSchedule }) {
   const [open, setOpen] = useState(false);
   const closeMenu = () => setOpen(false);
 
@@ -18,6 +18,7 @@ export default function Nav({ showTournament }) {
       <div className="nav-links">
         {showTournament && <a className="navlink" href="#golf">GOLF TOURNAMENT</a>}
         {showTournament && <a className="navlink" href="#register">REGISTER</a>}
+        {showSchedule && <a className="navlink" href="#schedule">SCHEDULE</a>}
         <a className="navlink" href="#sponsor">SPONSOR</a>
         <a className="navlink" href="#grants">GRANTS</a>
         <a className="nav-donate" href="#donate">DONATE</a>
@@ -28,6 +29,7 @@ export default function Nav({ showTournament }) {
       <div id="nav-mobile" className={open ? 'open' : undefined} role="navigation" aria-label="Mobile navigation">
         {showTournament && <a href="#golf" onClick={closeMenu}>GOLF TOURNAMENT</a>}
         {showTournament && <a href="#register" onClick={closeMenu}>REGISTER</a>}
+        {showSchedule && <a href="#schedule" onClick={closeMenu}>SCHEDULE</a>}
         <a href="#sponsor" onClick={closeMenu}>SPONSOR</a>
         <a href="#grants" onClick={closeMenu}>GRANTS</a>
         <a href="#donate" className="mobile-donate" onClick={closeMenu}>DONATE</a>

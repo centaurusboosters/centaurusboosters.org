@@ -237,6 +237,15 @@
       "Cheerleading"
     ]
   },
+  "schedule": {
+    "enabled": true,
+    "url": "https://arbiterlive.com/School/Calendar/3592",
+    "kicker": "GAME SCHEDULE",
+    "headline": "NEVER MISS A WARRIOR GAME",
+    "body": "Game times, locations, and schedule changes for every Centaurus team are posted on the school's ArbiterLive calendar. Check it before you head out — it's updated as changes happen.",
+    "cta_label": "VIEW SCHEDULE",
+    "note": "Hosted by Centaurus High School on ArbiterLive"
+  },
   "store": {
     "enabled": true,
     "url": "https://www.custommisports.com/centaurus_hs_apparel/shop/home",

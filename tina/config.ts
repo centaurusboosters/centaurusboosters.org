@@ -210,6 +210,20 @@ export default defineConfig({
           },
           {
             type: 'object',
+            name: 'schedule',
+            label: 'Athletics Schedule',
+            fields: [
+              { type: 'boolean', name: 'enabled', label: 'Show schedule section' },
+              { type: 'string', name: 'url', label: 'Calendar URL', required: true },
+              { type: 'string', name: 'kicker', label: 'Section label' },
+              { type: 'string', name: 'headline', label: 'Headline' },
+              { type: 'string', name: 'body', label: 'Body', ui: { component: 'textarea' } },
+              { type: 'string', name: 'cta_label', label: 'Button label' },
+              { type: 'string', name: 'note', label: 'Small note under the button (optional)' },
+            ],
+          },
+          {
+            type: 'object',
             name: 'store',
             label: 'Apparel Store Promo',
             fields: [

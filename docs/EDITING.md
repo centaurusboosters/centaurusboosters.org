@@ -28,6 +28,7 @@ Go to **`yoursite.com/admin`** and sign in with your Google account. Click any t
 | Turn the store promotion on/off, change its dates, copy, or product photos | Form → **Apparel Store Promo** |
 | Set the silent auction link, dates, or banner text (banner stays hidden while the link is blank) | Form → **Silent Auction Promo** |
 | Set when golf registration closes (shows a quiet "closes in N days" note near the deadline) | Form → **Tournament** → **"Registration closes"** |
+| Change the game-schedule link or its copy, or hide the section | Form → **Athletics Schedule** |
 
 ### Things to know
 

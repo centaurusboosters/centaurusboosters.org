@@ -328,6 +328,14 @@ a.navlink:hover { color: #fff; }
 #form-modal-close:hover { background: #f0f0f0; }
 #form-modal-iframe { width: 100%; flex: 1; border: 0; display: block; min-height: 580px; }
 
+/* ---------- Tablet / small laptop ---------- */
+/* Between the burger breakpoint and a comfortable desktop width the full link
+   row (golf + register + schedule + sponsor + grants + donate) overruns the
+   viewport at the normal 28px gap, so tighten it in that band only. */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .nav-links { gap: 14px; }
+}
+
 /* ---------- Mobile ---------- */
 @media (max-width: 767px) {
   .announce-bar { font-size: 12px; padding: 8px 5vw; text-align: center; }

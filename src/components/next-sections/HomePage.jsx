@@ -10,6 +10,7 @@ import AboutEditor from './AboutEditor';
 import StatBand from './StatBand';
 import Programs from './Programs';
 import StoreClient from './StoreClient';
+import ScheduleClient from './ScheduleClient';
 import GolfEventClient from './GolfEventClient';
 import CourseClient from './CourseClient';
 import RegisterClient from './RegisterClient';
@@ -32,6 +33,12 @@ export default function HomePage({ tina, staticData, forms, nowIso }) {
   );
   const showStore = Boolean(page.store?.url) && storeSchedule.active;
   const storeDaysLeft = storeSchedule.daysRemaining;
+
+  // Athletics schedule: an outbound link to the school's Arbiter calendar.
+  // No date window — the calendar is always current — so it's just the
+  // enabled flag plus a URL. A missing `schedule` key (content not yet added)
+  // hides the section, same backward-compat path as the store.
+  const showSchedule = Boolean(page.schedule?.url) && Boolean(page.schedule?.enabled);
 
   // Silent auction: banner-only promo, same shape as the store. A blank URL
   // hides it, so the dates can be set before the auction link exists.
@@ -70,7 +77,7 @@ export default function HomePage({ tina, staticData, forms, nowIso }) {
         {showStore && <AnnouncementBar promo={page.store} daysLeft={storeDaysLeft} />}
         {!showStore && showAuction && <AnnouncementBar promo={page.auction} daysLeft={auctionSchedule.daysRemaining} />}
         {!showStore && !showAuction && showGolfCountdown && <GolfAnnouncementBar tournament={page.tournament} daysLeft={golfDaysLeft} forms={forms} />}
-        <Nav showTournament={showTournament} />
+        <Nav showTournament={showTournament} showSchedule={showSchedule} />
       </div>
       <HeroClient
         tournament={page.tournament}
@@ -86,6 +93,7 @@ export default function HomePage({ tina, staticData, forms, nowIso }) {
       <AboutEditor about={page.about} />
       <StatBand tournament={page.tournament} statBand={page.stat_band} showTournament={showTournament} programs={page.programs?.items} />
       <Programs programs={page.programs} />
+      {showSchedule && <ScheduleClient schedule={page.schedule} />}
       {showStore && <StoreClient store={page.store} daysLeft={storeDaysLeft} />}
       {showTournament && <GolfEventClient tournament={page.tournament} />}
       {showTournament && <CourseClient tournament={page.tournament} />}
